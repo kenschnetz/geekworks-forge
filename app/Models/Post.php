@@ -9,6 +9,18 @@
         use SoftDeletes;
 
         protected $guarded = ['id'];
+        protected $attributes = [
+            'user_id' => null,
+            'post_id' => null,
+            'system_id' => null,
+            'category_id' => null,
+            'published' => false,
+            'moderated' => false,
+            'allow_conversions' => true,
+            'is_conversion' => false,
+            'is_art_only' => false,
+            'locked' => true,
+        ];
 
         public function User() {
             return $this->belongsTo(User::class);
@@ -18,20 +30,8 @@
             return $this->belongsTo(Post::class);
         }
 
-        public function ContentType() {
-            return $this->belongsTo(ContentType::class);
-        }
-
-        public function ContentSubtype() {
-            return $this->belongsTo(ContentSubtype::class);
-        }
-
         public function System() {
             return $this->belongsTo(System::class);
-        }
-
-        public function Posts() {
-            return $this->hasMany(Post::class);
         }
 
         public function Category() {
@@ -47,7 +47,11 @@
         }
 
         public function Attributes() {
-            return $this->hasMany(PostAttribute::class)->with('Attribute');
+            return $this->hasMany(PostDetailAttribute::class)->with('Attribute');
+        }
+
+        public function Actions() {
+            return $this->hasMany(PostAction::class)->with('Action');
         }
 
         public function Contributors() {
@@ -73,6 +77,10 @@
 
         public function Reports() {
             return $this->hasMany(ReportedPost::class);
+        }
+
+        public function Canons() {
+            return $this->belongsToMany(Canon::class, 'canon_posts');
         }
 
         public function Collections() {

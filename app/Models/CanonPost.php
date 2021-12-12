@@ -4,19 +4,18 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class PostView extends Model {
+    class CanonPost extends Model {
         protected $guarded = ['id'];
         protected $attributes = [
+            'canon_id' => null,
             'post_id' => null,
-            'user_id' => null,
-            'count' => 0,
         ];
 
-        public function User() {
-            return $this->belongsTo(User::class);
+        public function Canon() {
+            return $this->hasOne(Canon::class);
         }
 
         public function Post() {
-            return $this->belongsTo(Post::class);
+            return $this->hasOne(Post::class);
         }
     }

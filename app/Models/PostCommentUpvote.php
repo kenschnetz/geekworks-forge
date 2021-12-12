@@ -6,12 +6,16 @@
 
     class PostCommentUpvote extends Model {
         protected $guarded = ['id'];
-
-        public function User() {
-            return $this->belongsTo(User::class);
-        }
+        protected $attributes = [
+            'post_comment_id' => null,
+            'user_id' => null,
+        ];
 
         public function PostComment() {
             return $this->belongsTo(PostComment::class);
+        }
+
+        public function User() {
+            return $this->belongsTo(User::class);
         }
     }

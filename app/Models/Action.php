@@ -4,16 +4,15 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class Category extends Model {
+    class Action extends Model {
+        public $timestamps = false;
         protected $guarded = ['id'];
         protected $attributes = [
             'name' => null,
-            'slug' => null,
             'description' => null,
-            'public' => false,
         ];
 
         public function Posts() {
-            return $this->belongsToMany(Post::class, 'collection_posts');
+            return $this->belongsToMany(Post::class, 'post_actions');
         }
     }

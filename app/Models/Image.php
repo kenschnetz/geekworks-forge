@@ -6,6 +6,11 @@
 
     class Image extends Model {
         protected $guarded = ['id'];
+        protected $attributes = [
+            'user_id' => null,
+            'name' => null,
+            'path' => null,
+        ];
 
         public function User() {
             return $this->belongsTo('App\Models\User');

@@ -6,6 +6,10 @@
 
     class Attribute extends Model {
         protected $guarded = ['id'];
+        protected $attributes = [
+            'name' => null,
+            'description' => null,
+        ];
         public $timestamps = false;
 
         public function Posts() {
@@ -13,6 +17,6 @@
         }
 
         public function PostAttributes() {
-            return $this->hasMany(PostAttribute::class);
+            return $this->hasMany(PostDetailAttribute::class);
         }
     }

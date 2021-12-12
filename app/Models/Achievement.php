@@ -4,12 +4,11 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class Badge extends Model {
+    class Achievement extends Model {
         protected $guarded = ['id'];
         protected $attributes = [
             'name' => null,
             'description' => null,
-            'badge_image_path' => null,
         ];
 
         public function Conditions() {
@@ -17,10 +16,10 @@
         }
 
         public function Users() {
-            return $this->belongsToMany(User::class, 'user_badges');
+            return $this->belongsToMany(User::class, 'user_achievements');
         }
 
         public function UserConditions() {
-            return $this->hasMany(UserBadgeCondition::class);
+            return $this->hasMany(UserAchievementCondition::class);
         }
     }

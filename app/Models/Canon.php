@@ -4,7 +4,7 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class Category extends Model {
+    class Canon extends Model {
         protected $guarded = ['id'];
         protected $attributes = [
             'name' => null,
@@ -14,6 +14,6 @@
         ];
 
         public function Posts() {
-            return $this->belongsToMany(Post::class, 'collection_posts');
+            return $this->belongsToMany(Post::class, 'canon_posts');
         }
     }

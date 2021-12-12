@@ -4,23 +4,23 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class PostContributor extends Model {
+    class PostDetailTag extends Model {
         protected $guarded = ['id'];
         protected $attributes = [
-            'post_id' => null,
-            'user_id' => null,
+            'post_detail_id' => null,
             'post_recommendation_id' => null,
+            'tag_id' => null,
         ];
 
-        public function Post() {
-            return $this->belongsTo(Post::class);
-        }
-
-        public function User() {
-            return $this->belongsTo(User::class);
+        public function PostDetail() {
+            return $this->belongsTo(PostDetail::class);
         }
 
         public function PostRecommendation() {
             return $this->belongsTo(PostRecommendation::class);
+        }
+
+        public function Tag() {
+            return $this->belongsTo(Tag::class);
         }
     }

@@ -4,14 +4,13 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class System extends Model {
+    class BadgeCondition extends Model {
         protected $guarded = ['id'];
         protected $attributes = [
-            'name' => null,
-            'description' => null,
+            'badge_id' => null,
         ];
 
-        public function Posts() {
-            return $this->hasMany(Post::class);
+        public function Badge() {
+            return $this->belongsTo(Badge::class);
         }
     }

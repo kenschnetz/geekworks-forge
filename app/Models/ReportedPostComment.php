@@ -6,12 +6,17 @@
 
     class ReportedPostComment extends Model {
         protected $guarded = ['id'];
-
-        public function User() {
-            return $this->belongsTo(User::class);
-        }
+        protected $attributes = [
+            'post_comment_id' => null,
+            'user_id' => null,
+            'reason' => null,
+        ];
 
         public function Comment() {
             return $this->belongsTo(PostComment::class);
+        }
+
+        public function User() {
+            return $this->belongsTo(User::class);
         }
     }
