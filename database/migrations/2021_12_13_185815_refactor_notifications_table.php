@@ -4,20 +4,20 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    class CreateImagesTable extends Migration {
+    class RefactorNotificationsTable extends Migration {
         /**
          * Run the migrations.
          *
          * @return void
          */
         public function up() {
-            Schema::create('images', function (Blueprint $table) {
+            Schema::dropIfExists('notifications');
+            Schema::create('notifications', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('user_id');
-                $table->string('name', 80);
-                $table->string('path', 400)->comment('Path of the image on the server');
+                $table->text('message');
+                $table->dateTime('read_at')->nullable();
                 $table->timestamps();
-                $table->softDeletes();
                 $table->foreign('user_id')->onDelete('cascade')->references('id')->on('users');
             });
         }
@@ -28,6 +28,6 @@
          * @return void
          */
         public function down() {
-            Schema::dropIfExists('images');
+            Schema::dropIfExists('notifications');
         }
     }

@@ -4,21 +4,21 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    class CreateImagesTable extends Migration {
+    class CreateUserFollowsTable extends Migration {
         /**
          * Run the migrations.
          *
          * @return void
          */
         public function up() {
-            Schema::create('images', function (Blueprint $table) {
+            Schema::create('user_follows', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('user_id');
-                $table->string('name', 80);
-                $table->string('path', 400)->comment('Path of the image on the server');
+                $table->foreignId('followed_user_id');
                 $table->timestamps();
-                $table->softDeletes();
                 $table->foreign('user_id')->onDelete('cascade')->references('id')->on('users');
+                $table->foreign('followed_user_id')->onDelete('cascade')->references('id')->on('users');
+                $table->unique(['user_id', 'followed_user_id']);
             });
         }
 
@@ -28,6 +28,6 @@
          * @return void
          */
         public function down() {
-            Schema::dropIfExists('images');
+            Schema::dropIfExists('user_follows');
         }
     }

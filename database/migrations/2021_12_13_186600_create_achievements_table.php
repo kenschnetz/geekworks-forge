@@ -4,20 +4,19 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    class CreateImagesTable extends Migration {
+    class CreateAchievementsTable extends Migration {
         /**
          * Run the migrations.
          *
          * @return void
          */
         public function up() {
-            Schema::create('images', function (Blueprint $table) {
+            Schema::create('achievements', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('user_id');
-                $table->string('name', 80);
-                $table->string('path', 400)->comment('Path of the image on the server');
-                $table->timestamps();
-                $table->softDeletes();
+                $table->string('name')->unique();
+                $table->text('description')->nullable();
+                $table->integer('experience_points_awarded')->comment('number of experience points awarded on completion');
                 $table->foreign('user_id')->onDelete('cascade')->references('id')->on('users');
             });
         }
@@ -28,6 +27,6 @@
          * @return void
          */
         public function down() {
-            Schema::dropIfExists('images');
+            Schema::dropIfExists('achievements');
         }
     }

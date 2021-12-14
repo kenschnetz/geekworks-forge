@@ -4,20 +4,24 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    class CreateImagesTable extends Migration {
+    class CreateUserCharactersTable extends Migration {
         /**
          * Run the migrations.
          *
          * @return void
          */
         public function up() {
-            Schema::create('images', function (Blueprint $table) {
+            Schema::create('user_characters', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('user_id');
-                $table->string('name', 80);
-                $table->string('path', 400)->comment('Path of the image on the server');
+                $table->string('name');
+                $table->string('bio', 600)->nullable();
+                $table->integer('skill')->default(0);
+                $table->integer('reputation')->default(0);
+                $table->integer('level')->default(0);
+                $table->integer('experience')->default(0);
+                $table->text('profile_image_path')->nullable();
                 $table->timestamps();
-                $table->softDeletes();
                 $table->foreign('user_id')->onDelete('cascade')->references('id')->on('users');
             });
         }
@@ -28,6 +32,6 @@
          * @return void
          */
         public function down() {
-            Schema::dropIfExists('images');
+            Schema::dropIfExists('user_characters');
         }
     }

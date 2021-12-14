@@ -4,21 +4,22 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    class CreateImagesTable extends Migration {
+    class CreateUserAchievementsTable extends Migration {
         /**
          * Run the migrations.
          *
          * @return void
          */
         public function up() {
-            Schema::create('images', function (Blueprint $table) {
+            Schema::create('user_achievements', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('user_id');
-                $table->string('name', 80);
-                $table->string('path', 400)->comment('Path of the image on the server');
+                $table->foreignId('achievement_id');
+                $table->datetime('completed_at')->nullable()->comment('if set, this quest was completed on the date entered');
                 $table->timestamps();
-                $table->softDeletes();
                 $table->foreign('user_id')->onDelete('cascade')->references('id')->on('users');
+                $table->foreign('achievement_id')->onDelete('cascade')->references('id')->on('achievements');
+                $table->unique(['user_id', 'achievement_id']);
             });
         }
 
@@ -28,6 +29,6 @@
          * @return void
          */
         public function down() {
-            Schema::dropIfExists('images');
+            Schema::dropIfExists('user_achievements');
         }
     }
