@@ -9,6 +9,7 @@
         protected $attributes = [
             'canon_id' => null,
             'post_id' => null,
+            'approved' => null,
         ];
 
         public function Canon() {

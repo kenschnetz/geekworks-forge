@@ -10,6 +10,7 @@
             'name' => null,
             'description' => null,
         ];
+        public $timestamps = false;
 
         public function Users() {
             return $this->hasMany(User::class);

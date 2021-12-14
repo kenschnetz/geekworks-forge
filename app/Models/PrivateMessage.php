@@ -10,7 +10,7 @@
             'user_id' => null,
             'recipient_id' => null,
             'content' => null,
-            'read' => false,
+            'read_at' => null,
         ];
 
         public function User() {

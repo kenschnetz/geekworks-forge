@@ -8,8 +8,8 @@
         protected $guarded = ['id'];
         protected $attributes = [
             'post_detail_id' => null,
-            'post_recommendation_id' => null,
             'attribute_id' => null,
+            'post_recommendation_id' => null,
             'value' => null,
         ];
 
@@ -17,11 +17,11 @@
             return $this->belongsTo(PostDetail::class);
         }
 
-        public function PostRecommendation() {
-            return $this->belongsTo(PostRecommendation::class);
-        }
-
         public function Attribute() {
             return $this->belongsTo(Attribute::class);
+        }
+
+        public function PostRecommendation() {
+            return $this->belongsTo(PostRecommendation::class);
         }
     }

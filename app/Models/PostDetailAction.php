@@ -9,6 +9,8 @@
         protected $attributes = [
             'post_detail_id' => null,
             'action_id' => null,
+            'post_recommendation_id' => null,
+            'value' => null,
         ];
 
         public function PostDetail() {
@@ -17,5 +19,9 @@
 
         public function Action() {
             return $this->belongsTo(Action::class);
+        }
+
+        public function PostRecommendation() {
+            return $this->belongsTo(PostRecommendation::class);
         }
     }

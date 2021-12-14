@@ -10,7 +10,6 @@
             'name' => null,
             'slug' => null,
             'description' => null,
-            'public' => false,
         ];
 
         public function Posts() {

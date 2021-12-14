@@ -9,7 +9,7 @@
         protected $attributes = [
             'user_id' => null,
             'badge_id' => null,
-            'completed' => false,
+            'completed_at' => null,
         ];
 
         public function User() {
@@ -18,9 +18,5 @@
 
         public function Badge() {
             return $this->belongsTo(Badge::class);
-        }
-
-        public function UserBadgeConditions() {
-            return $this->hasMany(UserBadgeCondition::class);
         }
     }

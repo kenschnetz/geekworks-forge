@@ -4,13 +4,14 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class BadgeCondition extends Model {
+    class UserBan extends Model {
         protected $guarded = ['id'];
         protected $attributes = [
-            'badge_id' => null,
+            'user_id' => null,
+            'reason' => null,
         ];
 
-        public function Badge() {
-            return $this->belongsTo(Badge::class);
+        public function User() {
+            return $this->belongsTo(User::class);
         }
     }

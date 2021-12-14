@@ -4,19 +4,16 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class UserTagView extends Model {
+    class Activity extends Model {
         protected $guarded = ['id'];
         protected $attributes = [
             'user_id' => null,
-            'tag_id' => null,
-            'views' => 0,
+            'name' => null,
+            'description' => null,
+            'track_daily' => null,
         ];
 
         public function User() {
             return $this->belongsTo(User::class);
-        }
-
-        public function Tag() {
-            return $this->belongsTo(Tag::class);
         }
     }

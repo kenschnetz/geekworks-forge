@@ -9,7 +9,7 @@
         protected $attributes = [
             'user_id' => null,
             'achievement_id' => null,
-            'completed' => false,
+            'completed_at' => false,
         ];
 
         public function User() {

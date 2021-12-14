@@ -10,6 +10,7 @@
 
         protected $guarded = ['id'];
         protected $attributes = [
+            'post_type_id' => 1, // 1 = idea, 1 = question, 2 = article
             'user_id' => null,
             'post_id' => null,
             'system_id' => null,
@@ -18,9 +19,14 @@
             'moderated' => false,
             'allow_conversions' => true,
             'is_conversion' => false,
-            'is_art_only' => false,
-            'locked' => true,
+            'is_art_only' => true,
+            'locked_art' => true,
+            'locked_canon' => true,
         ];
+
+        public function PostType() {
+            return $this->belongsTo(PostType::class);
+        }
 
         public function User() {
             return $this->belongsTo(User::class);
@@ -38,20 +44,8 @@
             return $this->belongsTo(Category::class);
         }
 
-        public function Tags() {
-            return $this->belongsToMany(Tag::class, 'post_tags');
-        }
-
-        public function Images() {
-            return $this->belongsToMany(Image::class, 'post_images');
-        }
-
-        public function Attributes() {
-            return $this->hasMany(PostDetailAttribute::class)->with('Attribute');
-        }
-
-        public function Actions() {
-            return $this->hasMany(PostAction::class)->with('Action');
+        public function PostDetails() {
+            return $this->hasMany(PostDetail::class);
         }
 
         public function Contributors() {
@@ -75,8 +69,8 @@
             return $this->hasMany(PostUpvote::class);
         }
 
-        public function Reports() {
-            return $this->hasMany(ReportedPost::class);
+        public function Flags() {
+            return $this->hasMany(PostFlag::class);
         }
 
         public function Canons() {

@@ -46,11 +46,11 @@
         ];
 
         public function Muted() {
-            return $this->hasOne(MutedUser::class)->where('expiration', '>', Carbon::now())->exists();
+            return $this->hasOne(UserMute::class)->where('expiration', '>', Carbon::now())->exists();
         }
 
         public function Banned() {
-            return $this->hasOne(BannedUser::class)->exists();
+            return $this->hasOne(UserBan::class)->exists();
         }
 
         public function Role() {

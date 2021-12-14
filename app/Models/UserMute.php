@@ -4,15 +4,15 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class Notification extends Model {
+    class UserMute extends Model {
         protected $guarded = ['id'];
         protected $attributes = [
             'user_id' => null,
-            'message' => null,
-            'read' => false,
+            'expiration' => null,
+            'reason' => null,
         ];
 
         public function User() {
-            return $this->hasOne(User::class);
+            return $this->belongsTo('App\Models\User');
         }
     }

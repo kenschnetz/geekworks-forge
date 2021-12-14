@@ -9,6 +9,7 @@
         protected $attributes = [
             'user_id' => null,
             'content' => null,
+            'moderated' => false,
         ];
 
         public function User() {

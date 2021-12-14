@@ -9,8 +9,7 @@
         protected $attributes = [
             'user_quest_id' => null,
             'quest_condition_id' => null,
-            'progress' => 0,
-            'completed' => false,
+            'completed_at' => null,
         ];
 
         public function UserQuest() {

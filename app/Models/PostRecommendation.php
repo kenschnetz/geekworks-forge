@@ -10,14 +10,14 @@
             'post_detail_id' => null,
             'user_id' => null,
             'title' => null,
-            'title_merged' => null,
+            'title_accepted' => false,
             'description' => null,
-            'description_merged' => null,
+            'description_accepted' => false,
             'content' => null,
-            'content_merged' => null,
-            'tags_merged' => null,
-            'attributes_merged' => null,
-            'actions_merged' => null,
+            'content_accepted' => false,
+            'tags_accepted' => false,
+            'attributes_accepted' => false,
+            'actions_accepted' => false,
         ];
 
         public function PostDetail() {

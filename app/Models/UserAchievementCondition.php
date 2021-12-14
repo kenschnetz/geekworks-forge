@@ -9,8 +9,7 @@
         protected $attributes = [
             'user_achievement_id' => null,
             'achievement_condition_id' => null,
-            'progress' => 0,
-            'completed' => false,
+            'completed_at' => null,
         ];
 
         public function UserAchievement() {

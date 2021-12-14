@@ -11,9 +11,11 @@
             'quest_line_id' => null,
             'name' => null,
             'description' => null,
+            'quest_line_position' => null,
+            'experience_points_awarded' => null,
         ];
 
-        public function User() {
+        public function Author() {
             return $this->hasOne(User::class);
         }
 

@@ -9,6 +9,7 @@
         protected $attributes = [
             'post_id' => null,
             'version' => 1,
+            'active' => true,
             'title' => null,
             'slug' => null,
             'description' => null,
@@ -22,10 +23,6 @@
 
         public function Recommendations() {
             return $this->belongsToMany(PostRecommendation::class);
-        }
-
-        public function RecommendationMerges() {
-            return $this->belongsToMany(PostRecommendationMerge::class);
         }
 
         public function Images() {
