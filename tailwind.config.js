@@ -8,14 +8,14 @@ module.exports = {
         './resources/views/**/*.blade.php',
         './resources/js/**/*.js',
     ],
-
+    darkMode: 'class',
     theme: {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                rose: colors.rose,
+                orange: colors.orange,
             },
         },
     },
