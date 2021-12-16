@@ -44,6 +44,10 @@
             return $this->belongsTo(Category::class);
         }
 
+        public function ActivePostDetails() {
+            return $this->hasMany(PostDetail::class)->where('active', true)->with('Images', 'Tags', 'Attributes', 'Actions');
+        }
+
         public function PostDetails() {
             return $this->hasMany(PostDetail::class);
         }
@@ -67,6 +71,10 @@
 
         public function Upvotes() {
             return $this->hasMany(PostUpvote::class);
+        }
+
+        public function UpvoteCount() {
+            return $this->hasMany(PostUpvote::class)->count();
         }
 
         public function Flags() {
