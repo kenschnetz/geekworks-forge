@@ -41,13 +41,19 @@
     */
 
     Route::get('/', function () {
-        if (Auth()) {
-            return Inertia::render('Feed');
+        if (Auth()->check()) {
+            $user = Auth::user();
+            $posts = PostModel::latest()->with('System', 'Category', 'ActivePostDetails', 'User', 'User.Character')->withCount('Upvotes', 'Comments', 'Views')->paginate(20);
+            return Inertia::render('Feed', [
+                'user' => $user,
+                'posts' => $posts->toArray(),
+                'active_tab' => 0,
+            ]);
         } else {
-            return Inertia::render('Welcome');
+            return Inertia::render('Home');
         }
     })->name('home');
-    Route::middleware(['auth', 'verified', 'terms', 'admin'])->prefix('admin')->group(function () {
+    Route::middleware(['auth', 'verified'/*, 'terms', 'admin'*/])->prefix('admin')->group(function () {
         Route::get('/achievement/{achievement_id?}', function ($achievement_id = null) {
             $achievement = AchievementModel::where('id', $achievement_id)->first();
             if (!empty($achievement_id) && empty($achievement)) {
@@ -295,8 +301,8 @@
             ]);
         })->name('admin-violations');
     });
-    Route::middleware(['auth', 'verified', 'terms', 'admin'])->get('/article/{post_id?}', function ($post_id = null) {
-        $post = ArticleModel::where('id', $post_id)->first();
+    Route::middleware(['auth', 'verified'/*, 'terms', 'admin'*/])->get('/article/{post_id?}', function ($post_id = null) {
+        $post = PostModel::where('id', $post_id)->first();
         if (!empty($post_id) && empty($system)) {
             return abort(404);
         } else {
@@ -306,9 +312,12 @@
         }
     })->name('article');
     Route::get('/articles', function () {
-        $articles = ArticleModel::all();
-        return Inertia::render('Articles', [
-            'articles' => $articles
+        $user = Auth::user();
+        $posts = PostModel::where('post_type_id', 3)->latest()->with('System', 'Category', 'ActivePostDetails', 'User', 'User.Character')->withCount('Upvotes', 'Comments', 'Views')->paginate(20);
+        return Inertia::render('Feed', [
+            'user' => $user,
+            'posts' => $posts->toArray(),
+            'active_tab' => 4,
         ]);
     })->name('articles');
     Route::prefix('canon')->group(function () {
@@ -335,10 +344,13 @@
             'canons' => $canons
         ]);
     })->name('canons');
-    Route::get('/category/{category_slug}/posts', function ($category_slug) {
-        $posts = CategoryModel::where('slug', $category_slug)->Posts()->get();
-        return Inertia::render('CategoryPosts', [
-            'posts' => $posts
+    Route::get('/category/{category_id}/posts', function ($category_id) {
+        $user = Auth::user();
+        $posts = CategoryModel::where('id', $category_id)->first()->Posts()->latest()->with('System', 'Category', 'ActivePostDetails', 'User', 'User.Character')->withCount('Upvotes', 'Comments', 'Views')->paginate(20);
+        return Inertia::render('Feed', [
+            'user' => $user,
+            'posts' => $posts->toArray(),
+            'active_tab' => 0
         ]);
     })->name('category-posts');
     Route::prefix('collection')->group(function () {
@@ -405,9 +417,12 @@
         })->name('idea-recommendation');
     });
     Route::get('/ideas', function () {
-        $ideas = IdeaModel::all();
-        return Inertia::render('Ideas', [
-            'ideas' => $ideas
+        $user = Auth::user();
+        $posts = PostModel::where('post_type_id', 1)->latest()->with('System', 'Category', 'ActivePostDetails', 'User', 'User.Character')->withCount('Upvotes', 'Comments', 'Views')->paginate(20);
+        return Inertia::render('Feed', [
+            'user' => $user,
+            'posts' => $posts->toArray(),
+            'active_tab' => 2,
         ]);
     })->name('ideas');
     Route::get('/question/{post_id?}', function ($post_id = null) {
@@ -417,9 +432,12 @@
         ]);
     })->name('question');
     Route::get('/questions', function () {
-        $questions = QuestionModel::all();
-        return Inertia::render('Questions', [
-            'questions' => $questions
+        $user = Auth::user();
+        $posts = PostModel::where('post_type_id', 2)->latest()->with('System', 'Category', 'ActivePostDetails', 'User', 'User.Character')->withCount('Upvotes', 'Comments', 'Views')->paginate(20);
+        return Inertia::render('Feed', [
+            'user' => $user,
+            'posts' => $posts->toArray(),
+            'active_tab' => 3,
         ]);
     })->name('questions');
     Route::get('/tag/{tag_id}/posts', function ($tag_id) {
@@ -431,7 +449,7 @@
     Route::get('/terms', function () {
         return Inertia::render('Terms');
     })->name('terms');
-    Route::middleware(['auth', 'verified', 'terms'])->prefix('user')->group(function () {
+    Route::middleware(['auth', 'verified'/*, 'terms'*/])->prefix('user')->group(function () {
         Route::get('/{user_id}/canon/{canon_id?}', function ($user_id, $canon_id = null) {
             $canon = CanonModel::where('user_id', $user_id)->where('id', $canon_id)->first();
             if (!empty($user_id) && !empty($canon_id) && empty($canon)) {
