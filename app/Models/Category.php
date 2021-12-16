@@ -11,8 +11,9 @@
             'slug' => null,
             'description' => null,
         ];
+        public $timestamps = false;
 
         public function Posts() {
-            return $this->belongsToMany(Post::class, 'collection_posts');
+            return $this->hasMany(Post::class);
         }
     }
