@@ -17,4 +17,4 @@ Homestead.json
 /.vagrant
 
 # PhpStorm
-/.idea
+/.idea/*
