@@ -7,13 +7,19 @@
     class Activity extends Model {
         protected $guarded = ['id'];
         protected $attributes = [
-            'user_id' => null,
             'name' => null,
             'description' => null,
-            'track_daily' => null,
         ];
 
-        public function User() {
-            return $this->belongsTo(User::class);
+        public function UserActivities() {
+            return $this->hasMany(UserActivity::class);
+        }
+
+        public function QuestStepConditions() {
+            return $this->hasMany(QuestStepCondition::class);
+        }
+
+        public function Achievements() {
+            return $this->hasMany(Achievement::class);
         }
     }

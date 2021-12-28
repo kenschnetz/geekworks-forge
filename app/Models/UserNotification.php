@@ -8,11 +8,11 @@
         protected $guarded = ['id'];
         protected $attributes = [
             'user_id' => null,
-            'message' => null,
-            'read_at' => false,
+            'notification' => null,
+            'read_at' => null,
         ];
 
         public function User() {
-            return $this->hasOne(User::class);
+            return $this->belongsTo(User::class);
         }
     }

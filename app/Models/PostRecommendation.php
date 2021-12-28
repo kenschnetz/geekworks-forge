@@ -7,8 +7,8 @@
     class PostRecommendation extends Model {
         protected $guarded = ['id'];
         protected $attributes = [
-            'post_detail_id' => null,
             'user_id' => null,
+            'post_detail_id' => null,
             'title' => null,
             'title_accepted' => false,
             'description' => null,
@@ -20,11 +20,23 @@
             'actions_accepted' => false,
         ];
 
-        public function PostDetail() {
-            return $this->hasOne(PostDetail::class);
+        public function User() {
+            return $this->belongsTo(User::class);
         }
 
-        public function User() {
-            return $this->hasOne(User::class);
+        public function PostDetails() {
+            return $this->belongsTo(PostDetail::class);
+        }
+
+        public function Tags() {
+            return $this->belongsToMany(Tag::class, 'post_tags');
+        }
+
+        public function Attributes() {
+            return $this->belongsToMany(Attribute::class, 'post_attributes');
+        }
+
+        public function Actions() {
+            return $this->belongsToMany(Action::class, 'post_actions');
         }
     }

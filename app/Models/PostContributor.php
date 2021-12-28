@@ -12,12 +12,12 @@
             'post_recommendation_id' => null,
         ];
 
-        public function Post() {
-            return $this->belongsTo(Post::class);
-        }
-
         public function User() {
             return $this->belongsTo(User::class);
+        }
+
+        public function Post() {
+            return $this->belongsTo(Post::class);
         }
 
         public function PostRecommendation() {

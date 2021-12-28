@@ -8,15 +8,20 @@
         protected $guarded = ['id'];
         protected $attributes = [
             'canon_id' => null,
+            'user_id' => null,
             'post_id' => null,
-            'approved' => null,
+            'approved' => false,
         ];
 
         public function Canon() {
-            return $this->hasOne(Canon::class);
+            return $this->belongsTo(Canon::class);
+        }
+
+        public function User() {
+            return $this->belongsTo(User::class);
         }
 
         public function Post() {
-            return $this->hasOne(Post::class);
+            return $this->belongsTo(Post::class);
         }
     }

@@ -11,7 +11,7 @@
             'name' => null,
             'slug' => null,
             'description' => null,
-            'public' => false,
+            'public' => true,
         ];
 
         public function User() {
@@ -19,6 +19,6 @@
         }
 
         public function Posts() {
-            return $this->belongsToMany(Post::class, 'collection_posts');
+            return $this->belongsTo(Post::class);
         }
     }

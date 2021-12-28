@@ -9,7 +9,7 @@
         protected $attributes = [
             'user_id' => null,
             'recipient_id' => null,
-            'content' => null,
+            'message' => null,
             'read_at' => null,
         ];
 

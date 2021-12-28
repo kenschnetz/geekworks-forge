@@ -8,11 +8,12 @@
         protected $guarded = ['id'];
         protected $attributes = [
             'user_id' => null,
+            'live' => false,
             'name' => null,
             'description' => null,
         ];
 
-        public function User() {
+        public function Author() {
             return $this->belongsTo(User::class);
         }
 

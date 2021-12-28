@@ -11,8 +11,8 @@
             'name' => null,
             'slug' => null,
             'description' => null,
-            'public' => false,
-            'require_approval' => false,
+            'public' => true,
+            'require_approval' => true,
         ];
 
         public function User() {
@@ -20,6 +20,6 @@
         }
 
         public function Posts() {
-            return $this->belongsToMany(Post::class, 'canon_posts');
+            return $this->belongsTo(Post::class);
         }
     }

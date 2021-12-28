@@ -9,25 +9,26 @@
         protected $attributes = [
             'user_id' => null,
             'quest_line_id' => null,
+            'live' => false,
             'name' => null,
             'description' => null,
-            'quest_line_position' => null,
-            'experience_points_awarded' => null,
+            'quest_index' => null,
+            'experience_reward' => null,
         ];
 
         public function Author() {
-            return $this->hasOne(User::class);
+            return $this->belongsTo(User::class);
         }
 
         public function QuestLine() {
-            return $this->hasOne(QuestLine::class);
+            return $this->belongsTo(QuestLine::class);
         }
 
-        public function Conditions() {
-            return $this->hasMany(QuestCondition::class);
+        public function QuestSteps() {
+            return $this->hasMany(QuestStep::class);
         }
 
-        public function Users() {
-            return $this->belongsToMany(User::class, 'user_quests');
+        public function UsersInProgress() {
+            return $this->hasMany(UserQuest::class);
         }
     }

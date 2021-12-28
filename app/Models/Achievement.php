@@ -7,17 +7,13 @@
     class Achievement extends Model {
         protected $guarded = ['id'];
         protected $attributes = [
-            'user_id' => null,
+            'activity_id' => null,
             'name' => null,
             'description' => null,
-            'experience_points_awarded' => null,
+            'experience_reward' => null,
         ];
 
-        public function Users() {
-            return $this->belongsToMany(User::class, 'user_achievements');
-        }
-
-        public function UserConditions() {
-            return $this->hasMany(UserAchievementCondition::class);
+        public function Activity() {
+            return $this->belongsTo(Activity::class);
         }
     }

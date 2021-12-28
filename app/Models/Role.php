@@ -10,13 +10,8 @@
             'name' => null,
             'description' => null,
         ];
-        public $timestamps = false;
 
-        public function Users() {
-            return $this->hasMany(User::class);
-        }
-
-        public function Permissions() {
+        public function Permission() {
             return $this->belongsToMany(Permission::class, 'role_permissions');
         }
     }

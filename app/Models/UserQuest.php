@@ -19,4 +19,8 @@
         public function Quest() {
             return $this->belongsTo(Quest::class);
         }
+
+        public function StepsInProgress() {
+            return $this->belongsTo(UserQuestStep::class);
+        }
     }

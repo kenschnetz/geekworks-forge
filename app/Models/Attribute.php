@@ -7,16 +7,12 @@
     class Attribute extends Model {
         protected $guarded = ['id'];
         protected $attributes = [
+            'user_id' => null,
             'name' => null,
             'description' => null,
         ];
-        public $timestamps = false;
 
-        public function Posts() {
-            return $this->belongsToMany(Post::class, 'post_attributes');
-        }
-
-        public function PostAttributes() {
-            return $this->hasMany(PostDetailAttribute::class);
+        public function User() {
+            return $this->belongsTo(User::class);
         }
     }

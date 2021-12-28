@@ -9,8 +9,7 @@
         protected $attributes = [
             'user_id' => null,
             'activity_id' => null,
-            'date' => null,
-            'count' => 0,
+            'count' => 0
         ];
 
         public function User() {
@@ -19,5 +18,9 @@
 
         public function Activity() {
             return $this->belongsTo(Activity::class);
+        }
+
+        public function Logs() {
+            return $this->belongsTo(UserActivityLog::class);
         }
     }

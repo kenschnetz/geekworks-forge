@@ -18,26 +18,18 @@
         ];
 
         public function Post() {
-            return $this->hasOne(Post::class);
-        }
-
-        public function Recommendations() {
-            return $this->belongsToMany(PostRecommendation::class);
-        }
-
-        public function Images() {
-            return $this->belongsToMany(Image::class, 'post_detail_images');
+            return $this->belongsTo(Post::class);
         }
 
         public function Tags() {
-            return $this->belongsToMany(Tag::class, 'post_detail_tags');
+            return $this->morphMany(PostTag::class, 'PostTaggable');
         }
 
         public function Attributes() {
-            return $this->belongsToMany(Attribute::class, 'post_detail_attributes');
+            return $this->morphMany(PostAttribute::class, 'PostAttributable');
         }
 
         public function Actions() {
-            return $this->belongsToMany(Action::class, 'post_detail_actions');
+            return $this->morphMany(PostAction::class, 'PostActionable');
         }
     }

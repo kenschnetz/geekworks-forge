@@ -12,10 +12,14 @@
         ];
 
         public function Collection() {
-            return $this->hasOne(Collection::class);
+            return $this->belongsTo(Collection::class);
+        }
+
+        public function User() {
+            return $this->belongsTo(User::class);
         }
 
         public function Post() {
-            return $this->hasOne(Post::class);
+            return $this->belongsTo(Post::class);
         }
     }

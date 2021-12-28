@@ -9,23 +9,18 @@
         protected $attributes = [
             'user_id' => null,
             'admin_user_id' => null,
-            'post_flag_id' => null,
-            'post_comment_flag_id' => null,
+            'flag' => null,
         ];
 
         public function User() {
             return $this->belongsTo(User::class);
         }
 
-        public function Admin() {
+        public function AdminUser() {
             return $this->belongsTo(User::class, 'admin_user_id');
         }
 
-        public function PostFlag() {
-            return $this->belongsTo(PostFlag::class);
-        }
-
-        public function PostCommentFlag() {
-            return $this->belongsTo(PostCommentFlag::class);
+        public function Flag() {
+            return $this->morphOne(Flag::class, 'flaggable');
         }
     }

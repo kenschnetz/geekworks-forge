@@ -8,7 +8,7 @@
         protected $guarded = ['id'];
         protected $attributes = [
             'user_id' => null,
-            'content' => null,
+            'message' => null,
             'moderated' => false,
         ];
 

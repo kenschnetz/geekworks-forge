@@ -8,11 +8,16 @@
         protected $guarded = ['id'];
         protected $attributes = [
             'user_id' => null,
+            'admin_user_id' => null,
             'expiration' => null,
             'reason' => null,
         ];
 
         public function User() {
-            return $this->belongsTo('App\Models\User');
+            return $this->belongsTo(User::class);
+        }
+
+        public function AdminUser() {
+            return $this->belongsTo(User::class, 'admin_user_id');
         }
     }
