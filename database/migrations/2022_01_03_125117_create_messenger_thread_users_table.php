@@ -4,21 +4,24 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    class CreatePublicMessagesTable extends Migration {
+    class CreateMessengerThreadUsersTable extends Migration {
         /**
          * Run the migrations.
          *
          * @return void
          */
         public function up() {
-            Schema::create('public_messages', function (Blueprint $table) {
+            Schema::create('messenger_thread_users', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('user_id');
-                $table->text('message');
-                $table->boolean('moderated')->default(false);
-                $table->softDeletes();
+                $table->foreignId('messenger_thread_id');
                 $table->timestamps();
                 $table->foreign('user_id')->onDelete('cascade')->references('id')->on('users');
+                $table->foreign('messenger_thread_id')->onDelete('cascade')->references('id')->on('messenger_threads');
+                $table->unique([
+                    'user_id',
+                    'messenger_thread_id',
+                ], 'messenger_thread_user');
             });
         }
 
@@ -28,6 +31,6 @@
          * @return void
          */
         public function down() {
-            Schema::dropIfExists('public_messages');
+            Schema::dropIfExists('messenger_thread_users');
         }
     }

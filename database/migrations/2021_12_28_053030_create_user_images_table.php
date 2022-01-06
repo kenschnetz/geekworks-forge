@@ -4,18 +4,21 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    class CreatePermissionsTable extends Migration {
+    class CreateUserImagesTable extends Migration {
         /**
          * Run the migrations.
          *
          * @return void
          */
         public function up() {
-            Schema::create('permissions', function (Blueprint $table) {
+            Schema::create('user_images', function (Blueprint $table) {
                 $table->id();
-                $table->string('name');
-                $table->text('description');
+                $table->foreignId('user_id');
+                $table->string('name', 400);
+                $table->string('filename', 450)->unique()->comment('This should help prevent duplicates');
+                $table->text('path');
                 $table->timestamps();
+                $table->foreign('user_id')->onDelete('cascade')->references('id')->on('users');
             });
         }
 
@@ -25,6 +28,6 @@
          * @return void
          */
         public function down() {
-            Schema::dropIfExists('permissions');
+            Schema::dropIfExists('user_images');
         }
     }

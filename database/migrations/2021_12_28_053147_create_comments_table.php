@@ -15,7 +15,7 @@
                 $table->id();
                 $table->foreignId('post_id');
                 $table->foreignId('user_id');
-                $table->foreignId('comment_id');
+                $table->foreignId('comment_id')->nullable();
                 $table->text('comment');
                 $table->boolean('moderated')->default(false);
                 $table->softDeletes();

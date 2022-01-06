@@ -13,8 +13,8 @@
         public function up() {
             Schema::table('users', function (Blueprint $table) {
                 $table->integer('role_id')->nullable()->after('password');
-                $table->dateTime('terms_accepted_at')->nullable()->after('role_id');
-                $table->integer('unread_global_messages')->default(0)->after('terms_accepted_at');
+                $table->boolean('terms_accepted')->default(false)->after('role_id');
+                $table->dateTime('terms_accepted_at')->nullable()->after('terms_accepted');
             });
         }
 

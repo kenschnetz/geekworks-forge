@@ -16,15 +16,16 @@ class CreateUserCharactersTable extends Migration
         Schema::create('user_characters', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->unique();
+            $table->foreignId('user_image_id')->nullable()->unique();
             $table->string('name');
             $table->string('bio', 600);
             $table->integer('skill')->default(0); // TODO: determine how points are awarded into these areas
             $table->integer('reputation')->default(0); // TODO: determine how points are awarded into these areas
             $table->integer('level')->default(1);
             $table->integer('experience')->default(0);
-            $table->text('profile_image_path')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->onDelete('cascade')->references('id')->on('users');
+            $table->foreign('user_image_id')->onDelete('cascade')->references('id')->on('user_images');
         });
     }
 

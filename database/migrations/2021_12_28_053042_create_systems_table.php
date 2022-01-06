@@ -14,6 +14,7 @@
             Schema::create('systems', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('user_id')->nullable()->comment('ID of the user who proposed this system be added to Forge');
+                $table->string('slug', 450)->unique();
                 $table->string('name')->unique();
                 $table->text('description');
                 $table->boolean('live')->default(false);

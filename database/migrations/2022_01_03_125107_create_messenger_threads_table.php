@@ -4,19 +4,20 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    class CreateImagesTable extends Migration {
+    class CreateMessengerThreadsTable extends Migration {
         /**
          * Run the migrations.
          *
          * @return void
          */
         public function up() {
-            Schema::create('images', function (Blueprint $table) {
+            Schema::create('messenger_threads', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('user_id');
-                $table->string('name', 400);
-                $table->string('filename', 450)->unique()->comment('This should help prevent duplicates');
-                $table->text('path');
+                $table->string('name');
+                $table->string('description', 400)->nullable();
+                $table->boolean('private');
+                $table->softDeletes();
                 $table->timestamps();
                 $table->foreign('user_id')->onDelete('cascade')->references('id')->on('users');
             });
@@ -28,6 +29,6 @@
          * @return void
          */
         public function down() {
-            Schema::dropIfExists('images');
+            Schema::dropIfExists('messenger_threads');
         }
     }

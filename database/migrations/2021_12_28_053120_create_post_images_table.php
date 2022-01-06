@@ -14,13 +14,13 @@
             Schema::create('post_images', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('post_detail_id');
-                $table->foreignId('image_id');
+                $table->foreignId('user_image_id');
                 $table->timestamps();
                 $table->foreign('post_detail_id')->onDelete('cascade')->references('id')->on('post_details');
-                $table->foreign('image_id')->onDelete('cascade')->references('id')->on('images');
+                $table->foreign('user_image_id')->onDelete('cascade')->references('id')->on('user_images');
                 $table->unique([
                     'post_detail_id',
-                    'image_id',
+                    'user_image_id',
                 ], 'post_image');
             });
         }

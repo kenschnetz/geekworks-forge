@@ -15,12 +15,13 @@
                 $table->id();
                 $table->foreignId('post_type_id');
                 $table->foreignId('user_id');
-                $table->foreignId('post_id');
+                $table->foreignId('post_id')->nullable();
                 $table->foreignId('system_id');
                 $table->foreignId('category_id');
+                $table->string('slug', 450)->unique();
                 $table->boolean('published')->default(false);
                 $table->boolean('moderated')->default(false);
-                $table->boolean('allow_conversions')->default(true);
+                $table->boolean('allow_conversions')->default(true); // TODO: Disallows conversions until 90 days has passed
                 $table->boolean('is_art_only')->default(false);
                 $table->boolean('locked_art')->default(true);
                 $table->boolean('locked_canon')->default(true);

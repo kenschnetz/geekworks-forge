@@ -14,8 +14,8 @@
             Schema::create('canons', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('user_id');
-                $table->string('name', 400)->unique();
                 $table->string('slug', 450)->unique();
+                $table->string('name', 400)->unique();
                 $table->text('description');
                 $table->boolean('public')->default(true);
                 $table->boolean('require_approval')->default(true);

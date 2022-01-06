@@ -4,23 +4,25 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    class CreatePrivateMessagesTable extends Migration {
+    class CreateMessengerThreadNotificationsTable extends Migration {
         /**
          * Run the migrations.
          *
          * @return void
          */
         public function up() {
-            Schema::create('private_messages', function (Blueprint $table) {
+            Schema::create('messenger_thread_notifications', function (Blueprint $table) {
                 $table->id();
+                $table->foreignId('messenger_thread_id');
                 $table->foreignId('user_id');
-                $table->foreignId('recipient_id');
-                $table->text('message');
+                $table->integer('count');
                 $table->dateTime('read_at')->nullable();
-                $table->softDeletes();
-                $table->timestamps();
+                $table->foreign('messenger_thread_id')->onDelete('cascade')->references('id')->on('messenger_threads');
                 $table->foreign('user_id')->onDelete('cascade')->references('id')->on('users');
-                $table->foreign('recipient_id')->onDelete('cascade')->references('id')->on('users');
+                $table->unique([
+                    'messenger_thread_id',
+                    'user_id',
+                ], 'messenger_thread_notification');
             });
         }
 
@@ -30,6 +32,6 @@
          * @return void
          */
         public function down() {
-            Schema::dropIfExists('private_messages');
+            Schema::dropIfExists('messenger_thread_notifications');
         }
     }
