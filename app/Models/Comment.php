@@ -25,4 +25,8 @@
         public function Comment() {
             return $this->belongsTo(Comment::class);
         }
+
+        public function Comments() {
+            return $this->hasMany(Comment::class);
+        }
     }

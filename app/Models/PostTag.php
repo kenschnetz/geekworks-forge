@@ -17,6 +17,7 @@
         }
 
         public function PostTaggable() {
-            return $this->morphTo(__FUNCTION__, 'post_taggable_type', 'post_taggable_id');
+            return $this->morphTo();
+//            return $this->morphTo(__FUNCTION__, 'post_taggable_type', 'post_taggable_id');
         }
     }

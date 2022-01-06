@@ -3,8 +3,10 @@
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Database\Eloquent\SoftDeletes;
 
     class Post extends Model {
+        use SoftDeletes;
         protected $guarded = ['id'];
         protected $attributes = [
             'post_type_id' => null,
@@ -12,6 +14,7 @@
             'post_id' => null,
             'system_id' => null,
             'category_id' => null,
+            'slug' => null,
             'published' => false,
             'moderated' => false,
             'allow_conversions' => true,
@@ -43,5 +46,29 @@
 
         public function Category() {
             return $this->belongsTo(Category::class);
+        }
+
+        public function PostDetails() {
+            return $this->hasMany(PostDetail::class);
+        }
+
+        public function Contributors() {
+            return $this->belongsToMany(User::class, 'post_contributors');
+        }
+
+        public function ActivePostDetails() {
+            return $this->hasOne(PostDetail::class)->where('active', true);
+        }
+
+        public function Upvotes() {
+            return $this->morphMany(Upvote::class, 'Upvotable');
+        }
+
+        public function Comments() {
+            return $this->hasMany(Comment::class);
+        }
+
+        public function Views() {
+            return $this->hasMany(PostView::class);
         }
     }

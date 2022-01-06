@@ -19,6 +19,7 @@
             'name',
             'email',
             'password',
+            'terms_accepted',
             'terms_accepted_at',
             'role_id',
             'unread_global_messages',
@@ -42,6 +43,22 @@
         protected $casts = [
             'email_verified_at' => 'datetime',
         ];
+
+        public function IsStaff() {
+            return $this->Role->name === 'Staff';
+        }
+
+        public function IsAdmin() {
+            return $this->Role->name === 'Staff' || $this->Role->name === 'Admin';
+        }
+
+        public function IsTester() {
+            return $this->Role->name === 'Staff' || $this->Role->name === 'Admin' || $this->Role->name === 'Tester';
+        }
+
+        public function Role() {
+            return $this->belongsTo(Role::class, 'role_id');
+        }
 
         public function Notifications() {
             return $this->hasMany(UserNotification::class);
@@ -75,16 +92,16 @@
             return $this->hasMany(UserSearch::class);
         }
 
-        public function ReceivedPrivateMessages() {
-            return $this->hasMany(PrivateMessage::class, 'recipient_id');
+        public function Character() {
+            return $this->hasOne(UserCharacter::class)->with('ProfilePhoto');
         }
 
-        public function SentPrivateMessages() {
-            return $this->hasMany(PrivateMessage::class, 'user_id');
+        public function MessengerThreads() {
+            return $this->belongsToMany(MessengerThread::class, 'messenger_thread_users');
         }
 
-        public function PublicMessages() {
-            return $this->hasMany(PublicMessage::class);
+        public function MessengerNotifications() {
+            return $this->MessengerThreads()->withSum(['Notifications' => fn ($query) => $query->where('user_id', $this->id),], 'count')->pluck('notifications_sum_count')->sum();
         }
 
         public function Systems() {
@@ -108,7 +125,7 @@
         }
 
         public function Images() {
-            return $this->hasMany(Image::class);
+            return $this->hasMany(UserImage::class);
         }
 
         public function Posts() {

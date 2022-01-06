@@ -4,19 +4,19 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class Tag extends Model {
+    class MessengerThreadMessage extends Model {
         protected $guarded = ['id'];
         protected $attributes = [
+            'messenger_thread_id' => null,
             'user_id' => null,
-            'name' => null,
-            'description' => null,
+            'message' => null,
         ];
 
-        public function User() {
-            return $this->belongsTo(User::class);
+        public function Thread() {
+            return $this->belongsTo(MessengerThread::class);
         }
 
-        public function Tag() {
+        public function User() {
             return $this->belongsTo(User::class);
         }
     }

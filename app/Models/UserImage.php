@@ -4,20 +4,16 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class PrivateMessage extends Model {
+    class UserImage extends Model {
         protected $guarded = ['id'];
         protected $attributes = [
             'user_id' => null,
-            'recipient_id' => null,
-            'message' => null,
-            'read_at' => null,
+            'name' => null,
+            'filename' => null,
+            'path' => null,
         ];
 
         public function User() {
             return $this->belongsTo(User::class);
-        }
-
-        public function Recipient() {
-            return $this->belongsTo(User::class, 'recipient_id');
         }
     }

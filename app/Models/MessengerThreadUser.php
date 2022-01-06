@@ -4,15 +4,18 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class PublicMessage extends Model {
+    class MessengerThreadUser extends Model {
         protected $guarded = ['id'];
         protected $attributes = [
             'user_id' => null,
-            'message' => null,
-            'moderated' => false,
+            'messenger_thread_id' => null,
         ];
 
         public function User() {
             return $this->belongsTo(User::class);
+        }
+
+        public function Thread() {
+            return $this->belongsTo(MessengerThread::class);
         }
     }
