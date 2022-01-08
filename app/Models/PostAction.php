@@ -3,13 +3,15 @@
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Database\Eloquent\SoftDeletes;
 
     class PostAction extends Model {
+        use SoftDeletes;
         protected $guarded = ['id'];
         protected $attributes = [
             'action_id' => null,
-            'post_taggable_id' => null,
-            'post_taggable_type' => null,
+            'post_actionable_id' => null,
+            'post_actionable_type' => null,
         ];
 
         public function Action() {

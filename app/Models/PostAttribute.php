@@ -3,13 +3,15 @@
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Database\Eloquent\SoftDeletes;
 
     class PostAttribute extends Model {
+        use SoftDeletes;
         protected $guarded = ['id'];
         protected $attributes = [
             'attribute_id' => null,
-            'post_taggable_id' => null,
-            'post_taggable_type' => null,
+            'post_attributable_id' => null,
+            'post_attributable_type' => null,
         ];
 
         public function Attribute() {
