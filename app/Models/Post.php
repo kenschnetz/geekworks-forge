@@ -52,8 +52,8 @@
             return $this->hasMany(PostDetail::class);
         }
 
-        public function Contributors() {
-            return $this->belongsToMany(User::class, 'post_contributors');
+        public function Collaborators() {
+            return $this->belongsToMany(User::class, 'post_collaborators');
         }
 
         public function ActivePostDetails() {

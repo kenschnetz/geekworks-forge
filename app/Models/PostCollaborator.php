@@ -4,7 +4,7 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class PostContributor extends Model {
+    class PostCollaborator extends Model {
         protected $guarded = ['id'];
         protected $attributes = [
             'post_id' => null,

@@ -4,14 +4,14 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    class CreatePostContributorsTable extends Migration {
+    class CreatePostCollaboratorsTable extends Migration {
         /**
          * Run the migrations.
          *
          * @return void
          */
         public function up() {
-            Schema::create('post_contributors', function (Blueprint $table) {
+            Schema::create('post_collaborators', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('post_id');
                 $table->foreignId('user_id');
@@ -31,6 +31,6 @@
          * @return void
          */
         public function down() {
-            Schema::dropIfExists('post_contributors');
+            Schema::dropIfExists('post_collaborators');
         }
     }
