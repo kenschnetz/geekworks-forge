@@ -1,4 +1,4 @@
-<div class="px-6">
+<div class="px-6" wire:poll>
     <ul role="list">
         <li>
             <div class="relative pb-10">

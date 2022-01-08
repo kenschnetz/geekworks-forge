@@ -104,10 +104,7 @@
                 $this->selected_thread->refresh();
             }
             $this->CreateNotifications();
-            if ($this->new_thread) {
-                redirect()->route('messenger', ['action' => 'thread', 'actionable_id' => $this->selected_thread->id]);
-            }
-            // TODO: emit events so that messages update in real time
+            redirect()->route('messenger', ['action' => 'thread', 'actionable_id' => $this->selected_thread->id]);
         }
 
         public function CreateThread() {
