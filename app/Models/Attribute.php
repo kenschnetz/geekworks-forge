@@ -8,8 +8,8 @@
         protected $guarded = ['id'];
         protected $attributes = [
             'user_id' => null,
-            'name' => null,
-            'description' => null,
+            'name' => '',
+            'description' => '',
         ];
 
         public function User() {
