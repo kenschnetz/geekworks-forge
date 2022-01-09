@@ -22,7 +22,7 @@
         <div class="mt-3">
             <a href="{{ route('post', ['slug' => $post->slug]) }}" class="block">
                 <div>
-                    <div style="width: 100%; margin: 0 auto; padding-bottom: 70%; background-image: url({{$post->ActivePostDetails->Images->first()->path}}); background-size: cover; background-position: center center" />
+                    <div style="width: 100%; margin: 0 auto; padding-bottom: 100%; background-image: url({{$post->ActivePostDetails->Images->first()->path}}); background-size: cover; background-position: center center" />
                 </div>
             </a>
         </div>

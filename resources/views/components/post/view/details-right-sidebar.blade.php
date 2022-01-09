@@ -1,29 +1,18 @@
-<div class="hidden lg:block lg:col-span-3">
+<div class="w-full lg:block lg:col-span-3 px-4 sm:p-0 mt-3 sm:mt-0">
+{{--TODO: make this a component with slots so that it can be used by both the post and idea screens--}}
     <div class="sticky top-4 space-y-4">
-        <div class="bg-white rounded-lg shadow">
-            <div class="p-6">
-                <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
-                    Tags
-                </h2>
-                <hr class="mt-3" />
-                <div class="mt-2">
-                    @foreach($post->ActivePostDetails->Tags as $post_tag)
-                        <a href="{{ route('tag-posts', ['tag_slug' => $post_tag->Tag->slug]) }}" class="relative inline-flex items-center rounded-full mt-1 px-3 py-0.5 text-sm bg-purple-800 text-white border border-purple-800 hover:shadow hover:text-purple-800 hover:bg-white">
-                            {{ $post_tag->Tag->name }}
-                        </a>
-                    @endforeach
-                </div>
-            </div>
-        </div>
+        @if($post->ActivePostDetails->Attributes->count() <= 0 && $post->ActivePostDetails->Actions->count() <= 0)
+            @include('components.post.view.tags')
+        @endif
         @if($post->ActivePostDetails->Attributes->count() > 0)
-            <div class="mt-3 bg-white rounded-lg shadow">
-                <div class="p-6">
+            <div class="bg-white shadow">
+                <div class="p-4">
                     <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
                         Attributes
                     </h2>
                     <div class="mt-2">
                         @foreach($post->ActivePostDetails->Attributes as $post_attribute)
-                            <div class="border border-gray-200 mt-1 p-3">
+                            <div class="border border-gray-200 mt-2 p-2 text-sm">
                                 <span class="font-bold">{{ $post_attribute->Attribute->name }}:</span> {{ $post_attribute->value }}
                             </div>
                         @endforeach
@@ -32,21 +21,15 @@
             </div>
         @endif
         @if($post->ActivePostDetails->Actions->count() > 0)
-            <div class="mt-3 bg-white rounded-lg shadow">
-                <div class="p-6">
+            <div class="bg-white shadow">
+                <div class="p-4">
                     <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
                         Actions
                     </h2>
-                    <hr class="mt-3" />
-                    <div class="mt-3">
+                    <div class="mt-2">
                         @foreach($post->ActivePostDetails->Actions as $post_action)
-                            <div class="border border-gray-200 mt-3 p-4">
-                                <p class="font-bold">
-                                    {{ $post_action->Action->name }}:
-                                </p>
-                                <p class="mt-1 text-sm">
-                                    {{ $post_action->value }}
-                                </p>
+                            <div class="border border-gray-200 mt-2 p-2 text-sm">
+                                <span class="font-bold">{{ $post_action->Action->name }}:</span> {{ $post_action->value }}
                             </div>
                         @endforeach
                     </div>
