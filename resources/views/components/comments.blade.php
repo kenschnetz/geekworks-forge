@@ -1,5 +1,5 @@
 <div>
-    <div class="mt-3 bg-white px-4 py-6 shadow sm:p-6 sm:rounded-lg">
+    <div class="mt-3 bg-white px-4 py-6 shadow sm:p-6">
         <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
             Leave A Comment
         </h2>
@@ -31,12 +31,10 @@
                 </button>
             </div>
         </form>
-    </div>
-    <div class="mt-3 bg-white px-4 py-6 shadow sm:p-6 sm:rounded-lg">
-        <h2 class="mt-3 text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
+        <hr class="my-3"/>
+        <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
             Recent Comments
         </h2>
-        <hr class="my-3"/>
         @if(count($comments) > 0)
             @foreach($comments as $comment)
                 @include('components.comment')

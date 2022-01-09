@@ -1,4 +1,4 @@
-<div class="max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
+<div class="max-w-2xl mx-auto sm:px-4 lg:max-w-7xl lg:grid lg:grid-cols-12 lg:gap-4">
     <div class="hidden lg:block lg:col-span-3">
         @include('components.left-sidebar')
     </div>
@@ -13,13 +13,13 @@
             @if($posts->count() > 0)
                 <ul role="list" class="space-y-4">
                     @foreach($posts as $post)
-                        <li class="bg-white p-4 shadow sm:p-6 rounded-lg">
+                        <li class="bg-white p-4 shadow sm:p-6">
                             @include('components.post.view.preview ')
                         </li>
                     @endforeach
                 </ul>
             @else
-                <div class="bg-white p-4 shadow sm:p-6 rounded-lg">
+                <div class="bg-white p-4 shadow sm:p-6">
                     No posts Found!
                 </div>
             @endif
