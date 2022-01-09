@@ -141,11 +141,11 @@
         }
 
         public function PostRecommendations() {
-            return $this->hasMany(PostRecommendation::class);
+            return $this->hasMany(PostCollaboration::class);
         }
 
         public function PostContributions() {
-            return $this->hasMany(PostContributor::class);
+            return $this->hasMany(PostCollaborator::class);
         }
 
         public function PostViews() {

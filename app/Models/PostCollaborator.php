@@ -9,7 +9,7 @@
         protected $attributes = [
             'post_id' => null,
             'user_id' => null,
-            'post_recommendation_id' => null,
+            'post_collaboration_id' => null,
         ];
 
         public function User() {
@@ -20,7 +20,7 @@
             return $this->belongsTo(Post::class);
         }
 
-        public function PostRecommendation() {
-            return $this->belongsTo(PostRecommendation::class);
+        public function PostCollaboration() {
+            return $this->belongsTo(PostCollaboration::class);
         }
     }

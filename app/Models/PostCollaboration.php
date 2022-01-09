@@ -4,11 +4,12 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class PostRecommendation extends Model {
+    class PostCollaboration extends Model {
         protected $guarded = ['id'];
         protected $attributes = [
             'user_id' => null,
             'post_detail_id' => null,
+            'summary' => null,
             'title' => null,
             'title_accepted' => false,
             'description' => null,

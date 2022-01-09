@@ -4,20 +4,21 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    class CreatePostRecommendationsTable extends Migration {
+    class CreatePostCollaborationsTable extends Migration {
         /**
          * Run the migrations.
          *
          * @return void
          */
         public function up() {
-            Schema::create('post_recommendations', function (Blueprint $table) {
+            Schema::create('post_collaborations', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('user_id');
                 $table->foreignId('post_detail_id');
-                $table->string('title', 400)->unique();
+                $table->text('summary');
+                $table->string('title')->unique();
                 $table->boolean('title_accepted')->default(false);
-                $table->string('description', 600)->nullable();
+                $table->string('description')->nullable();
                 $table->boolean('description_accepted')->default(false);
                 $table->text('content')->nullable();
                 $table->boolean('content_accepted')->default(false);
@@ -37,6 +38,6 @@
          * @return void
          */
         public function down() {
-            Schema::dropIfExists('post_recommendations');
+            Schema::dropIfExists('post_collaborations');
         }
     }

@@ -36,4 +36,8 @@
         public function Images() {
             return $this->belongsToMany(UserImage::class, 'post_images');
         }
+
+        public function Collaborations() {
+            return $this->hasMany(PostCollaboration::class);
+        }
     }
