@@ -14,6 +14,8 @@
             Schema::create('quest_steps', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('quest_id');
+                $table->string('name')->unique();
+                $table->text('description')->nullable();
                 $table->integer('step_index')->nullable();
                 $table->integer('count');
                 $table->timestamps();
