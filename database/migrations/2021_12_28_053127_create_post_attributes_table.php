@@ -16,7 +16,8 @@
                 $table->foreignId('attribute_id');
                 $table->integer('post_attributable_id');
                 $table->string('post_attributable_type');
-                $table->text('value')->nullable();
+                $table->string('value')->nullable();
+                $table->softDeletes();
                 $table->timestamps();
                 $table->foreign('attribute_id')->onDelete('cascade')->references('id')->on('attributes');
                 $table->unique([

@@ -16,7 +16,7 @@
                 $table->foreignId('user_id');
                 $table->foreignId('quest_line_id');
                 $table->boolean('live')->default(false);
-                $table->string('name', 400)->unique();
+                $table->string('name')->unique();
                 $table->text('description')->nullable();
                 $table->integer('quest_index');
                 $table->integer('experience_reward');

@@ -15,7 +15,7 @@
                 $table->id();
                 $table->foreignId('user_id');
                 $table->boolean('live')->default(false);
-                $table->string('name', 400)->unique();
+                $table->string('name')->unique();
                 $table->text('description')->nullable();
                 $table->timestamps();
                 $table->foreign('user_id')->onDelete('cascade')->references('id')->on('users');

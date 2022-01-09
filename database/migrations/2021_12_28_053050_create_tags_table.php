@@ -14,7 +14,7 @@
             Schema::create('tags', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('user_id')->nullable()->comment('ID of the user who added this tag to Forge');
-                $table->string('slug', 450)->unique();
+                $table->string('slug')->unique();
                 $table->string('name')->unique();
                 $table->text('description');
                 $table->timestamps();

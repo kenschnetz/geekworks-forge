@@ -14,7 +14,7 @@
             Schema::create('achievements', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('activity_id');
-                $table->string('name', 400)->unique();
+                $table->string('name')->unique();
                 $table->text('description')->nullable();
                 $table->foreign('activity_id')->onDelete('cascade')->references('id')->on('activities');
             });

@@ -15,7 +15,7 @@
                 $table->id();
                 $table->foreignId('user_id');
                 $table->string('name');
-                $table->string('description', 400)->nullable();
+                $table->string('description')->nullable();
                 $table->boolean('private');
                 $table->softDeletes();
                 $table->timestamps();

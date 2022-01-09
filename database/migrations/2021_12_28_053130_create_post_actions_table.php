@@ -16,7 +16,8 @@
                 $table->foreignId('action_id');
                 $table->integer('post_actionable_id');
                 $table->string('post_actionable_type');
-                $table->text('value')->nullable();
+                $table->string('value')->nullable();
+                $table->softDeletes();
                 $table->timestamps();
                 $table->foreign('action_id')->onDelete('cascade')->references('id')->on('actions');
                 $table->unique([

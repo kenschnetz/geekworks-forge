@@ -15,7 +15,7 @@
                 $table->id();
                 $table->foreignId('user_id')->nullable()->comment('ID of the user who added this action to Forge');
                 $table->string('name')->unique();
-                $table->text('description');
+                $table->string('description');
                 $table->timestamps();
                 $table->foreign('user_id')->onDelete('cascade')->references('id')->on('users');
             });

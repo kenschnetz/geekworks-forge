@@ -16,8 +16,8 @@
                 $table->foreignId('post_id');
                 $table->integer('version')->default(0);
                 $table->boolean('active')->default(true);
-                $table->string('title', 400)->unique();
-                $table->string('description', 600)->nullable();
+                $table->string('title')->unique();
+                $table->string('description')->nullable();
                 $table->text('content')->nullable();
                 $table->boolean('requesting_recommendations')->default(true);
                 $table->boolean('requesting_conversions')->default(true);

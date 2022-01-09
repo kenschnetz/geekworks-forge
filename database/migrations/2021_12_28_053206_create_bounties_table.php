@@ -15,7 +15,7 @@
                 $table->id();
                 $table->foreignId('user_id');
                 $table->foreignId('activity_id');
-                $table->string('name', 400)->unique();
+                $table->string('name')->unique();
                 $table->text('description')->nullable();
                 $table->integer('count');
                 $table->boolean('live');

@@ -15,7 +15,7 @@
                 $table->id();
                 $table->foreignId('user_id');
                 $table->string('slug', 450);
-                $table->string('name', 400);
+                $table->string('name');
                 $table->text('description');
                 $table->boolean('public')->default(true);
                 $table->softDeletes();
