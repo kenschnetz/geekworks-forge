@@ -12,7 +12,7 @@
             @else
                 <div class="divide-y divide-gray-100">
                     @foreach($messenger_threads as $messenger_thread)
-                        <div wire:click="SelectThread({{ $messenger_thread->id }})" @class(['text-gray-900 group flex items-center py-2 px-3 cursor-pointer hover:bg-gray-200', 'bg-gray-200' => ($messenger_thread->id === optional($selected_thread)->id)])>
+                        <a href="{{ route('messenger', ['action' => 'thread', 'actionable_id' => $messenger_thread->id]) }}" @class(['text-gray-900 group flex items-center py-2 px-3 cursor-pointer hover:bg-gray-200', 'bg-gray-200' => ($messenger_thread->id === optional($selected_thread)->id)])>
                             <span class="font-medium text-gray-500 tracking-wider align-middle" style="margin-top: 2px !important;">
                                 {{ $messenger_thread->name }}
                             </span>
@@ -21,7 +21,7 @@
                                     {{ $messenger_thread->notifications_sum_count }}
                                 </span>
                             @endif
-                        </div>
+                        </a>
                     @endforeach
                 </div>
             @endif
