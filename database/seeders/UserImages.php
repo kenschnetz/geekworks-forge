@@ -17,6 +17,7 @@
                 [
                     'user_id' => 1,
                     'name' => 'headshot 2021',
+                    'description' => 'A recent headshot of me',
                     'filename' => 'headshot 2021.jpg',
                     'path' => '/storage/user-images/1/headshot 2021.jpg',
                     'created_at' => Carbon::now(),
@@ -25,6 +26,7 @@
                 [
                     'user_id' => 1,
                     'name' => 'Forthin',
+                    'description' => 'A cool magical ring',
                     'filename' => 'forthin',
                     'path' => '/storage/user-images/1/PCaciWM6pBKejexoUxDCer9LO70zORDUKcwGy7Xa.jpg',
                     'created_at' => Carbon::now(),
