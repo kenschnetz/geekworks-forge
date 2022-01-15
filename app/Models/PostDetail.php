@@ -30,12 +30,16 @@
         }
 
         public function Actions() {
-            return $this->morphMany(PostAction::class, 'PostActionable', 'post_actionable_type', 'post_actionable_id');
+            return $this->morphMany(PostAction::class, 'PostActionable', 'post_actionable_type', 'post_actionable_id')->with('Action');
         }
 
         public function Images() {
-            return $this->belongsToMany(UserImage::class, 'post_images');
+            return $this->hasMany(PostImage::class)->with('Image');
         }
+
+//        public function Images() {
+//            return $this->belongsToMany(UserImage::class, 'post_images');
+//        }
 
         public function Collaborations() {
             return $this->hasMany(PostCollaboration::class);
