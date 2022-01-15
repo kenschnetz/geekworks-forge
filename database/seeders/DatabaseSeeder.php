@@ -23,6 +23,7 @@
                 Actions::class,
                 PostTypes::class,
                 Posts::class,
+                SkillLevels::class,
             ]);
         }
     }
