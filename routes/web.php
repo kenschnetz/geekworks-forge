@@ -114,42 +114,42 @@
         ]);
     })->name('flag-review')->middleware('terms', 'auth', 'admin');
 
-    Route::get('/systems', function () {
+    Route::get('/admin/systems', function () {
         return view('components.layout', [
             'view' => 'systems',
             'properties' => []
         ]);
     })->name('systems')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/system/{system_id}', function ($system_id) {
+    Route::get('/admin/system/{system_id}', function ($system_id) {
         return view('components.layout', [
             'view' => 'system',
             'properties' => ['system_id' => $system_id]
         ]);
     })->name('system')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/categories', function () {
+    Route::get('/admin/categories', function () {
         return view('components.layout', [
             'view' => 'categories',
             'properties' => []
         ]);
     })->name('categories')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/category/{category_id}', function ($category_id) {
+    Route::get('/admin/category/{category_id}', function ($category_id) {
         return view('components.layout', [
             'view' => 'category',
             'properties' => ['category_id' => $category_id]
         ]);
     })->name('category')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/tags', function () {
+    Route::get('/admin/tags', function () {
         return view('components.layout', [
             'view' => 'tags',
             'properties' => []
         ]);
     })->name('tags')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/tag/{tag_id}', function ($tag_id) {
+    Route::get('/admin/tag/{tag_id}', function ($tag_id) {
         return view('components.layout', [
             'view' => 'tag',
             'properties' => ['tag_id' => $tag_id]
@@ -372,10 +372,10 @@
         ]);
     })->name('articles')->middleware('terms', 'auth');
 
-    Route::get('/article/{article_id?}', function ($article_id = null) {
+    Route::get('/article/{post_id?}', function ($post_id = null) {
         return view('components.layout', [
             'view' => 'article',
-            'properties' => ['article_id' => $article_id]
+            'properties' => ['post_id' => $post_id]
         ]);
     })->name('article')->middleware('terms', 'auth');
 
@@ -445,7 +445,7 @@
     Route::get('/tag/{tag_slug}', function ($tag_slug) {
         return view('components.layout', [
             'view' => 'tag-posts',
-            'properties' => ['category_slug' => $tag_slug]
+            'properties' => ['tag_slug' => $tag_slug]
         ]);
     })->name('tag-posts')->middleware('terms', 'auth');
 
