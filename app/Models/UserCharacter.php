@@ -11,10 +11,10 @@
             'user_image_id' => null,
             'name' => null,
             'bio' => null,
-            'skill' => 0,
-            'reputation' => 0,
             'level' => 1,
-            'experience' => 0,
+            'experience_points' => 0,
+            'skill_points' => 0,
+            'reputation_points' => 0,
         ];
 
         public function User() {

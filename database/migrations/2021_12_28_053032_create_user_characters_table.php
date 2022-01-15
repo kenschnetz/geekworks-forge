@@ -19,10 +19,10 @@ class CreateUserCharactersTable extends Migration
             $table->foreignId('user_image_id')->nullable()->unique();
             $table->string('name');
             $table->string('bio', 600);
-            $table->integer('skill')->default(0); // TODO: determine how points are awarded into these areas
-            $table->integer('reputation')->default(0); // TODO: determine how points are awarded into these areas
             $table->integer('level')->default(1);
-            $table->integer('experience')->default(0);
+            $table->integer('experience_points')->default(0);
+            $table->integer('skill_points')->default(0); // TODO: determine how points are awarded into these areas
+            $table->integer('reputation_points')->default(0); // TODO: determine how points are awarded into these areas
             $table->timestamps();
             $table->foreign('user_id')->onDelete('cascade')->references('id')->on('users');
             $table->foreign('user_image_id')->onDelete('cascade')->references('id')->on('user_images');
