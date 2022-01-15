@@ -28,10 +28,10 @@
                     @endif
                     @if(!empty($post->ActivePostDetails->Images->first()))
                         @section('page-image')
-                            {{ url($post->ActivePostDetails->Images->first()->path) }}
+                            {{ url($post->ActivePostDetails->Images->first()->Image->path) }}
                         @endsection
                         <div class="mt-3 space-y-4">
-                            <img src="{{$post->ActivePostDetails->Images->first()->path}}" class="mb-3" />
+                            <img src="{{$post->ActivePostDetails->Images->first()->Image->path}}" class="mb-3" />
                         </div>
                         <hr class="mt-3" />
                     @endif
