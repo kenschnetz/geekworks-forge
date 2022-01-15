@@ -21,6 +21,7 @@
         public PostDetailsModel $post_details;
         public string $post_system_name;
         public string $post_category_name;
+        public string $system_search_term = '', $category_search_term = '';
 
         public function Mount() {
             $this->post_types = PostTypeModel::all();
@@ -66,11 +67,12 @@
         }
 
         public function Render() {
+            $pagination_count = 12;
             if ($this->step === 1) {
-                $systems = $this->post->post_type_id === 1 ? SystemModel::where('id', '!=', 1)->paginate(12, ['*'], 'systemPage') : SystemModel::paginate(4);
+                $systems = $this->GetPostParentMeta('App\Models\System', $this->system_search_term, $this->post->post_type_id, $pagination_count, 'systemPage');
             }
             if ($this->step === 2) {
-                $categories = $this->post->post_type_id === 1 ? CategoryModel::where('id', '!=', 1)->paginate(12, ['*'], 'categoryPage') : CategoryModel::paginate(4);
+                $categories = $this->GetPostParentMeta('App\Models\Category', $this->category_search_term, $this->post->post_type_id, $pagination_count, 'categoryPage');
             }
             return view('livewire.new-post', ['systems' => $systems ?? [], 'categories' => $categories ?? []]);
         }
@@ -91,5 +93,15 @@
                 'post_details.requesting_recommendations' => 'required|boolean',
                 'post_details.requesting_conversions' => 'required|boolean',
             ];
+        }
+
+        private function GetPostParentMeta($model, $search_term, $post_type_id, $pagination_count, $pagination_term) {
+            $parent_metas = $model::where(function($query) use($search_term, $post_type_id, $pagination_count) {
+                $query->where('name', 'LIKE', '%' . $search_term . '%')->orWhere('description', 'LIKE', '%' . $search_term . '%');
+            });
+            if ($post_type_id === 1) {
+                $parent_metas = $parent_metas->where('id', '!=', 1);
+            }
+            return $parent_metas->paginate($pagination_count, ['*'], $pagination_term);
         }
     }
