@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Livewire;
+    namespace App\Http\Livewire;
 
-use Livewire\Component;
-
-class Articles extends Component
-{
-    public function render()
-    {
-        return view('livewire.articles');
+    class Articles extends Feed {
+        public function Mount() {
+            $this->pagination_count = config('app.settings.post_pagination', 20);
+            $this->post_type_id = 3;
+            array_push($this->filters, 'Articles');
+        }
     }
-}
