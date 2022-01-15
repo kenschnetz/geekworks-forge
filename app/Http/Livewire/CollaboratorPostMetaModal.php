@@ -2,7 +2,7 @@
 
     namespace App\Http\Livewire;
 
-    class CollaboratorModal extends Modal {
+    class CollaboratorPostMetaModal extends PostMetaModal {
         public function Render() {
             return view('livewire.modals.collaborator-modal');
         }
