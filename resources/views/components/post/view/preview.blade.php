@@ -1,9 +1,10 @@
 <article x-data="{ post_menu_open: false }">
-    <div class="mt-2">
+    <div class="mt-2 relative">
+        <i @class(['absolute top-0 right-0 fas text-gray-300 text-center', 'fa-exclamation-square' => $post->post_type_id === 1, 'fa-question-square' => $post->post_type_id === 2, 'fa-rss-square' => $post->post_type_id === 3]) style="font-size: 1.4em !important; width: 32px !important;"></i>
         <div class="flex space-x-3">
             <div class="flex-shrink-0">
                 <a href="{{ route('user-profile', ['user_id' => $post->User->id]) }}">
-                    <img class="h-10 w-10 rounded-full" src="{{empty(Auth()->user()->Character->ProfilePhoto->path) ? '/storage/img/default-profile.jpg' : Auth()->user()->Character->ProfilePhoto->path}}" alt="">
+                    <img class="h-10 w-10 rounded-full" src="{{ $post->User->Character->ProfilePhoto->path ?? '/storage/img/default-profile.jpg' }}" alt="">
                 </a>
             </div>
             <div class="min-w-0 flex-1">
@@ -18,11 +19,11 @@
             </div>
         </div>
     </div>
-    @if(!empty($post->ActivePostDetails->Images->first()))
+    @if(!empty($post->ActivePostDetails->Images->first()->Image))
         <div class="mt-3">
             <a href="{{ route('post', ['slug' => $post->slug]) }}" class="block">
                 <div>
-                    <div style="width: 100%; margin: 0 auto; padding-bottom: 100%; background-image: url({{$post->ActivePostDetails->Images->first()->path}}); background-size: cover; background-position: center center" />
+                    <div style="width: 100%; margin: 0 auto; padding-bottom: 50%; background-image: url({{$post->ActivePostDetails->Images->first()->Image->path}}); background-size: cover; background-position: center center" />
                 </div>
             </a>
         </div>
@@ -34,9 +35,11 @@
             </a>
         </h2>
     </div>
-    <div class="mt-1">
-        @include('components.post.view.system-category')
-    </div>
+    @if($post->System->id !== 1 || $post->Category->id !== 1)
+        <div class="mt-1">
+            @include('components.post.view.system-category')
+        </div>
+    @endif
     <div class="mt-3 text-sm text-gray-500">
         <i>{{ $post->ActivePostDetails->description }}</i>
     </div>
