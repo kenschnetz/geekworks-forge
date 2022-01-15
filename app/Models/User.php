@@ -132,6 +132,18 @@
             return $this->hasMany(Post::class);
         }
 
+        public function Ideas() {
+            return $this->hasMany(Post::class)->where('post_type_id', 1);
+        }
+
+        public function Questions() {
+            return $this->hasMany(Post::class)->where('post_type_id', 2);
+        }
+
+        public function Articles() {
+            return $this->hasMany(Post::class)->where('post_type_id', 3);
+        }
+
         public function PostUpvotes() {
             return $this->morphMany(Upvote::class, '')->where('flaggable_type', 'App\Models\Post');
         }
