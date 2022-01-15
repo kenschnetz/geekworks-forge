@@ -1,12 +1,19 @@
 <div class="w-full">
 {{--TODO: make this a component with slots so that it can be reused for the post, idea, question and article screens--}}
-    <div class="w-full text-center mb-5">
-        <button wire:click="Save(false)" class="bg-orange-500 hover:bg-transparent text-white hover:text-orange-500 font-bold px-4 py-3 border border-orange-500" style="width:140px">
-            Save Draft
-        </button>
-        <button wire:click="Save(true)" class="bg-purple-800 hover:bg-transparent text-white hover:text-purple-800 font-bold px-4 py-3 border border-purple-800" style="width:140px">
-            Publish
-        </button>
+    <div class="max-w-3xl lg:max-w-7xl mx-auto sm:px-4 text-center">
+        <div class="bg-white border border-orange-600 p-4">
+            <button wire:click="Cancel()" class="bg-gray-400 hover:bg-transparent text-white hover:text-gray-400 font-bold px-4 py-3 border border-gray-800" style="width:140px">
+                Cancel
+            </button>
+            @if(!$post->published)
+                <button wire:click="Save(false)" class="bg-orange-500 hover:bg-transparent text-white hover:text-orange-500 font-bold px-4 py-3 border border-orange-500" style="width:140px">
+                    Save Draft
+                </button>
+            @endif
+            <button wire:click="Save(true)" class="bg-purple-800 hover:bg-transparent text-white hover:text-purple-800 font-bold px-4 py-3 border border-purple-800" style="width:140px">
+                Publish
+            </button>
+        </div>
     </div>
     <div class="max-w-3xl mx-auto sm:px-4 lg:max-w-7xl lg:grid lg:grid-cols-12 lg:gap-4 mt-3">
         @section('page-title')
@@ -43,15 +50,15 @@
                     </div>
                     <hr class="mt-3" />
                     <div class="mt-3 space-y-4">
-                        <button type="button" @class(['relative block w-full border-2 border-gray-300 border-dashed text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500', ' p-12' => empty($post_image), 'p-3' => !empty($post_image)]) x-data="{}" x-on:click="window.livewire.emitTo('image-modal', 'Show')">
+                        <button type="button" @class(['relative block w-full border-2 border-gray-300 border-dashed text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-800', ' p-12' => empty($post_image), 'p-3' => !empty($post_image)]) x-data="{}" x-on:click="window.livewire.emitTo('image-modal', 'Show')">
                             @if(empty($post_image))
                                 <i class="fas fa-image-polaroid text-gray-300 fa-3x"></i>
                                 <span class="mt-2 block font-medium text-gray-300">
                                     Add Image
                                 </span>
                             @else
-                                <img src="{{$post_image->path}}" class="mb-3" />
-                                <div class="absolute top-0 left-0 bottom-0 right-0 flex justify-center items-center">
+                                <img src="{{$post_image['path']}}" class="mb-3" />
+                                <div class="absolute top-0 left-0 bottom-0 right-0 flex justify-center items-center bg-gray-200 bg-opacity-20 hover:bg-opacity-0">
                                     <i class="fas fa-image-polaroid text-white fa-3x"></i>
                                 </div>
                             @endif
@@ -84,8 +91,8 @@
         </main>
         @include('components.post.edit.details-right-sidebar')
     </div>
-    @livewire('image-modal', ['post' => $post, 'post_details' => $post_details])
-    @livewire('tag-modal', ['post' => $post, 'post_details' => $post_details])
-    @livewire('attribute-modal', ['post' => $post, 'post_details' => $post_details])
-    @livewire('action-modal', ['post' => $post, 'post_details' => $post_details])
+    @livewire('image-modal', ['post' => $post, 'post_details' => $post_details, 'selected_items' => $images, 'removed_items' => $removed_images])
+    @livewire('tag-modal', ['post' => $post, 'post_details' => $post_details, 'selected_items' => $tags, 'removed_items' => $removed_tags])
+    @livewire('attribute-modal', ['post' => $post, 'post_details' => $post_details, 'selected_items' => $attributes, 'removed_items' => $removed_attributes])
+    @livewire('action-modal', ['post' => $post, 'post_details' => $post_details, 'selected_items' => $actions, 'removed_items' => $removed_actions])
 </div>
