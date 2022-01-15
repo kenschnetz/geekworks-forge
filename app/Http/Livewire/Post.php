@@ -2,6 +2,7 @@
 
     namespace App\Http\Livewire;
 
+    use App\Models\User as UserModel;
     use App\Models\Comment as CommentModel;
     use App\Models\Post as PostModel;
     use App\Models\PostView as PostViewModel;
@@ -17,14 +18,14 @@
         public string|null $slug;
         public int|null $post_id;
         public int $pagination_count;
+        public UserModel $user;
+        public array $author;
         public bool|null $upvoted = null;
         public bool|null $flagged = null;
-
         public bool $replying = false;
         public int|null $replying_to_id = null;
         public string|null $replying_to_name = null;
         public string|null $replying_to_comment = null;
-
         public bool $editing = false;
         public int|null $editing_comment_id = null;
         public string $comment_content = '';
@@ -32,9 +33,11 @@
         public function Mount() {
             $post_exists = PostModel::where('slug', $this->slug)->exists();
             if ($post_exists) {
-                $this->post_id = PostModel::where('slug', $this->slug)->first()->id;
+                $post = PostModel::where('slug', $this->slug)->first();
+                $this->post_id = $post->id;
                 $this->pagination_count = config('app.settings.post_pagination', 20);
                 $this->user = auth()->user();
+                $this->author = $post->User()->with('Character')->first()->toArray();
                 $post_view = PostViewModel::where('user_id', auth()->user()->id)->where('post_id', $this->post_id)->first();
                 if (empty($post_view)) {
                     $post_view = new PostViewModel;
