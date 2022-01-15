@@ -210,6 +210,13 @@
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ],
+                [
+                    'name' => 'World Building',
+                    'slug' =>  'world-building',
+                    'description' => 'Fantasy homebrew world building elements',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ],
             ]);
         }
     }

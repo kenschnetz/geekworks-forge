@@ -32,6 +32,24 @@
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ],
+                [
+                    'user_id' => 10,
+                    'name' => 'headshot 2020',
+                    'description' => 'Headshot',
+                    'filename' => 'headshot 2020.jpg',
+                    'path' => '/storage/user-images/10/headshot 2020.jpg',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ],
+                [
+                    'user_id' => 10,
+                    'name' => 'Ilaria',
+                    'description' => 'My homebrew world',
+                    'filename' => 'ilaria.jpg',
+                    'path' => '/storage/user-images/10/5S74zYVwGqSukRKHGOx6CY2yJUTbze91prFZWyzr.jpg',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ],
             ]);
         }
     }
