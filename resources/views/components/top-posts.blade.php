@@ -1,12 +1,12 @@
-<div>
-    <ul role="list" class="mt-3">
+<div class="mt-3">
+    <ul role="list">
 {{--        TODO: score top posts by views, comments and upvotes, not just upvotes--}}
-        @foreach(\App\Models\Post::whereHas('Upvotes')->where('published', true)->where('moderated', false)->with('ActivePostDetails')->withCount('Upvotes')->orderBy('upvotes_count', 'DESC')->take(3)->get() as $popular_post)
+        @foreach($top_posts as $top_post)
             <div class="flex py-2">
                 <div class="min-w-0 flex-1">
                     <p class="text-sm font-medium text-gray-900">
-                        <a href="{{ route('post', ['slug' => $popular_post->slug]) }}" class="hover:underline font-medium text-purple-700">
-                            {{ $popular_post->ActivePostDetails->title }}
+                        <a href="{{ route('post', ['slug' => $top_post['slug']]) }}" class="hover:underline font-medium text-purple-700">
+                            {{ $top_post['active_post_details']['title'] }}
                         </a>
                     </p>
                 </div>
