@@ -1,5 +1,5 @@
 <header class="bg-white shadow-sm" x-data="{ mobile_menu_open: false, profile_menu_open: false }">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4">
         <div class="relative flex justify-between py-6">
             <div class="flex md:absolute md:left-0 md:inset-y-0 lg:static xl:col-span-6">
                 <div class="flex-shrink-0 flex items-center">
