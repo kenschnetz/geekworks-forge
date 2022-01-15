@@ -13,6 +13,10 @@ module.exports = {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
         },
+        screens: {
+            'xs': '420px',
+            ...defaultTheme.screens,
+        }
     },
 
     plugins: [require('@tailwindcss/forms')],
