@@ -16,6 +16,6 @@
         }
 
         public function Image() {
-            return $this->belongsTo(UserImage::class);
+            return $this->belongsTo(UserImage::class, 'user_image_id');
         }
     }
