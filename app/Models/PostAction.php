@@ -12,7 +12,9 @@
             'action_id' => null,
             'post_actionable_id' => null,
             'post_actionable_type' => null,
+            'value' => '',
         ];
+        protected $connection = 'mysql';
 
         public function Action() {
             return $this->belongsTo(Action::class);

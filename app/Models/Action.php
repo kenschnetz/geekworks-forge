@@ -11,6 +11,7 @@
             'name' => '',
             'description' => '',
         ];
+        protected $connection = 'mysql';
 
         public function User() {
             return $this->belongsTo(User::class);
