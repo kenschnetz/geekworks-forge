@@ -13,10 +13,12 @@
         use WithPagination, WithFileUploads;
         public UserImageModel|null $user_image, $post_image;
         public mixed $uploaded_file = null;
+        public int|null $other_user_id;
 
         public function Mount() {
             $this->ResetNewItem();
             $this->name = 'image';
+            $this->modal_name = 'image-post-meta-modal';
             $this->max_allowed_items = 1;
             $this->pagination_count = 9;
             $this->user_image = new UserImageModel;
@@ -44,11 +46,11 @@
         }
 
         public function Render() {
-            $images = UserModel::find(auth()->user()->id)
-                ->Images()
-                ->where('name', 'like', "%{$this->search_term}%")
-                ->orWhere('description', 'like', "%{$this->search_term}%")
-                ->latest()
+            $user_id = empty($this->other_user_id) ? auth()->user()->id : $this->other_user_id;
+            $images = UserImageModel::where('user_id', $user_id)
+                ->where(function($query) {
+                    $query->where('name', 'like', "%{$this->search_term}%")->orWhere('description', 'like', "%{$this->search_term}%");
+                })->latest()
                 ->paginate($this->pagination_count);
             return view('livewire.post-meta-modal', ['items' => $images]);
         }
