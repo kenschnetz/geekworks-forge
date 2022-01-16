@@ -5,7 +5,7 @@
 	use Livewire\Component;
 
     class Modal extends Component {
-        public string|null $name, $search_term = '';
+        public string|null $name, $modal_name, $search_term = '';
         public bool $show = false;
 
         protected $listeners = [
