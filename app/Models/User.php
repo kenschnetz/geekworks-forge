@@ -81,11 +81,11 @@
         }
 
         public function Follows() {
-            return $this->hasMany(UserFollow::class, 'followed_user_id');
+            return $this->hasMany(UserFollow::class);
         }
 
         public function FollowedBy() {
-            return $this->hasMany(UserFollow::class, 'user_id');
+            return $this->hasMany(UserFollow::class, 'followed_user_id');
         }
 
         public function Searches() {
