@@ -1,284 +1,158 @@
-<div class="h-full">
-    <main class="max-w-7xl mx-auto pb-10 lg:py-12 lg:px-8">
-        <div class="lg:grid lg:grid-cols-12 lg:gap-x-5">
-            <aside class="py-6 px-2 sm:px-6 lg:py-0 lg:px-0 lg:col-span-3">
-                <nav class="space-y-1">
-                    <!-- Current: "bg-gray-50 text-orange-600 hover:bg-white", Default: "text-gray-900 hover:text-gray-900 hover:bg-gray-50" -->
-                    <a href="#" class="text-gray-900 hover:text-gray-900 hover:bg-gray-50 group rounded-md px-3 py-2 flex items-center text-sm font-medium">
-                        <!--
-                          Heroicon name: outline/user-circle
-
-                          Current: "text-orange-500", Default: "text-gray-400 group-hover:text-gray-500"
-                        -->
-                        <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span class="truncate">
-                  Profile
-                </span>
-                    </a>
-
-                    <a href="#" class="text-gray-900 hover:text-gray-900 hover:bg-gray-50 group rounded-md px-3 py-2 flex items-center text-sm font-medium">
-                        <!-- Heroicon name: outline/cog -->
-                        <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <span class="truncate">
-                  Account
-                </span>
-                    </a>
-
-                    <a href="#" class="text-gray-900 hover:text-gray-900 hover:bg-gray-50 group rounded-md px-3 py-2 flex items-center text-sm font-medium">
-                        <!-- Heroicon name: outline/key -->
-                        <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
-                        </svg>
-                        <span class="truncate">
-                  Password
-                </span>
-                    </a>
-
-                    <a href="#" class="text-gray-900 hover:text-gray-900 hover:bg-gray-50 group rounded-md px-3 py-2 flex items-center text-sm font-medium">
-                        <!-- Heroicon name: outline/bell -->
-                        <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                        </svg>
-                        <span class="truncate">
-                  Notifications
-                </span>
-                    </a>
-
-                    <a href="#" class="bg-gray-50 text-orange-600 hover:bg-white group rounded-md px-3 py-2 flex items-center text-sm font-medium" aria-current="page">
-                        <!-- Heroicon name: outline/credit-card -->
-                        <svg class="text-orange-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                        </svg>
-                        <span class="truncate">
-                  Plan &amp; Billing
-                </span>
-                    </a>
-
-                    <a href="#" class="text-gray-900 hover:text-gray-900 hover:bg-gray-50 group rounded-md px-3 py-2 flex items-center text-sm font-medium">
-                        <!-- Heroicon name: outline/view-grid-add -->
-                        <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z" />
-                        </svg>
-                        <span class="truncate">
-                  Integrations
-                </span>
-                    </a>
-                </nav>
-            </aside>
-
-            <!-- Payment details -->
-            <div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
-                <section aria-labelledby="payment-details-heading">
-                    <form action="#" method="POST">
-                        <div class="shadow sm:rounded-md sm:overflow-hidden">
-                            <div class="bg-white py-6 px-4 sm:p-6">
-                                <div>
-                                    <h2 id="payment-details-heading" class="text-lg leading-6 font-medium text-gray-900">Payment details</h2>
-                                    <p class="mt-1 text-sm text-gray-500">Update your billing information. Please note that updating your location could affect your tax rates.</p>
+<div>
+    @if($editing)
+        <div class="my-3 bg-white shadow border border-orange-600 p-4 text-center">
+            <button wire:click="CancelEdit()" class="bg-gray-400 hover:bg-transparent text-white hover:text-gray-400 font-bold px-4 py-3 border border-gray-600" style="width:140px">
+                Cancel
+            </button>
+            <button wire:click="SaveProfile()" class="bg-orange-500 hover:bg-transparent text-white hover:text-orange-500 font-bold px-4 py-3 border border-orange-500" style="width:140px">
+                Save
+            </button>
+        </div>
+    @endif
+    <div class="max-w-2xl mx-auto px-4 lg:max-w-7xl lg:grid lg:grid-cols-12 lg:gap-4">
+        <div class="hidden lg:block lg:col-span-3">
+            @include('components.user.profile-left-sidebar')
+        </div>
+        <main class="lg:col-span-9" x-data="{ show_user_menu: false }" x-cloak="">
+            <div class="bg-white p-4 shadow">
+                <div class="flex xs:space-x-3 items-center justify-center">
+                    @if($editing)
+                        <button type="button" @class(['hidden xs:block flex-shrink-0 relative border-2 border-gray-300 border-dashed text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-800 p-4']) x-data="{}" x-on:click="window.livewire.emitTo('image-post-meta-modal', 'Show')">
+                            @if(empty($profile_photo['path']))
+                                <div class="xs:w-24 xs:h-24">
+                                    <i class="fas fa-image-polaroid text-gray-300 fa-3x"></i>
+                                    <span class="mt-2 block font-medium text-gray-300">
+                                        Add Image
+                                    </span>
                                 </div>
-
-                                <div class="mt-6 grid grid-cols-4 gap-6">
-                                    <div class="col-span-4 sm:col-span-2">
-                                        <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
-                                        <input type="text" name="first-name" id="first-name" autocomplete="cc-given-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm">
+                            @else
+                                <div class="hidden xs:block flex-shrink-0">
+                                    <img class="xs:w-24 xs:h-24" src="{{ ($profile_photo['path']) ?? '/storage/img/default-profile.jpg' }}" alt="">
+                                </div>
+                                <div class="absolute top-0 left-0 bottom-0 right-0 flex justify-center items-center bg-gray-200 bg-opacity-20 hover:bg-opacity-0">
+                                    <i class="fas fa-image-polaroid text-white fa-3x"></i>
+                                </div>
+                            @endif
+                        </button>
+                    @else
+                        <div class="hidden xs:block flex-shrink-0">
+                            <img class="xs:w-32 xs:h-32" src="{{ ($profile_photo['path']) ?? '/storage/img/default-profile.jpg' }}" alt="">
+                        </div>
+                    @endif
+                    <div class="min-w-0 flex-1">
+                        @if($editing)
+                            <button type="button" @class(['relative xs:hidden mb-3 mt-8 block w-full border-2 border-gray-300 border-dashed text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-800 p-6']) x-data="{}" x-on:click="window.livewire.emitTo('image-post-meta-modal', 'Show')">
+                                @if(empty($profile_photo['path']))
+                                    <div class="w-full">
+                                        <i class="fas fa-image-polaroid text-gray-300 fa-3x"></i>
+                                        <span class="mt-2 block font-medium text-gray-300">
+                                            Add Image
+                                        </span>
                                     </div>
-
-                                    <div class="col-span-4 sm:col-span-2">
-                                        <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
-                                        <input type="text" name="last-name" id="last-name" autocomplete="cc-family-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm">
+                                @else
+                                    <div class="xs:hidden">
+                                        <img class="w-full shadow" src="{{ ($profile_photo['path']) ?? '/storage/img/default-profile.jpg' }}" alt="">
                                     </div>
-
-                                    <div class="col-span-4 sm:col-span-2">
-                                        <label for="email-address" class="block text-sm font-medium text-gray-700">Email address</label>
-                                        <input type="text" name="email-address" id="email-address" autocomplete="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm">
+                                    <div class="absolute top-0 left-0 bottom-0 right-0 flex justify-center items-center bg-gray-200 bg-opacity-20 hover:bg-opacity-0">
+                                        <i class="fas fa-image-polaroid text-white fa-3x"></i>
                                     </div>
-
-                                    <div class="col-span-4 sm:col-span-1">
-                                        <label for="expiration-date" class="block text-sm font-medium text-gray-700">Expration date</label>
-                                        <input type="text" name="expiration-date" id="expiration-date" autocomplete="cc-exp" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm" placeholder="MM / YY">
-                                    </div>
-
-                                    <div class="col-span-4 sm:col-span-1">
-                                        <label for="security-code" class="flex items-center text-sm font-medium text-gray-700">
-                                            <span>Security code</span>
-                                            <!-- Heroicon name: solid/question-mark-circle -->
-                                            <svg class="ml-1 flex-shrink-0 h-5 w-5 text-gray-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
-                                            </svg>
-                                        </label>
-                                        <input type="text" name="security-code" id="security-code" autocomplete="cc-csc" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm">
-                                    </div>
-
-                                    <div class="col-span-4 sm:col-span-2">
-                                        <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
-                                        <select id="country" name="country" autocomplete="country-name" class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm">
-                                            <option>United States</option>
-                                            <option>Canada</option>
-                                            <option>Mexico</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-span-4 sm:col-span-2">
-                                        <label for="postal-code" class="block text-sm font-medium text-gray-700">ZIP / Postal code</label>
-                                        <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm">
+                                @endif
+                            </button>
+                        @else
+                            <div class="xs:hidden mb-3 mt-8 border border-gray-300 p-6 bg-gray-100">
+                                <img class="w-full shadow" src="{{ ($profile_photo['path']) ?? '/storage/img/default-profile.jpg' }}" alt="">
+                            </div>
+                        @endif
+                        @if($editing)
+                            <div class="flex space-x-3">
+                                <div class="min-w-0 flex-1">
+                                    <div x-data="{name: @entangle('profile_user.character.name'), limit: 255 }">
+                                        <div class="border border-purple-800 focus:border-purple-800">
+                                            <span class="text-xs italic p-1 float-right" x-text="limit - name.length" :class="{'text-gray-400':  name.length <= limit, 'text-red-500':  name.length > limit }"></span>
+                                            <div class="editable-div px-4 py-3 focus:outline-none" x-on:input="name = $el.textContent" contenteditable placeholder="Character name" wire:ignore>{{ $profile_user['character']->name }}</div>
+                                        </div>
+                                        @error('profile_user.character.name') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                             </div>
-                            <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                                <button type="submit" class="bg-gray-800 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
-                                    Save
-                                </button>
+                        @else
+                            <h2 class="text-sm md:text-base inline-block font-medium text-gray-500 uppercase tracking-wider">
+                                {{ $profile_user['character']->name }}
+                            </h2>
+                        @endif
+                        <p class="text-sm md:text-base text-gray-400">
+                            Level {{ $profile_user['character']->level }} {{ $skill_level->name  }}
+                        </p>
+                        <p class="text-sm md:text-base text-gray-400">
+                            {{ $profile_user['character']->reputation_points }} reputation points
+                        </p>
+                    </div>
+                </div>
+                <hr class="mt-3" />
+                <div class="mt-3">
+                    @if($editing)
+                        <div class="flex space-x-3">
+                            <div class="min-w-0 flex-1">
+                                <div x-data="{bio: @entangle('profile_user.character.bio'), limit: 255 }">
+                                    <div class="border border-purple-800 focus:border-purple-800">
+                                        <span class="text-xs italic p-1 float-right" x-text="limit - bio.length" :class="{'text-gray-400':  bio.length <= limit, 'text-red-500':  bio.length > limit }"></span>
+                                        <div class="editable-div px-4 py-3 focus:outline-none" x-on:input="bio = $el.textContent" contenteditable placeholder="Character bio" wire:ignore>{{ $profile_user['character']->bio }}</div>
+                                    </div>
+                                    @error('profile_user.character.bio') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
+                                </div>
                             </div>
                         </div>
-                    </form>
-                </section>
-
-                <!-- Plan -->
-                <section aria-labelledby="plan-heading">
-                    <form action="#" method="POST">
-                        <div class="shadow sm:rounded-md sm:overflow-hidden">
-                            <div class="bg-white py-6 px-4 space-y-6 sm:p-6">
-                                <div>
-                                    <h2 id="plan-heading" class="text-lg leading-6 font-medium text-gray-900">Plan</h2>
-                                </div>
-
-                                <fieldset>
-                                    <legend class="sr-only">
-                                        Pricing plans
-                                    </legend>
-                                    <div class="relative bg-white rounded-md -space-y-px">
-                                        <!-- Checked: "bg-orange-50 border-orange-200 z-10", Not Checked: "border-gray-200" -->
-                                        <label class="rounded-tl-md rounded-tr-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none">
-                                            <div class="flex items-center text-sm">
-                                                <input type="radio" name="pricing-plan" value="Startup" class="h-4 w-4 text-orange-500 border-gray-300 focus:ring-gray-900" aria-labelledby="pricing-plans-0-label" aria-describedby="pricing-plans-0-description-0 pricing-plans-0-description-1">
-                                                <span id="pricing-plans-0-label" class="ml-3 font-medium text-gray-900">Startup</span>
-                                            </div>
-                                            <p id="pricing-plans-0-description-0" class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
-                                                <!-- Checked: "text-orange-900", Not Checked: "text-gray-900" -->
-                                                <span class="font-medium">$29 / mo</span>
-                                                <!-- Checked: "text-orange-700", Not Checked: "text-gray-500" -->
-                                                <span>($290 / yr)</span>
-                                            </p>
-                                            <!-- Checked: "text-orange-700", Not Checked: "text-gray-500" -->
-                                            <p id="pricing-plans-0-description-1" class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right">Up to 5 active job postings</p>
-                                        </label>
-
-                                        <!-- Checked: "bg-orange-50 border-orange-200 z-10", Not Checked: "border-gray-200" -->
-                                        <label class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none">
-                                            <div class="flex items-center text-sm">
-                                                <input type="radio" name="pricing-plan" value="Business" class="h-4 w-4 text-orange-500 border-gray-300 focus:ring-gray-900" aria-labelledby="pricing-plans-1-label" aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">
-                                                <span id="pricing-plans-1-label" class="ml-3 font-medium text-gray-900">Business</span>
-                                            </div>
-                                            <p id="pricing-plans-1-description-0" class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
-                                                <!-- Checked: "text-orange-900", Not Checked: "text-gray-900" -->
-                                                <span class="font-medium">$99 / mo</span>
-                                                <!-- Checked: "text-orange-700", Not Checked: "text-gray-500" -->
-                                                <span>($990 / yr)</span>
-                                            </p>
-                                            <!-- Checked: "text-orange-700", Not Checked: "text-gray-500" -->
-                                            <p id="pricing-plans-1-description-1" class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right">Up to 25 active job postings</p>
-                                        </label>
-
-                                        <!-- Checked: "bg-orange-50 border-orange-200 z-10", Not Checked: "border-gray-200" -->
-                                        <label class="rounded-bl-md rounded-br-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none">
-                                            <div class="flex items-center text-sm">
-                                                <input type="radio" name="pricing-plan" value="Enterprise" class="h-4 w-4 text-orange-500 border-gray-300 focus:ring-gray-900" aria-labelledby="pricing-plans-2-label" aria-describedby="pricing-plans-2-description-0 pricing-plans-2-description-1">
-                                                <span id="pricing-plans-2-label" class="ml-3 font-medium text-gray-900">Enterprise</span>
-                                            </div>
-                                            <p id="pricing-plans-2-description-0" class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
-                                                <!-- Checked: "text-orange-900", Not Checked: "text-gray-900" -->
-                                                <span class="font-medium">$249 / mo</span>
-                                                <!-- Checked: "text-orange-700", Not Checked: "text-gray-500" -->
-                                                <span>($2490 / yr)</span>
-                                            </p>
-                                            <!-- Checked: "text-orange-700", Not Checked: "text-gray-500" -->
-                                            <p id="pricing-plans-2-description-1" class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right">Unlimited active job postings</p>
-                                        </label>
-                                    </div>
-                                </fieldset>
-
-                                <div class="flex items-center">
-                                    <!-- Enabled: "bg-orange-500", Not Enabled: "bg-gray-200" -->
-                                    <button type="button" class="bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors ease-in-out duration-200" role="switch" aria-checked="true" aria-labelledby="annual-billing-label">
-                                        <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
-                                        <span aria-hidden="true" class="translate-x-0 inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"></span>
-                                    </button>
-                                    <span class="ml-3" id="annual-billing-label">
-                        <span class="text-sm font-medium text-gray-900">Annual billing </span>
-                        <span class="text-sm text-gray-500">(Save 10%)</span>
-                      </span>
-                                </div>
-                            </div>
-                            <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                                <button type="submit" class="bg-gray-800 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
-                                    Save
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </section>
-
-                <!-- Billing history -->
-                <section aria-labelledby="billing-history-heading">
-                    <div class="bg-white pt-6 shadow sm:rounded-md sm:overflow-hidden">
-                        <div class="px-4 sm:px-6">
-                            <h2 id="billing-history-heading" class="text-lg leading-6 font-medium text-gray-900">Billing history</h2>
-                        </div>
-                        <div class="mt-6 flex flex-col">
-                            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                    <div class="overflow-hidden border-t border-gray-200">
-                                        <table class="min-w-full divide-y divide-gray-200">
-                                            <thead class="bg-gray-50">
-                                            <tr>
-                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Date
-                                                </th>
-                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Description
-                                                </th>
-                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Amount
-                                                </th>
-                                                <!--
-                                                  `relative` is added here due to a weird bug in Safari that causes `sr-only` headings to introduce overflow on the body on mobile.
-                                                -->
-                                                <th scope="col" class="relative px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    <span class="sr-only">View receipt</span>
-                                                </th>
-                                            </tr>
-                                            </thead>
-                                            <tbody class="bg-white divide-y divide-gray-200">
-                                            <tr>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                    <time datetime="2020-01-01">1/1/2020</time>
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                    Business Plan - Annual Billing
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                    CA$109.00
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <a href="#" class="text-orange-600 hover:text-orange-900">View receipt</a>
-                                                </td>
-                                            </tr>
-
-                                            <!-- More payments... -->
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
+                    @else
+                        <p class="text-gray-500">
+                            {{ $profile_user['character']->bio }}
+                        </p>
+                    @endif
+                </div>
+                <hr class="mt-3" />
+                <div class="mt-3 spacy-y-2 md:grid md:grid-cols-4 md:gap-x-2">
+                    <div class="w-full md:col-span-1">
+                        <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['idea_count'] <= 0, 'text-purple-800' => $stats['idea_count'] > 0]) style="height: 80px;">
+                            {{ $stats['idea_count'] }} {{ $stats['idea_count'] === 1 ? 'idea' : 'ideas' }}
                         </div>
                     </div>
-                </section>
+                    <div class="w-full mt-3 md:m-0 md:col-span-1">
+                        <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['question_count'] <= 0, 'text-purple-800' => $stats['question_count'] > 0]) style="height: 80px;">
+                            {{ $stats['question_count'] }} {{ $stats['question_count'] === 1 ? 'question' : 'questions' }}
+                        </div>
+                    </div>
+                    <div class="w-full mt-3 md:m-0 md:col-span-1">
+                        <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['article_count'] <= 0, 'text-purple-800' => $stats['article_count'] > 0]) style="height: 80px;">
+                            {{ $stats['article_count'] }} {{ $stats['article_count'] === 1 ? 'article' : 'articles' }}
+                        </div>
+                    </div>
+                    <div class="w-full mt-3 md:m-0 md:col-span-1">
+                        <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['comment_count'] <= 0, 'text-purple-800' => $stats['comment_count'] > 0]) style="height: 80px;">
+                            {{ $stats['comment_count'] }} {{ $stats['comment_count'] === 1 ? 'comment' : 'comments' }}
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </main>
+            @if(count($top_posts) > 0)
+                <div class="mt-3 bg-white p-4 shadow">
+                    <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
+                        Top Posts
+                    </h2>
+                    <hr class="mt-3" />
+                    @include('components.top-posts')
+                </div>
+            @endif
+            @if(count($recent_posts) > 0)
+                <div class="mt-3 bg-white p-4 shadow">
+                    <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
+                        Recent Posts
+                    </h2>
+                    <hr class="mt-3" />
+                    @include('components.recent-posts')
+                </div>
+                @endif
+                @if($can_edit)
+                @livewire('image-post-meta-modal', ['selected_items' => $images, 'removed_items' => [], 'other_user_id' => $profile_user->id])
+            @endif
+        </main>
+    </div>
 </div>
