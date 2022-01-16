@@ -24,6 +24,7 @@
                 PostTypes::class,
                 Posts::class,
                 SkillLevels::class,
+                Canons::class,
             ]);
         }
     }
