@@ -2,9 +2,7 @@
     <div class="bg-white shadow py-4">
         <div class="mt-3 px-4">
             <div class="w-full mt-2">
-                <div class="flex space-x-3">
-                    @include('components.author')
-                </div>
+                <x-author :author="$post->User"></x-author>
             </div>
         </div>
         <hr class="mt-3" />
@@ -15,7 +13,7 @@
         <div class="mt-3 px-4">
             @if($post->user_id === auth()->user()->id)
                 <a href="{{ match($post->post_type_id) { 1 => route('idea', ['post_id' => $post->id]), 2 => route('question', ['post_id' => $post->id]), 3 => route('article', ['post_id' => $post->id]) } }}" class="text-gray-900 group flex items-center" role="menuitem" tabindex="-1" id="options-menu-0-item-0">
-                    <i class="mr-3 fas fa-edit text-yellow-400"></i>
+                    <i class="mr-3 fas fa-edit text-purple-800"></i>
                     <span class="hover:underline">Edit</span>
                 </a>
             @endif
@@ -25,24 +23,24 @@
                         <i class="mr-3 fas fa-thumbs-down text-red-600"></i>
                         <span class="hover:underline">Remove upvote</span>
                     @else
-                        <i class="mr-3 fas fa-thumbs-up text-blue-600"></i>
+                        <i class="mr-3 fas fa-thumbs-up text-purple-800"></i>
                         <span class="hover:underline">Upvote</span>
                     @endif
                 </div>
             @endif
             @if($post->user_id === auth()->user()->id || !$post->locked_canon)
-                <a href="{{ route('canonize', ['post_id' => $post->id]) }}" class="text-gray-900 group flex items-center mt-3" role="menuitem" tabindex="-1" id="options-menu-0-item-0">
-                    <i class="mr-3 fas fa-vector-square text-green-600"></i>
-                    <span class="hover:underline">Add to canon</span>
-                </a>
+                <span class="text-gray-900 group flex items-center mt-3" x-data="{}" x-on:click="window.livewire.emitTo('canonize-modal', 'Show')">
+                    <i class="mr-3 fas fa-vector-square text-purple-800"></i>
+                    <span class="hover:underline">Canonize</span>
+                </span>
             @endif
             <a href="{{ route('collect', ['post_id' => $post->id]) }}" class="text-gray-900 group flex items-center mt-3" role="menuitem" tabindex="-1" id="options-menu-0-item-0">
-                <i class="mr-3 fas fa-th-large text-purple-600"></i>
-                <span class="hover:underline">Add to collection</span>
+                <i class="mr-3 fas fa-th-large text-purple-800"></i>
+                <span class="hover:underline">Collect</span>
             </a>
             @if($post->user_id !== auth()->user()->id && $post->ActivePostDetails->requesting_recommendations)
                 <a href="{{ route('canonize', ['post_id' => $post->id]) }}" class="text-gray-900 group flex items-center mt-3" role="menuitem" tabindex="-1" id="options-menu-0-item-0">
-                    <i class="mr-3 fas fa-file-edit text-orange-600"></i>
+                    <i class="mr-3 fas fa-file-edit text-purple-800"></i>
                     <span class="hover:underline">Collaborate</span>
                 </a>
             @endif
