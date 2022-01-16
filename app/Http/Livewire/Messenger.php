@@ -38,7 +38,9 @@
                     if (empty($this->recipient_user)) {
                         abort(404);
                     } else {
+                        // TODO: check to see if a thread between the users already exists before creating a new one
                         $this->selected_thread = new MessengerThreadModel;
+                        $this->selected_thread->name =  'Thread between ' . $this->user->Character->name . ' and ' . $this->recipient_user->Character->name;
                         $this->selected_thread->user_id = $this->user->id;
                         $this->new_thread = true;
                     }
