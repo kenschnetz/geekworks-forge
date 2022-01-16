@@ -2,21 +2,7 @@
     <div class="mt-2 relative">
         <i @class(['absolute top-0 right-0 fas text-gray-300 text-center', 'fa-exclamation-square' => $post->post_type_id === 1, 'fa-question-square' => $post->post_type_id === 2, 'fa-rss-square' => $post->post_type_id === 3]) style="font-size: 1.4em !important; width: 32px !important;"></i>
         <div class="flex space-x-3">
-            <div class="flex-shrink-0">
-                <a href="{{ route('user-profile', ['user_id' => $post->User->id]) }}">
-                    <img class="h-10 w-10 rounded-full" src="{{ $post->User->Character->ProfilePhoto->path ?? '/storage/img/default-profile.jpg' }}" alt="">
-                </a>
-            </div>
-            <div class="min-w-0 flex-1">
-                <p class="text-sm font-medium text-gray-900">
-                    <a href="{{ route('user-profile', ['user_id' => $post->User->id]) }}" class="hover:underline text-purple-700">
-                        {{ $post->User->Character->name }}
-                    </a>
-                </p>
-                <p class="text-sm text-gray-500">
-                    {{ $post->created_at->diffForHumans() }}
-                </p>
-            </div>
+            <x-author :author="$post->User"></x-author>
         </div>
     </div>
     @if(!empty($post->ActivePostDetails->Images->first()->Image))
