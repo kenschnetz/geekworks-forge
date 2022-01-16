@@ -79,9 +79,11 @@
             </div>
         </div>
         <div class="my-3 p-3 flex">
-            <div class="italic inline-block flex-1">{{ count($selected_items) }} of {{ $max_allowed_items }} selected</div>
+            @if($max_allowed_items > 0)
+                <div class="italic inline-block flex-1">{{ count($selected_items) }} of {{ $max_allowed_items }} selected</div>
+            @endif
             <div class="flex-1 text-right">
-                <button x-on:click="window.livewire.emitTo('{{$name}}-modal', 'Close')" class="cursor-pointer inline-block bg-orange-600 hover:bg-transparent text-white hover:text-orange-600 font-bold px-4 py-3 border border-orange-600">
+                <button x-on:click="window.livewire.emitTo('{{$modal_name}}', 'Close')" class="cursor-pointer inline-block bg-orange-600 hover:bg-transparent text-white hover:text-orange-600 font-bold px-4 py-3 border border-orange-600">
                     Done
                 </button>
             </div>
