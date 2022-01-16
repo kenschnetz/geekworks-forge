@@ -11,7 +11,8 @@
             'name' => null,
             'slug' => null,
             'description' => null,
-            'public' => true,
+            'publicly_visible' => true,
+            'allow_collaboration' => true,
             'require_approval' => true,
         ];
 
@@ -20,6 +21,6 @@
         }
 
         public function Posts() {
-            return $this->belongsTo(Post::class);
+            return $this->belongsToMany(Post::class, 'canon_posts');
         }
     }
