@@ -48,6 +48,14 @@
             return $this->belongsTo(Category::class);
         }
 
+        public function Canons() {
+            return $this->belongsToMany(Canon::class, 'canon_posts');
+        }
+
+        public function CanonPosts() {
+            return $this->hasMany(CanonPost::class)->with('Canon');
+        }
+
         public function PostDetails() {
             return $this->hasMany(PostDetail::class);
         }
