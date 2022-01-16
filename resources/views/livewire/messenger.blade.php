@@ -45,10 +45,10 @@
                         @endif
                     </div>
                     <div class="ml-3">
-                        @foreach($selected_thread->Users as $user)
+                        @foreach($selected_thread->Users as $thread_user)
                             <div class="inline-block text-center -ml-3 -mb-2">
-                                <a href="{{ route('user-profile', ['id' => $user->id]) }}">
-                                    <img class="h-10 w-10 rounded-full bg-gray-400 border border-2 border-white" src="{{ ($user->Character->ProfilePhoto->path ?? '/storage/img/default-profile.jpg') }}" alt="">
+                                <a href="{{ route('user-profile', ['user_name' => $thread_user->Character->name]) }}">
+                                    <img class="h-10 w-10 rounded-full bg-gray-400 border border-2 border-white" src="{{ ($thread_user->Character->ProfilePhoto->path ?? '/storage/img/default-profile.jpg') }}" alt="">
                                 </a>
                             </div>
                         @endforeach
