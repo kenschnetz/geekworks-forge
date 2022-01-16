@@ -1,7 +1,7 @@
 <div class="w-full">
     <div class="max-w-3xl lg:max-w-7xl mx-auto sm:px-4 text-center">
         <div class="bg-white border border-orange-600 p-4">
-            <button wire:click="Cancel()" class="bg-gray-400 hover:bg-transparent text-white hover:text-gray-400 font-bold px-4 py-3 border border-gray-800" style="width:140px">
+            <button wire:click="Cancel()" class="bg-gray-400 hover:bg-transparent text-white hover:text-gray-400 font-bold px-4 py-3 border border-gray-600" style="width:140px">
                 Cancel
             </button>
             @if($post->published)
@@ -53,7 +53,7 @@
                     </div>
                     <hr class="mt-3" />
                     <div class="mt-3 space-y-4">
-                        <button type="button" @class(['relative block w-full border-2 border-gray-300 border-dashed text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-800', ' p-12' => empty($post_image), 'p-3' => !empty($post_image)]) x-data="{}" x-on:click="window.livewire.emitTo('image-modal', 'Show')">
+                        <button type="button" @class(['relative block w-full border-2 border-gray-300 border-dashed text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-800', ' p-12' => empty($post_image), 'p-3' => !empty($post_image)]) x-data="{}" x-on:click="window.livewire.emitTo('image-post-meta-modal', 'Show')">
                             @if(empty($post_image))
                                 <i class="fas fa-image-polaroid text-gray-300 fa-3x"></i>
                                 <span class="mt-2 block font-medium text-gray-300">
@@ -103,10 +103,10 @@
         </main>
         @include('components.post.edit.details-right-sidebar')
     </div>
-    @livewire('tag-modal', ['post' => $post, 'post_details' => $post_details, 'selected_items' => $tags, 'removed_items' => $removed_tags])
-    @livewire('image-modal', ['post' => $post, 'post_details' => $post_details, 'selected_items' => $images, 'removed_items' => $removed_images])
+    @livewire('tag-post-meta-modal', ['post' => $post, 'post_details' => $post_details, 'selected_items' => $tags, 'removed_items' => $removed_tags])
+    @livewire('image-post-meta-modal', ['post' => $post, 'post_details' => $post_details, 'selected_items' => $images, 'removed_items' => $removed_images])
     @if($post_type === 'idea')
-        @livewire('attribute-modal', ['post' => $post, 'post_details' => $post_details, 'selected_items' => $attributes, 'removed_items' => $removed_attributes])
-        @livewire('action-modal', ['post' => $post, 'post_details' => $post_details, 'selected_items' => $actions, 'removed_items' => $removed_actions])
+        @livewire('attribute-post-meta-modal', ['post' => $post, 'post_details' => $post_details, 'selected_items' => $attributes, 'removed_items' => $removed_attributes])
+        @livewire('action-post-meta-modal', ['post' => $post, 'post_details' => $post_details, 'selected_items' => $actions, 'removed_items' => $removed_actions])
     @endif
 </div>
