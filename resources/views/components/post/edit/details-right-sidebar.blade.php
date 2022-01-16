@@ -26,7 +26,7 @@
                         @endif
                     </div>
                     <div class="mt-1">
-                        <span class="text-sm italic text-purple-800 cursor-pointer hover:underline" x-data="{}" x-on:click="window.livewire.emitTo('attribute-modal', 'Show')">Manage Attributes</span>
+                        <span class="text-sm italic text-purple-800 cursor-pointer hover:underline" x-data="{}" x-on:click="window.livewire.emitTo('attribute-post-meta-modal', 'Show')">Manage Attributes</span>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                         @endif
                     </div>
                     <div class="mt-1">
-                        <span class="text-sm italic text-purple-800 cursor-pointer hover:underline" x-data="{}" x-on:click="window.livewire.emitTo('action-modal', 'Show')">Manage Actions</span>
+                        <span class="text-sm italic text-purple-800 cursor-pointer hover:underline" x-data="{}" x-on:click="window.livewire.emitTo('action-post-meta-modal', 'Show')">Manage Actions</span>
                     </div>
                 </div>
             </div>
