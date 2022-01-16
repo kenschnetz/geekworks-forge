@@ -1,6 +1,6 @@
 <div class="max-w-2xl mx-auto px-4 lg:max-w-7xl lg:grid lg:grid-cols-12 lg:gap-4">
     <div class="hidden lg:block lg:col-span-3">
-        @include('components.left-sidebar')
+        @include('components.feed.left-sidebar')
     </div>
     <main class="lg:col-span-9">
         @include('components.list-search')
