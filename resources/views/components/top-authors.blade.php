@@ -1,9 +1,7 @@
 <div>
-    <ul role="list" class="mt-3">
+    <div class="mt-3 space-y-2">
         @foreach($top_authors as $author)
-            <div class="flex space-x-3 py-2">
-                @include('components.author')
-            </div>
+            <x-author :author="App\Models\User::find($author['id'])"></x-author>
         @endforeach
-    </ul>
+    </div>
 </div>
