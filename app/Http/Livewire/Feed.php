@@ -13,7 +13,7 @@
         public int $pagination_count;
         public string $search_term = '';
         public string|null $list_title;
-        public int|null $post_type_id, $system_id, $category_id, $tag_id;
+        public int|null $post_type_id, $system_id, $category_id, $tag_id, $user_id;
         public array $top_posts = [], $top_authors = [], $filters = [];
         public bool $menu_show_systems = false, $menu_show_categories = false;
 
@@ -39,6 +39,9 @@
             }
             if (!empty($this->category_id)) {
                 $posts->where('category_id', $this->category_id);
+            }
+            if (!empty($this->user_id)) {
+                $posts->where('user_id', $this->user_id);
             }
             if (!empty($this->tag_id)) {
                 $posts->whereHas('ActivePostDetails', function($query) {
