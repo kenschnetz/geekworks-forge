@@ -19,7 +19,7 @@
         @endif
         @error('tags')<div class="mt-1"><span class="text-red-600 error italic mt-3">{{ $message }}</span></div>@enderror
         <div class="mt-1">
-            <span class="text-sm italic text-purple-800 cursor-pointer hover:underline" x-data="{}" x-on:click="window.livewire.emitTo('tag-modal', 'Show')">Manage Tags</span>
+            <span class="text-sm italic text-purple-800 cursor-pointer hover:underline" x-data="{}" x-on:click="window.livewire.emitTo('tag-post-meta-modal', 'Show')">Manage Tags</span>
         </div>
     </div>
 </div>
