@@ -17,7 +17,8 @@
                 $table->string('slug', 450)->unique();
                 $table->string('name')->unique();
                 $table->text('description');
-                $table->boolean('public')->default(true);
+                $table->boolean('publicly_visible')->default(true);
+                $table->boolean('allow_collaboration')->default(true);
                 $table->boolean('require_approval')->default(true);
                 $table->softDeletes();
                 $table->timestamps();
