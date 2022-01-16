@@ -7,8 +7,8 @@
     class CanonPost extends Model {
         protected $guarded = ['id'];
         protected $attributes = [
-            'canon_id' => null,
             'user_id' => null,
+            'canon_id' => null,
             'post_id' => null,
             'approved' => false,
         ];
