@@ -44,70 +44,63 @@
         ]);
     })->name('admin-tools')->middleware('terms', 'auth', 'admin');
 
-    Route::get('/settings', function () {
-        return view('components.layout', [
-            'view' => 'settings',
-            'properties' => []
-        ]);
-    })->name('settings')->middleware('terms', 'auth', 'staff');
-
-    Route::get('/roles', function () {
+    Route::get('/admin/roles', function () {
         return view('components.layout', [
             'view' => 'roles',
             'properties' => []
         ]);
     })->name('roles')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/role/{role_id}', function ($role_id) {
+    Route::get('/admin/role/{role_id}', function ($role_id) {
         return view('components.layout', [
             'view' => 'role',
             'properties' => ['role_id' => $role_id]
         ]);
     })->name('role')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/users', function () {
+    Route::get('/admin/users', function () {
         return view('components.layout', [
             'view' => 'users',
             'properties' => []
         ]);
     })->name('users')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/user/{userid}', function ($userid) {
+    Route::get('/admin/user/{userid}', function ($userid) {
         return view('components.layout', [
             'view' => 'user',
             'properties' => ['userid' => $userid]
         ]);
     })->name('user')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/user-violations', function () {
+    Route::get('/admin/user-violations', function () {
         return view('components.layout', [
             'view' => 'user-violations',
             'properties' => []
         ]);
     })->name('user-violations')->middleware('terms', 'auth', 'admin');
 
-    Route::get('/user-violation/{violation_id}', function ($violation_id) {
+    Route::get('/admin/user-violation/{violation_id}', function ($violation_id) {
         return view('components.layout', [
             'view' => 'user-violation',
             'properties' => ['violation_id' => $violation_id]
         ]);
     })->name('user-violation')->middleware('terms', 'auth', 'admin');
 
-    Route::get('/user-mutes', function () {
+    Route::get('/admin/user-mutes', function () {
         return view('components.layout', [
             'view' => 'user-mutes',
             'properties' => []
         ]);
     })->name('user-mutes')->middleware('terms', 'auth', 'admin');
 
-    Route::get('/user-mute/{user_mute_id}', function ($user_mute_id) {
+    Route::get('/admin/user-mute/{user_mute_id}', function ($user_mute_id) {
         return view('components.layout', [
             'view' => 'user-mute',
             'properties' => ['user_mute_id' => $user_mute_id]
         ]);
     })->name('user-mute')->middleware('terms', 'auth', 'admin');
 
-    Route::get('/flag-review', function () {
+    Route::get('/admin/flag-review', function () {
         return view('components.layout', [
             'view' => 'flag-review',
             'properties' => []
@@ -156,131 +149,117 @@
         ]);
     })->name('tag')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/attributes', function () {
+    Route::get('/admin/attributes', function () {
         return view('components.layout', [
             'view' => 'attributes',
             'properties' => []
         ]);
     })->name('attributes')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/attribute/{attribute_id}', function ($attribute_id) {
+    Route::get('/admin/attribute/{attribute_id}', function ($attribute_id) {
         return view('components.layout', [
             'view' => 'attribute',
             'properties' => ['attribute_id' => $attribute_id]
         ]);
     })->name('attribute')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/actions', function () {
+    Route::get('/admin/actions', function () {
         return view('components.layout', [
             'view' => 'actions',
             'properties' => []
         ]);
     })->name('actions')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/action/{action_id}', function ($action_id) {
+    Route::get('/admin/action/{action_id}', function ($action_id) {
         return view('components.layout', [
             'view' => 'action',
             'properties' => ['action_id' => $action_id]
         ]);
     })->name('action')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/post-types', function () {
+    Route::get('/admin/post-types', function () {
         return view('components.layout', [
             'view' => 'post-types',
             'properties' => []
         ]);
     })->name('post-types')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/post-type/{post_type_id}', function ($post_type_id) {
+    Route::get('/admin/post-type/{post_type_id}', function ($post_type_id) {
         return view('components.layout', [
             'view' => 'post-type',
             'properties' => ['post_type_id' => $post_type_id]
         ]);
     })->name('post-type')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/bounties', function () {
+    Route::get('/admin/bounties', function () {
         return view('components.layout', [
             'view' => 'bounties',
             'properties' => []
         ]);
     })->name('bounties')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/bounty/{bounty_id}', function ($bounty_id) {
+    Route::get('/admin/bounty/{bounty_id}', function ($bounty_id) {
         return view('components.layout', [
             'view' => 'bounty',
             'properties' => ['bounty_id' => $bounty_id]
         ]);
     })->name('bounty')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/quest-lines', function () {
+    Route::get('/admin/quest-lines', function () {
         return view('components.layout', [
             'view' => 'quest-lines',
             'properties' => []
         ]);
     })->name('quest-lines')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/quest-line/{quest_line_id}', function ($quest_line_id) {
+    Route::get('/admin/quest-line/{quest_line_id}', function ($quest_line_id) {
         return view('components.layout', [
             'view' => 'quest-line',
             'properties' => ['quest_line_id' => $quest_line_id]
         ]);
     })->name('quest-line')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/quests', function () {
+    Route::get('/admin/quests', function () {
         return view('components.layout', [
             'view' => 'quests',
             'properties' => []
         ]);
     })->name('quests')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/quest/{quest_id}', function ($quest_id) {
+    Route::get('/admin/quest/{quest_id}', function ($quest_id) {
         return view('components.layout', [
             'view' => 'quest',
             'properties' => ['quest_id' => $quest_id]
         ]);
     })->name('quest')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/achievements', function () {
+    Route::get('/admin/achievements', function () {
         return view('components.layout', [
             'view' => 'achievements',
             'properties' => []
         ]);
     })->name('achievements')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/achievement/{achievement_id}', function ($achievement_id) {
+    Route::get('/admin/achievement/{achievement_id}', function ($achievement_id) {
         return view('components.layout', [
             'view' => 'achievement',
             'properties' => ['achievement_id' => $achievement_id]
         ]);
     })->name('achievement')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/badges', function () {
+    Route::get('/admin/badges', function () {
         return view('components.layout', [
             'view' => 'badges',
             'properties' => []
         ]);
     })->name('badges')->middleware('terms', 'auth', 'staff');
 
-    Route::get('/badge/{badge_id}', function ($badge_id) {
+    Route::get('/admin/badge/{badge_id}', function ($badge_id) {
         return view('components.layout', [
             'view' => 'badge',
             'properties' => ['badge_id' => $badge_id]
         ]);
     })->name('badge')->middleware('terms', 'auth', 'staff');
-
-    Route::get('/public-messages', function () {
-        return view('components.layout', [
-            'view' => 'public-messages',
-            'properties' => []
-        ]);
-    })->name('public-messages')->middleware('terms', 'auth', 'tester');
-
-    Route::get('/private-messages', function () {
-        return view('components.layout', [
-            'view' => 'private-messages',
-            'properties' => []
-        ]);
-    })->name('private-messages')->middleware('terms', 'auth');
 
     Route::get('/images', function () {
         return view('components.layout', [
@@ -296,15 +275,29 @@
         ]);
     })->name('image')->middleware('terms', 'auth');
 
-    Route::get('/profile/{user_id?}', function ($user_id = null) {
-        if (empty($user_id)) {
-            $user_id = Auth()->user()->id;
+    Route::get('/profile/{user_name?}', function ($user_name = null) {
+        if (empty($user_name)) {
+            $user_name = auth()->user()->Character->name;
         }
         return view('components.layout', [
             'view' => 'user-profile',
-            'properties' => ['user_id' => $user_id]
+            'properties' => ['user_name' => $user_name]
         ]);
     })->name('user-profile')->middleware('terms', 'auth');
+
+    Route::get('/account/{notification?}', function ($notification = null) {
+        return view('components.layout', [
+            'view' => 'account',
+            'properties' => ['notification' => $notification]
+        ]);
+    })->name('account')->middleware('terms', 'auth');
+
+    Route::get('/user/{user_name}/posts', function ($user_name) {
+        return view('components.layout', [
+            'view' => 'user-posts',
+            'properties' => ['user_name' => $user_name]
+        ]);
+    })->name('user-posts')->middleware('terms', 'auth');
 
     Route::get('/user-notifications', function () {
         return view('components.layout', [
@@ -379,17 +372,20 @@
         ]);
     })->name('article')->middleware('terms', 'auth');
 
-    Route::get('/canons', function () {
+    Route::get('/canons/{user_name?}', function ($user_name = null) {
+        if (empty($user_name)) {
+            $user_name = auth()->user()->Character->name;
+        }
         return view('components.layout', [
             'view' => 'canons',
-            'properties' => []
+            'properties' => ['user_name' => $user_name]
         ]);
     })->name('canons')->middleware('terms', 'auth');
 
-    Route::get('/canon/{canon_id?}', function ($canon_id = null) {
+    Route::get('/canon/{slug?}', function ($slug = null) {
         return view('components.layout', [
             'view' => 'canon',
-            'properties' => ['canon_id' => $canon_id]
+            'properties' => ['slug' => $slug]
         ]);
     })->name('canon')->middleware('terms', 'auth');
 
@@ -400,17 +396,20 @@
         ]);
     })->name('canonize')->middleware('terms', 'auth');
 
-    Route::get('/collections', function () {
+    Route::get('/collections/{user_name?}', function ($user_name = null) {
+        if (empty($user_name)) {
+            $user_name = auth()->user()->Character->name;
+        }
         return view('components.layout', [
             'view' => 'collections',
-            'properties' => []
+            'properties' => ['user_name' => $user_name]
         ]);
     })->name('collections')->middleware('terms', 'auth');
 
-    Route::get('/collection/{collection_id?}', function ($collection_id = null) {
+    Route::get('/collection/{slug}', function ($slug) {
         return view('components.layout', [
             'view' => 'collection',
-            'properties' => ['collection_id' => $collection_id]
+            'properties' => ['slug' => $slug]
         ]);
     })->name('collection')->middleware('terms', 'auth');
 
