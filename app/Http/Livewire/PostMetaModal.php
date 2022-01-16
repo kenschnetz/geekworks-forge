@@ -2,20 +2,16 @@
 
     namespace App\Http\Livewire;
 
-    use App\Models\Tag as TagModel;
-    use App\Models\Attribute as AttributeModel;
-    use App\Models\Action as ActionModel;
     use App\Models\Post as PostModel;
     use App\Models\PostDetail as PostDetailModel;
-    use App\Models\UserImage as UserImageModel;
+    use Illuminate\Database\Eloquent\Model;
     use Illuminate\Support\Str;
-    use Illuminate\Validation\Rule;
 
     class PostMetaModal extends Modal {
         public PostModel $post;
         public PostDetailModel $post_details;
         public array $selected_items, $removed_items;
-        public TagModel|AttributeModel|ActionModel|UserImageModel|null $new_item = null;
+        public Model|null $new_item = null;
         public int $tab = 0, $pagination_count = 16, $max_allowed_items = 3;
 
         public function Close() {
@@ -26,7 +22,7 @@
 
         public function ToggleItem($item) {
             if (empty($this->selected_items[$item['id']])) {
-                if (count($this->selected_items) < $this->max_allowed_items) {
+                if ($this->max_allowed_items === 0 ?? count($this->selected_items) < $this->max_allowed_items) {
                     if (empty($this->removed_items[$item['id']])) {
                         $this->AddItem($item);
                     } else {
@@ -53,7 +49,7 @@
         }
 
         public function CreateItem() {
-            if ($this->name === 'tag') {
+            if ($this->name === 'tag' || $this->name === 'canon' || $this->name === 'category') {
                 $this->new_item->slug = Str::plural($this->new_item->name);
             }
             $this->validate();
@@ -63,17 +59,5 @@
             $this->ResetNewItem();
             $this->new_item->refresh();
             $this->resetPage();
-        }
-
-        protected function Rules() {
-            return [
-                'new_item.name' => [
-                    'required',
-                    'string',
-                    'max:255',
-                    Rule::unique(Str::plural($this->name), 'name')->ignore(optional($this->new_item)->id)
-                ],
-                'new_item.description' => 'required|string|max:255',
-            ];
         }
     }
