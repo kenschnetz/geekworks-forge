@@ -13,9 +13,12 @@
         public function up() {
             Schema::create('canon_posts', function (Blueprint $table) {
                 $table->id();
+                $table->foreignId('user_id');
                 $table->foreignId('canon_id');
                 $table->foreignId('post_id');
+                $table->boolean('approved');
                 $table->timestamps();
+                $table->foreign('user_id')->onDelete('cascade')->references('id')->on('users');
                 $table->foreign('canon_id')->onDelete('cascade')->references('id')->on('canons');
                 $table->foreign('post_id')->onDelete('cascade')->references('id')->on('posts');
                 $table->unique([
