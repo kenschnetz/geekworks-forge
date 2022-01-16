@@ -3,6 +3,8 @@
     namespace App\Http\Livewire;
 
     use App\Models\Action as ActionModel;
+    use Illuminate\Support\Str;
+    use Illuminate\Validation\Rule;
     use Livewire\WithPagination;
 
     class ActionPostMetaModal extends PostMetaModal {
@@ -11,6 +13,7 @@
         public function Mount() {
             $this->ResetNewItem();
             $this->name = 'action';
+            $this->modal_name = 'action-post-meta-modal';
             $this->max_allowed_items = 6;
         }
 
@@ -27,5 +30,17 @@
                 $action->value = '';
             }
             return view('livewire.post-meta-modal', ['items' => $actions]);
+        }
+
+        protected function Rules() {
+            return [
+                'new_item.name' => [
+                    'required',
+                    'string',
+                    'max:255',
+                    Rule::unique(Str::plural($this->name), 'name')->ignore(optional($this->new_item)->id)
+                ],
+                'new_item.description' => 'required|string|max:255',
+            ];
         }
     }

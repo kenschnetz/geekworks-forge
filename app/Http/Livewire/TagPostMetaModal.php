@@ -13,6 +13,7 @@
         public function Mount() {
             $this->ResetNewItem();
             $this->name = 'tag';
+            $this->modal_name = 'tag-post-meta-modal';
             $this->max_allowed_items = 6;
         }
 
@@ -26,5 +27,17 @@
                 ->latest()
                 ->paginate($this->pagination_count);
             return view('livewire.post-meta-modal', ['items' => $tags]);
+        }
+
+        protected function Rules() {
+            return [
+                'new_item.name' => [
+                    'required',
+                    'string',
+                    'max:255',
+                    Rule::unique(Str::plural($this->name), 'name')->ignore(optional($this->new_item)->id)
+                ],
+                'new_item.description' => 'required|string|max:255',
+            ];
         }
     }
