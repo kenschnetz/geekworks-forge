@@ -9,6 +9,8 @@
     use App\Models\Upvote as UpvoteModel;
     use App\Models\Upvote;
     use Illuminate\Support\Carbon;
+    use Illuminate\Support\Facades\Log;
+    use Illuminate\Support\Str;
     use Livewire\Component;
     use Livewire\WithPagination;
 
@@ -19,16 +21,13 @@
         public int|null $post_id;
         public int $pagination_count;
         public UserModel $user;
-        public array $author;
-        public bool|null $upvoted = null;
-        public bool|null $flagged = null;
-        public bool $replying = false;
-        public int|null $replying_to_id = null;
-        public string|null $replying_to_name = null;
-        public string|null $replying_to_comment = null;
-        public bool $editing = false;
-        public int|null $editing_comment_id = null;
+        public array $author, $canons, $collections;
+        public bool|null $upvoted = null, $flagged = null;
+        public bool $replying = false, $editing = false;
+        public int|null $replying_to_id = null, $editing_comment_id = null;
+        public string|null $replying_to_name = null, $replying_to_comment = null;
         public string $comment_content = '';
+        protected $listeners = ['RefreshMeta'];
 
         public function Mount() {
             $post_exists = PostModel::where('slug', $this->slug)->exists();
@@ -46,6 +45,15 @@
                 }
                 $post_view->updated_at = Carbon::now();
                 $post_view->save();
+                $canon_posts = $post->CanonPosts()->get();
+                foreach($canon_posts as $canon_post) {
+                    $selected_canon = [
+                        'id' => $canon_post->id,
+                        'name' => $canon_post->Canon->name,
+                        'description' => $canon_post->Canon->description,
+                    ];
+                    $this->canons[$canon_post->Canon->id] = $selected_canon;
+                }
             } else {
                 abort(404);
             }
@@ -103,6 +111,29 @@
             $comment = CommentModel::find($id);
             if (!empty($comment)) {
                 $comment->delete();
+            }
+        }
+
+        public function RefreshMeta($name, $selected_items, $removed_items) {
+            $this->{Str::plural($name)} = $selected_items;
+            $this->{'removed_' . Str::plural($name)} = $removed_items;
+            $model = match($name) {
+                'canon' => 'App\Models\CanonPost',
+                'collection' => 'App\Models\CollectionPost',
+            };
+            foreach($selected_items as $key => $selected_item) {
+                Log::debug(json_encode($selected_item));
+                $saved_meta = $model::where($name . '_id', $key)->where('post_id', $this->post_id)->first();
+                if (empty($saved_meta)) {
+                    $saved_meta = new $model;
+                    $saved_meta->user_id = auth()->user()->id;
+                    $saved_meta->{$name . '_id'} = $key;
+                    $saved_meta->post_id = $this->post_id;
+                    $saved_meta->save();
+                }
+            }
+            foreach($removed_items as $key => $removed_item) {
+                $model::where('user_id', auth()->user()->id)->where($name . '_id', $key)->where('post_id', $this->post_id)->delete();
             }
         }
 
