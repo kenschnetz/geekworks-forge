@@ -28,7 +28,7 @@
                                     <a class="block px-6 py-4" href="{{ route('canon', ['slug' => $canon->slug]) }}">
                                         <span class="inline-flex space-x-2 truncate text-sm leading-5">
                                             <p class="text-cool-gray-600">
-                                                {{ Str::limit($canon->description) }}
+                                                {{ Str::limit($canon->description, 60) }}
                                             </p>
                                         </span>
                                     </a>

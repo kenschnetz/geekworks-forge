@@ -1,12 +1,14 @@
 <div>
     @if($editing)
-        <div class="my-3 bg-white shadow border border-orange-600 p-4 text-center">
-            <button wire:click="CancelEdit()" class="bg-gray-400 hover:bg-transparent text-white hover:text-gray-400 font-bold px-4 py-3 border border-gray-600" style="width:140px">
-                Cancel
-            </button>
-            <button wire:click="SaveProfile()" class="bg-orange-500 hover:bg-transparent text-white hover:text-orange-500 font-bold px-4 py-3 border border-orange-500" style="width:140px">
-                Save
-            </button>
+        <div class="max-w-2xl mx-auto px-4 lg:max-w-7xl">
+            <div class="my-3 bg-white shadow border border-orange-600 p-4 text-center">
+                <button wire:click="CancelEdit()" class="bg-gray-400 hover:bg-transparent text-white hover:text-gray-400 font-bold px-4 py-3 border border-gray-600" style="width:140px">
+                    Cancel
+                </button>
+                <button wire:click="SaveProfile()" class="bg-orange-500 hover:bg-transparent text-white hover:text-orange-500 font-bold px-4 py-3 border border-orange-500" style="width:140px">
+                    Save
+                </button>
+            </div>
         </div>
     @endif
     <div class="max-w-2xl mx-auto px-4 lg:max-w-7xl lg:grid lg:grid-cols-12 lg:gap-4">

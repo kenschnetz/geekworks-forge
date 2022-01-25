@@ -72,4 +72,5 @@
         @include('components.comments')
     </div>
     @livewire('canonize-modal', ['post' => $post, 'post_details' => $post->ActivePostDetails, 'selected_items' => $canons, 'removed_items' => []])
+    @livewire('collect-modal', ['post' => $post, 'post_details' => $post->ActivePostDetails, 'selected_items' => $collections, 'removed_items' => []])
 </div>

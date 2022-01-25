@@ -32,7 +32,7 @@
                 <i class="mr-3 fas fa-globe text-purple-800"></i>
                 <span class="hover:underline">Canons</span>
             </a>
-            <a href="{{ route('user-posts', ['user_name' => $user_name]) }}" class="mt-3 text-gray-900 group flex items-center cursor-pointer">
+            <a href="{{ route('collections', ['user_name' => $user_name]) }}" class="mt-3 text-gray-900 group flex items-center cursor-pointer">
                 <i class="mr-3 fas fa-layer-group text-purple-800"></i>
                 <span class="hover:underline">Collections</span>
             </a>
