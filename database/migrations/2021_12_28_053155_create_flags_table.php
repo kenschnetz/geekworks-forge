@@ -14,7 +14,7 @@
             Schema::create('flags', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('user_id');
-                $table->foreignId('reviewer_id');
+                $table->foreignId('reviewer_id')->nullable();
                 $table->integer('flaggable_id');
                 $table->string('flaggable_type');
                 $table->text('reason');

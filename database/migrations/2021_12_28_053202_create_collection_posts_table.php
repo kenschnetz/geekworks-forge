@@ -13,13 +13,15 @@
         public function up() {
             Schema::create('collection_posts', function (Blueprint $table) {
                 $table->id();
-                $table->foreignId('collections_id');
+                $table->foreignId('user_id');
+                $table->foreignId('collection_id');
                 $table->foreignId('post_id');
                 $table->timestamps();
-                $table->foreign('collections_id')->onDelete('cascade')->references('id')->on('collections');
+                $table->foreign('user_id')->onDelete('cascade')->references('id')->on('users');
+                $table->foreign('collection_id')->onDelete('cascade')->references('id')->on('collections');
                 $table->foreign('post_id')->onDelete('cascade')->references('id')->on('posts');
                 $table->unique([
-                    'collections_id',
+                    'collection_id',
                     'post_id'
                 ], 'collection_post');
             });

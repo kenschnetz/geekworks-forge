@@ -17,7 +17,7 @@
                 $table->string('slug', 450);
                 $table->string('name');
                 $table->text('description');
-                $table->boolean('public')->default(true);
+                $table->boolean('publicly_visible')->default(true);
                 $table->softDeletes();
                 $table->timestamps();
                 $table->foreign('user_id')->onDelete('cascade')->references('id')->on('users');

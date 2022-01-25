@@ -15,11 +15,10 @@
                 $table->id();
                 $table->foreignId('user_id');
                 $table->foreignId('admin_user_id');
-                $table->foreignId('flag_id')->nullable();
+                $table->text('reason');
                 $table->timestamps();
                 $table->foreign('user_id')->onDelete('cascade')->references('id')->on('users');
                 $table->foreign('admin_user_id')->onDelete('cascade')->references('id')->on('users');
-                $table->foreign('flag_id')->onDelete('cascade')->references('id')->on('flags');
             });
         }
 
