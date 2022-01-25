@@ -12,6 +12,7 @@
             'attribute_id' => null,
             'post_attributable_id' => null,
             'post_attributable_type' => null,
+            'value' => '',
         ];
 
         public function Attribute() {

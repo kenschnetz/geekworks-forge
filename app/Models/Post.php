@@ -25,7 +25,7 @@
         ];
 
         public function Type() {
-            return $this->belongsTo(PostType::class);
+            return $this->belongsTo(PostType::class, 'post_type_id');
         }
 
         public function User() {
@@ -54,6 +54,14 @@
 
         public function CanonPosts() {
             return $this->hasMany(CanonPost::class)->with('Canon');
+        }
+
+        public function Collections() {
+            return $this->belongsToMany(Collection::class, 'collection_posts');
+        }
+
+        public function CollectionPosts() {
+            return $this->hasMany(CollectionPost::class)->with('Collection');
         }
 
         public function PostDetails() {

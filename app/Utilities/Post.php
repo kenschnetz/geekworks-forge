@@ -19,9 +19,9 @@
             return $slug;
         }
 
-        public static function GetMeta($post_details, $name, $only_removed_meta = false) {
+        public static function GetMeta($post_meta, $name, $only_removed_meta = false) {
             $meta_keys = Post::MetaKeys($name);
-            $items = PostDetailModel::find($post_details->id)->{$meta_keys->method}();
+            $items = PostDetailModel::find($post_meta->id)->{$meta_keys->method}();
             if ($only_removed_meta) {
                 $items = $items->onlyTrashed();
             }
@@ -43,18 +43,18 @@
             return $selected_items;
         }
 
-        public static function SaveMeta($post_details, $items, $removed_items, $name) {
+        public static function SaveMeta($post_meta, $items, $removed_items, $name, $polymorphic_type) {
             $meta_keys = Post::MetaKeys($name);
-            Post::SaveMetaItems($name, $items, $post_details, $meta_keys->model, $meta_keys->method, $meta_keys->item_id_key, $meta_keys->polymorphic_id_key, $meta_keys->polymorphic_type_key, $meta_keys->soft_deletes, $meta_keys->has_value);
-            Post::RemoveMetaItems($removed_items, $post_details, $meta_keys->method, $meta_keys->item_id_key);
+            Post::SaveMetaItems($name, $items, $post_meta, $meta_keys->model, $meta_keys->method, $meta_keys->item_id_key, $meta_keys->polymorphic_id_key, $meta_keys->polymorphic_type_key, $meta_keys->soft_deletes, $meta_keys->has_value, $polymorphic_type);
+            Post::RemoveMetaItems($removed_items, $post_meta, $meta_keys->method, $meta_keys->item_id_key);
         }
 
         // NOTE: PRIVATE INTERNAL METHODS
 
-        private static function SaveMetaItems($name, $items, $post_details, $model, $method, $item_id_key, $polymorphic_id_key, $polymorphic_type_key, $soft_deletes, $has_value) {
+        private static function SaveMetaItems($name, $items, $post_meta, $model, $method, $item_id_key, $polymorphic_id_key, $polymorphic_type_key, $soft_deletes, $has_value, $polymorphic_type) {
             foreach($items as $item) {
                 $item = (object)$item;
-                $post_item = PostDetailModel::find($post_details->id)->$method();
+                $post_item = PostDetailModel::find($post_meta->id)->$method();
                 if ($soft_deletes) {
                     $post_item = $post_item->withTrashed();
                 }
@@ -63,10 +63,10 @@
                     $post_item = new $model;
                     $post_item->$item_id_key = $item->id;
                     if ($name === 'image') {
-                        $post_item->post_detail_id = $post_details->id;
+                        $post_item->post_detail_id = $post_meta->id;
                     } else {
-                        $post_item->$polymorphic_id_key = $post_details->id;
-                        $post_item->$polymorphic_type_key = 'App\Models\PostDetail';
+                        $post_item->$polymorphic_id_key = $post_meta->id;
+                        $post_item->$polymorphic_type_key = $polymorphic_type;
                     }
                 }
                 if ($has_value) {
@@ -79,10 +79,10 @@
             }
         }
 
-        private static function RemoveMetaItems($removed_items, $post_details, $method, $item_id_key) {
+        private static function RemoveMetaItems($removed_items, $post_meta, $method, $item_id_key) {
             foreach($removed_items as $removed_item) {
                 $removed_item = (object)$removed_item;
-                PostDetailModel::find($post_details->id)->$method()->where($item_id_key, $removed_item->id)->delete();
+                PostDetailModel::find($post_meta->id)->$method()->where($item_id_key, $removed_item->id)->delete();
             }
         }
 

@@ -30,7 +30,7 @@
         }
 
         public function Actions() {
-            return $this->morphMany(PostAction::class, 'PostActionable', 'post_actionable_type', 'post_actionable_id')->with('Action');
+            return $this->morphMany(PostAction::class, 'PostActionable', 'post_actionable_type', 'post_actionable_id');
         }
 
         public function Images() {

@@ -21,6 +21,15 @@
             'actions_accepted' => false,
         ];
 
+        public static function Boot() {
+            parent::Boot();
+            PostCollaboration::deleting(function($post_collaboration) {
+                foreach ($post_collaboration->tags as $tag) {
+                    $tag->delete();
+                }
+            });
+        }
+
         public function User() {
             return $this->belongsTo(User::class);
         }

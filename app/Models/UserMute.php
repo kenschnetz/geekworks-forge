@@ -9,8 +9,8 @@
         protected $attributes = [
             'user_id' => null,
             'admin_user_id' => null,
-            'expiration' => null,
             'reason' => null,
+            'expires_at' => null,
         ];
 
         public function User() {
