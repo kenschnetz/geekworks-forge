@@ -5,8 +5,9 @@
     use App\Http\Livewire\Parent\ItemList;
     use App\Models\Flag as FlagModel;
 
-    class PostTypes extends ItemList {
-        public string $sort_field = 'name', $item_icon = 'fa-network-wired', $item_name = 'Post Types', $new_item_route = 'admin-flag';
+    class Flags extends ItemList {
+        public bool $prevent_search = true;
+        public string $sort_field = 'reason', $item_icon = 'fa-flag', $item_name = 'Content Flag', $route = 'admin-flag';
 
         public function Render() {
             $items = $this->GetItems();
@@ -24,9 +25,9 @@
 
         private function GetColumns() {
             return collect([
-                (object)['name' => 'Reason', 'sort_by' => 'reason', 'sortable' => true, 'route' => 'admin-flag', 'key' => 'reason', 'limit_word_count' => 20],
-                (object)['name' => 'Reviewed Date', 'sort_by' => 'reviewed_at', 'sortable' => true, 'route' => 'admin-flag', 'key' => 'reviewed_at'],
-                (object)['name' => 'Flag Date', 'sort_by' => 'created_at', 'sortable' => true, 'route' => 'admin-flag', 'key' => 'created_at'],
+                (object)['name' => 'Reason', 'sort_by' => 'reason', 'sortable' => true, 'key' => 'reason', 'limit_word_count' => 20],
+                (object)['name' => 'Reviewed Date', 'sort_by' => 'reviewed_at', 'sortable' => true, 'key' => 'reviewed_at'],
+                (object)['name' => 'Flag Date', 'sort_by' => 'created_at', 'sortable' => true, 'key' => 'created_at'],
             ]);
         }
     }

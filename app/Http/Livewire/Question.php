@@ -29,7 +29,7 @@
 
         // TODO: add custom error messages
         protected function Rules() {
-            return [
+            $rules = [
                 'post.post_type_id' => 'required|integer',
                 'post.user_id' => 'required|integer',
                 'post.system_id' => 'required|integer',
@@ -50,5 +50,9 @@
                 'post_details.requesting_conversions' => 'required|boolean',
                 'tags' => 'required|array|min:3',
             ];
+            if ($this->is_collaboration) {
+                $rules['summary'] = 'required|string|max:255';
+            }
+            return $rules;
         }
     }

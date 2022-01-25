@@ -20,16 +20,20 @@
             $this->list_route = 'canons';
             $this->pagination_count = config('app.settings.post_pagination', 20);
             $this->SetRules();
+            $this->model = 'App\Models\Canon';
         }
 
         public function Render() {
-            $posts = $this->item->Posts()
-                ->paginate($this->pagination_count);
-            return view('livewire.canon', ['posts' => $posts]);
+            $posts = $this->item->Posts();
+            if ($this->item->require_approval) {
+                $posts->where('approved', true);
+            }
+            return view('livewire.canon', ['posts' => $posts->paginate($this->pagination_count)]);
         }
 
         private function SetRules() {
             $this->rules = [
+                'item.user_id' => 'required',
                 'item.name' => 'required',
                 'item.description' => 'required|string',
                 'item.publicly_visible' => 'required|boolean',

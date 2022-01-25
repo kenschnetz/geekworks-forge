@@ -5,6 +5,7 @@
     use App\Models\Post as PostModel;
     use App\Models\PostDetail as PostDetailModel;
     use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Support\Facades\Log;
     use Illuminate\Support\Str;
 
     class PostMetaModal extends Modal {
@@ -22,7 +23,7 @@
 
         public function ToggleItem($item) {
             if (empty($this->selected_items[$item['id']])) {
-                if ($this->max_allowed_items === 0 ?? count($this->selected_items) < $this->max_allowed_items) {
+                if ($this->max_allowed_items === 0 || count($this->selected_items) < $this->max_allowed_items) {
                     if (empty($this->removed_items[$item['id']])) {
                         $this->AddItem($item);
                     } else {
@@ -49,7 +50,7 @@
         }
 
         public function CreateItem() {
-            if ($this->name === 'tag' || $this->name === 'canon' || $this->name === 'category') {
+            if ($this->name === 'tag' || $this->name === 'category' || $this->name === 'canon' || $this->name === 'collection') {
                 $this->new_item->slug = Str::plural($this->new_item->name);
             }
             $this->validate();

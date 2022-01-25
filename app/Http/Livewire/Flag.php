@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Livewire;
+    namespace App\Http\Livewire;
 
-use Livewire\Component;
+    use Livewire\Component;
 
-class Flag extends Component
-{
-    public function render()
-    {
-        return view('livewire.flag');
+    class Flag extends Component {
+        public function render() {
+            return view('livewire.user-mute');
+        }
     }
-}

@@ -4,10 +4,10 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class FlagReview extends Component
+class FlagContent extends Component
 {
     public function render()
     {
-        return view('livewire.flag-review');
+        return view('livewire.flag');
     }
 }

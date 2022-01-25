@@ -21,7 +21,7 @@
         public int|null $post_id;
         public int $pagination_count;
         public UserModel $user;
-        public array $author, $canons, $collections;
+        public array $author, $canons = [], $collections = [];
         public bool|null $upvoted = null, $flagged = null;
         public bool $replying = false, $editing = false;
         public int|null $replying_to_id = null, $editing_comment_id = null;
@@ -32,7 +32,7 @@
         public function Mount() {
             $post_exists = PostModel::where('slug', $this->slug)->exists();
             if ($post_exists) {
-                $post = PostModel::where('slug', $this->slug)->first();
+                $post = PostModel::where('slug', $this->slug)->with('Type')->first();
                 $this->post_id = $post->id;
                 $this->pagination_count = config('app.settings.post_pagination', 20);
                 $this->user = auth()->user();
@@ -53,6 +53,15 @@
                         'description' => $canon_post->Canon->description,
                     ];
                     $this->canons[$canon_post->Canon->id] = $selected_canon;
+                }
+                $collection_posts = $post->CollectionPosts()->get();
+                foreach($collection_posts as $collection_post) {
+                    $selected_collection = [
+                        'id' => $collection_post->id,
+                        'name' => $collection_post->Collection->name,
+                        'description' => $collection_post->Collection->description,
+                    ];
+                    $this->collections[$collection_post->Collection->id] = $selected_collection;
                 }
             } else {
                 abort(404);
@@ -129,6 +138,9 @@
                     $saved_meta->user_id = auth()->user()->id;
                     $saved_meta->{$name . '_id'} = $key;
                     $saved_meta->post_id = $this->post_id;
+                    if ($name === 'canon' && $selected_item['user_id'] === auth()->user()->id) {
+                        $saved_meta->approved = true;
+                    }
                     $saved_meta->save();
                 }
             }
