@@ -2,6 +2,7 @@
 
     use App\Http\Livewire\AcceptTerms;
     use App\Http\Livewire\Terms;
+    use App\Mail\MyTestMail;
     use Illuminate\Support\Facades\Route;
 
     /*
@@ -16,6 +17,15 @@
     */
 
     require __DIR__ . '/auth.php';
+
+    Route::get('/test', function () {
+        $details = [
+            'title' => 'Mail from Geekworks Forge',
+            'body' => 'This is for testing email using smtp'
+        ];
+        Mail::to('ken@syntaxflow.com')->send(new MyTestMail($details));
+        dd("Email is Sent.");
+    });
 
     Route::get('/', function () {
         if (Auth::check()) {
