@@ -26,7 +26,7 @@
         } else {
             return view('home');
         }
-    })->name('home');
+    })->name('home')->middleware('verified-if-authed', 'terms');
 
     Route::get('/logout', function () {
         Auth()->logout();

@@ -40,7 +40,7 @@
             $this->recent_posts = $recent_posts->latest()->with('ActivePostDetails')->take(5)->get()->toArray();
             $this->recent_comments = $this->profile_user->Comments()->latest()->with('Post', 'Post.ActivePostDetails')->take(5)->get()->toArray();
             $this->following = auth()->user()->Follows()->where('followed_user_id', $this->profile_user->id)->exists();
-            $this->can_edit = $this->profile_user->id === auth()->user()->id || auth()->user()->role_id === 1;
+            $this->can_edit = $this->profile_user->id === auth()->user()->id;
             $profile_photo = $this->profile_user->Character->ProfilePhoto;
             if (!empty($profile_photo)) {
                 $selected_profile_photo = [

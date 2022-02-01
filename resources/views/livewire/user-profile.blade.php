@@ -81,27 +81,27 @@
                             <h2 class="text-sm md:text-base inline-block font-medium text-gray-500 uppercase tracking-wider">
                                 {{ $profile_user['character']->name }}
                             </h2>
-                            <hr class="mt-3" />
-                            <div class="mt-3">
-                                @if($editing)
-                                    <div class="flex space-x-3">
-                                        <div class="min-w-0 flex-1">
-                                            <div x-data="{bio: @entangle('profile_user.character.bio'), limit: 255 }">
-                                                <div class="border border-purple-800 focus:border-purple-800">
-                                                    <span class="text-xs italic p-1 float-right" x-text="limit - bio.length" :class="{'text-gray-400':  bio.length <= limit, 'text-red-500':  bio.length > limit }"></span>
-                                                    <div class="editable-div px-4 py-3 focus:outline-none" x-on:input="bio = $el.textContent" contenteditable placeholder="Character bio" wire:ignore>{{ $profile_user['character']->bio }}</div>
-                                                </div>
-                                                @error('profile_user.character.bio') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
+                        @endif
+                        <hr class="mt-3" />
+                        <div class="mt-3">
+                            @if($editing)
+                                <div class="flex space-x-3">
+                                    <div class="min-w-0 flex-1">
+                                        <div x-data="{bio: @entangle('profile_user.character.bio'), limit: 255 }">
+                                            <div class="border border-purple-800 focus:border-purple-800">
+                                                <span class="text-xs italic p-1 float-right" x-text="limit - bio.length" :class="{'text-gray-400':  bio.length <= limit, 'text-red-500':  bio.length > limit }"></span>
+                                                <div class="editable-div px-4 py-3 focus:outline-none" x-on:input="bio = $el.textContent" contenteditable placeholder="Character bio" wire:ignore>{{ $profile_user['character']->bio }}</div>
                                             </div>
+                                            @error('profile_user.character.bio') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
-                                @else
-                                    <p class="text-gray-500">
-                                        {{ $profile_user['character']->bio }}
-                                    </p>
-                                @endif
-                            </div>
-                        @endif
+                                </div>
+                            @else
+                                <p class="text-gray-500">
+                                    {{ $profile_user['character']->bio }}
+                                </p>
+                            @endif
+                        </div>
                     </div>
                 </div>
                 <hr class="mt-3" />

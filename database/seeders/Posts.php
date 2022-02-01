@@ -44,14 +44,6 @@
                     'updated_at' => Carbon::now(),
                 ],
             ]);
-            DB::table('post_images')->insert([
-                [
-                    'post_detail_id' => 1,
-                    'user_image_id' => 2,
-                    'created_at' => Carbon::now(),
-                    'updated_at' => Carbon::now(),
-                ],
-            ]);
             DB::table('post_tags')->insert([
                 [
                     'tag_id' => 12,

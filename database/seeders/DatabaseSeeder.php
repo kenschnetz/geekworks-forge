@@ -14,7 +14,6 @@
             $this->call([
                 Roles::class,
                 Users::class,
-                UserImages::class,
                 UserCharacters::class,
                 Systems::class,
                 Categories::class,
@@ -22,9 +21,7 @@
                 Attributes::class,
                 Actions::class,
                 PostTypes::class,
-                Posts::class,
                 SkillLevels::class,
-                Canons::class,
             ]);
         }
     }

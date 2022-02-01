@@ -146,6 +146,18 @@
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ],
+                [
+                    'name' => 'Ammunition',
+                    'description' => 'Projectile type',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ],
+                [
+                    'name' => 'Clip size',
+                    'description' => 'Ammunition clip capacity ',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ],
             ]);
         }
     }
