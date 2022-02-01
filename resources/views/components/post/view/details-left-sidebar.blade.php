@@ -38,14 +38,14 @@
                 <i class="mr-3 fas fa-th-large text-purple-800"></i>
                 <span class="hover:underline">Collect</span>
             </span>
-            @if($post->Type->name === 'Idea' && !$has_open_collaboration && $post->user_id !== auth()->user()->id && $post->ActivePostDetails->requesting_recommendations)
+            @if($post->Type->name === 'Idea' && !$has_open_collaboration && $post->user_id !== auth()->user()->id && $post->ActivePostDetails->requesting_collaborations)
                 <a href="{{ route('collaborate', ['post_id' => $post->id]) }}" class="text-gray-900 group flex items-center mt-3" role="menuitem" tabindex="-1" id="options-menu-0-item-0">
                     <i class="mr-3 fas fa-file-edit text-purple-800"></i>
                     <span class="hover:underline">Collaborate</span>
                 </a>
             @endif
         </div>
-        <hr class="mt-3" />
+{{--        <hr class="mt-3" />--}}
 {{--        TODO: add social sharing options--}}
 {{--        @include('components.post.view.share')--}}
         @if($post->user->id !== auth()->user()->id)

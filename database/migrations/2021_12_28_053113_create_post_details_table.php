@@ -19,7 +19,7 @@
                 $table->string('title');
                 $table->string('description')->nullable();
                 $table->text('content')->nullable();
-                $table->boolean('requesting_recommendations')->default(true);
+                $table->boolean('requesting_collaborations')->default(true);
                 $table->boolean('requesting_conversions')->default(true);
                 $table->timestamps();
                 $table->foreign('post_id')->onDelete('cascade')->references('id')->on('posts');
