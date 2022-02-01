@@ -4,8 +4,8 @@
             Back
         </button>
         @if($collaboration->status === 'Open')
-            <button wire:click="Decline()" class="bg-red-600 hover:bg-transparent text-white hover:text-red-600 font-bold px-4 py-3 border border-red-800" style="width:140px">
-                Decline
+            <button wire:click="Close()" class="bg-red-600 hover:bg-transparent text-white hover:text-red-600 font-bold px-4 py-3 border border-red-800" style="width:140px">
+                {{ $my_collaboration ? 'Withdraw' : 'Decline' }}
             </button>
             @if(!$my_collaboration && ($collaboration->title_accepted || $collaboration->description_accepted || $collaboration->content_accepted))
                 <button wire:click="Collaborate()" class="bg-purple-800 hover:bg-transparent text-white hover:text-purple-800 font-bold px-4 py-3 border border-purple-800" style="width:140px">

@@ -57,9 +57,9 @@
             return redirect()->route('collaborations');
         }
 
-        public function Decline() {
+        public function Close() {
             $this->collaboration->status = 'Closed';
-            $this->collaboration->outcome = 'Declined';
+            $this->collaboration->outcome = $this->my_collaboration ? 'Withdrawn' : 'Declined';
             $this->collaboration->save();
             return redirect()->route('collaborations');
         }

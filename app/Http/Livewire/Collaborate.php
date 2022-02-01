@@ -6,6 +6,7 @@
     use App\Models\PostDetail as PostDetailsModel;
     use App\Models\PostCollaboration as PostCollaborationModel;
     use App\Utilities\Post as PostUtilities;
+    use Illuminate\Support\Facades\Log;
     use Illuminate\Validation\Rule;
     use Livewire\Component;
 
@@ -20,12 +21,12 @@
         protected $listeners = ['RefreshMeta'];
 
         public function Mount() {
-            $post_exists = PostModel::where('id', $this->post_id)->exists();
-            if ($post_exists) {
+            $this->post = PostModel::where('id', $this->post_id)->first();
+            if (empty($this->post)) {
+                abort(404);
+            } else {
                 $this->post = PostModel::where('id', $this->post_id)->first();
                 $this->post_details = $this->post->ActivePostDetails()->first();
-            } else {
-                abort(404);
             }
             $this->images = PostUtilities::GetMeta($this->post_details, 'image');
             $this->removed_images = [];
@@ -43,7 +44,9 @@
         }
 
         public function Submit() {
+            Log::debug('!');
             $this->validate();
+            Log::debug('!!');
             $post_collaboration = new PostCollaborationModel($this->post_details->toArray());
             $post_collaboration->user_id = auth()->user()->id;
             $post_collaboration->post_detail_id = $this->post_details->id;
@@ -64,14 +67,6 @@
         // TODO: add custom error messages
         protected function Rules() {
             return [
-                'post.post_type_id' => 'required|integer',
-                'post.user_id' => 'required|integer',
-                'post.system_id' => 'required|integer',
-                'post.category_id' => 'required|integer',
-                'post.published' => 'required|boolean',
-                'post.moderated' => 'required|boolean',
-                'post.allow_conversions' => 'required|boolean',
-                'post.is_art_only' => 'required|boolean',
                 'post_details.title' => [
                     'required',
                     'string',
@@ -80,8 +75,6 @@
                 ],
                 'post_details.description' => 'nullable|string|max:255',
                 'post_details.content' => 'nullable|string',
-                'post_details.requesting_recommendations' => 'required|boolean',
-                'post_details.requesting_conversions' => 'required|boolean',
                 'summary' => 'required|string|max:255'
             ];
         }
