@@ -46,7 +46,8 @@
             @endif
         </div>
         <hr class="mt-3" />
-        @include('components.post.view.share')
+{{--        TODO: add social sharing options--}}
+{{--        @include('components.post.view.share')--}}
         @if($post->user->id !== auth()->user()->id)
             <hr class="mt-3" />
             <div class="mt-3 px-4">
