@@ -13,7 +13,7 @@
             'title' => null,
             'description' => null,
             'content' => null,
-            'requesting_recommendations' => true,
+            'requesting_collaborations' => true,
             'requesting_conversions' => true,
         ];
 

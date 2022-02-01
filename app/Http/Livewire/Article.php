@@ -47,7 +47,7 @@
                 ],
                 'post_details.description' => 'nullable|string|max:255',
                 'post_details.content' => 'nullable|string',
-                'post_details.requesting_recommendations' => 'required|boolean',
+                'post_details.requesting_collaborations' => 'required|boolean',
                 'post_details.requesting_conversions' => 'required|boolean',
                 'tags' => 'required|array|min:3',
             ];
