@@ -53,8 +53,8 @@
                 'post_details.content' => 'nullable|string',
                 'post_details.requesting_recommendations' => 'required|boolean',
                 'post_details.requesting_conversions' => 'required|boolean',
-                'attributes.*.value' => 'nullable|string|max:255',
-                'actions.*.value' => 'nullable|string|max:255',
+                'attributes.*.value' => 'required|string|max:255',
+                'actions.*.value' => 'required|string|max:255',
                 'tags' => 'required|array|min:3',
             ];
             if ($this->is_collaboration) {

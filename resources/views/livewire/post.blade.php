@@ -7,10 +7,11 @@
     </div>
     <main class="lg:col-span-6">
         <div class="px-4 sm:p-0">
-            <div class="bg-white px-4 py-6 shadow sm:p-6">
+            <div class="bg-white dark:bg-zinc-700 px-4 py-6 shadow sm:p-6">
                 <article aria-labelledby="question-title-81614" x-data="{ post_menu_open: false }">
                     <div class="flex space-x-3">
-                        <div class="min-w-0 flex-1">
+                        <div class="min-w-0 flex-1 relative">
+                            <i @class(['absolute top-0 right-0 fas text-gray-300 text-center', 'fa-exclamation-square' => $post->post_type_id === 1, 'fa-question-square' => $post->post_type_id === 2, 'fa-rss-square' => $post->post_type_id === 3]) style="font-size: 1.4em !important; width: 32px !important;"></i>
                             <h2 id="question-title-81614" class="text-lg font-bold text-gray-900">
                                 {{ $post->ActivePostDetails->title }}
                             </h2>
@@ -45,16 +46,16 @@
             @include('components.post.view.details-left-sidebar')
         </div>
         @if($post->Collaborators()->count() > 0)
-            <div class="mt-6 px-4 sm:p-0">
-                <div class="bg-white shadow">
+            <div class="mt-3 px-4 sm:p-0 mb-3 lg:m-0">
+                <div class="bg-white dark:bg-zinc-700 shadow">
                     <div class="p-6">
                         <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
                             Collaborators
                         </h2>
                         <hr class="mt-3" />
                         <div class="mt-2">
-                            @foreach($post->Collaborators()->get()->reverse() as $contributor)
-                                <a href="{{ route('user-profile', ['user_id' => $contributor->id]) }}" class="relative inline-flex items-center rounded-full mt-1 px-3 py-0.5 text-sm bg-orange-500 text-white border border-orange-500 hover:shadow hover:text-orange-500 hover:bg-white">
+                            @foreach($post->Collaborators()->distinct('user_id')->get()->reverse() as $contributor)
+                                <a href="{{ route('user-profile', ['user_name' => $contributor->Character->name]) }}" class="relative inline-flex items-center rounded-full mt-1 px-3 py-0.5 text-sm bg-orange-500 text-white border border-orange-500 hover:shadow hover:text-orange-500 hover:bg-white dark:bg-zinc-700">
                                     {{ $contributor->Character->name }}
                                 </a>
                             @endforeach

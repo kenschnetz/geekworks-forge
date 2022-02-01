@@ -1,5 +1,5 @@
 <div class="sticky top-4 space-y-4">
-    <div class="bg-white shadow py-4">
+    <div class="bg-white dark:bg-zinc-700 shadow py-4">
         <div class="mt-3 px-4">
             <div class="w-full mt-2">
                 <div class="flex space-x-3">

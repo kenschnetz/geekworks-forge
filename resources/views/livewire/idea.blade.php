@@ -1,7 +1,7 @@
 <div class="w-full">
 {{--TODO: make this a component with slots so that it can be reused for the post, idea, question and article screens--}}
     <div class="max-w-3xl lg:max-w-7xl mx-auto sm:px-4 text-center">
-        <div class="bg-white border border-orange-600 p-4">
+        <div class="bg-white dark:bg-zinc-700 border border-orange-600 p-4">
             <button wire:click="Cancel()" class="bg-gray-400 hover:bg-transparent text-white hover:text-gray-400 font-bold px-4 py-3 border border-gray-800" style="width:140px">
                 Cancel
             </button>
@@ -23,7 +23,7 @@
             @include('components.post.edit.details-left-sidebar')
         </div>
         <main class="lg:col-span-6 mb-3 px-4 sm:p-0">
-            <div class="bg-white px-4 py-6 shadow sm:p-6">
+            <div class="bg-white dark:bg-zinc-700 px-4 py-6 shadow sm:p-6">
                 <article aria-labelledby="question-title-81614" x-data="{ post_menu_open: false }">
                     <div class="flex space-x-3">
                         <div class="min-w-0 flex-1">
@@ -75,7 +75,7 @@
                 @include('components.post.edit.details-left-sidebar')
             </div>
             <div class="col-span-4 px-4 sm:p-0">
-                <div class="mt-3 bg-white shadow">
+                <div class="mt-3 bg-white dark:bg-zinc-700 shadow">
                     <div class="p-6">
                         <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
                             Collaborators

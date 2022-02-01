@@ -1,5 +1,5 @@
 <article x-data="{ post_menu_open: false }">
-    <div class="mt-2 relative">
+    <div class="relative">
         <i @class(['absolute top-0 right-0 fas text-gray-300 text-center', 'fa-exclamation-square' => $post->post_type_id === 1, 'fa-question-square' => $post->post_type_id === 2, 'fa-rss-square' => $post->post_type_id === 3]) style="font-size: 1.4em !important; width: 32px !important;"></i>
         <div class="flex space-x-3">
             <x-author :author="$post->User"></x-author>
@@ -15,9 +15,9 @@
         </div>
     @endif
     <div class="mt-3">
-        <h2 class="mt-4 text-base font-medium text-gray-900">
-            <a href="{{ route('post', ['slug' => $post->slug]) }}" class="hover:underline text-purple-700">
-                <strong>{{ $post->ActivePostDetails->title }}</strong>
+        <h2 class="mt-4 text-base font-medium text-purple-800 dark:text-gray-300">
+            <a href="{{ route('post', ['slug' => $post->slug]) }}" class="hover:underline">
+                <strong>{{ $post->ActivePostDetails->title }} {{ $post->published ? '' : '[DRAFT]' }}</strong>
             </a>
         </h2>
     </div>
@@ -26,7 +26,7 @@
             @include('components.post.view.system-category')
         </div>
     @endif
-    <div class="mt-3 text-sm text-gray-500">
+    <div class="mt-3 text-sm text-gray-600 dark:text-gray-400">
         <i>{{ $post->ActivePostDetails->description }}</i>
     </div>
     <hr class="mt-3" />

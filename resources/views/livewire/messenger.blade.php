@@ -5,7 +5,7 @@
     @include('components.messenger.left-sidebar')
     <main class="lg:col-span-8">
         <div class="px-4 sm:p-0">
-            <div class="bg-white px-4 py-6 shadow sm:p-6 sm:rounded-lg">
+            <div class="bg-white dark:bg-zinc-700 px-4 py-6 shadow sm:p-6 sm:rounded-lg">
                 @if(empty($selected_thread))
                     <p class="text-gray-400">
                         Select a thread to view messages
@@ -29,7 +29,7 @@
                             </div>
                             <div class="mt-3 w-full">
                                 <div class="relative inline-block mr-4 align-middle select-none transition duration-200 ease-in">
-                                    <input wire:model="selected_thread.private" type="checkbox" name="toggle" id="toggle" class="text-purple-800 focus:ring-purple-800 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                                    <input wire:model="selected_thread.private" type="checkbox" name="toggle" id="toggle" class="text-purple-800 focus:ring-purple-800 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-zinc-700 border-4 appearance-none cursor-pointer"/>
                                     <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
                                 </div>
                                 <div class="relative inline-block ml-4">

@@ -1,10 +1,10 @@
 <div class="py-12">
     <div class="mx-auto sm:px-6 lg:px-8" style="width: 100% !important; max-width: 600px !important;">
-        <div class="p-3 md:px-6 md:py-4 bg-white shadow rounded flex flex-col">
+        <div class="p-3 md:px-6 md:py-4 bg-white dark:bg-zinc-700 shadow rounded flex flex-col">
             To continue using Geekworks Lab, you must accept the Terms and Conditions first.
             <div class="mt-4 w-full">
                 <div class="relative inline-block mr-4 align-middle select-none transition duration-200 ease-in">
-                    <input wire:model="user.terms_accepted" type="checkbox" name="toggle" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                    <input wire:model="user.terms_accepted" type="checkbox" name="toggle" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-zinc-700 border-4 appearance-none cursor-pointer"/>
                     <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
                 </div>
                 <div class="relative inline-block ml-4">

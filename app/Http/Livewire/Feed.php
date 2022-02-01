@@ -15,7 +15,7 @@
         public string|null $list_title;
         public int|null $post_type_id, $system_id, $category_id, $tag_id, $user_id;
         public array $top_posts = [], $top_authors = [], $filters = [];
-        public bool $menu_show_systems = false, $menu_show_categories = false;
+        public bool $menu_show_systems = false, $menu_show_categories = false, $allow_toggling_post_status = false, $show_drafts = false, $show_moderated = false, $is_feed = true;
 
         public function Mount() {
             $this->top_posts = PostModel::whereHas('Upvotes')->where('published', true)->where('moderated', false)->with('ActivePostDetails')->withCount('Upvotes')->orderBy('upvotes_count', 'DESC')->take(3)->get()->toArray();
@@ -30,7 +30,14 @@
         }
 
         private function GetPosts() {
-            $posts = PostModel::where('published', true);
+            if ($this->show_moderated) {
+                $posts = PostModel::where('moderated', true)->orWhere('moderated', false);
+            } else {
+                $posts = PostModel::where('moderated', false);
+            }
+            if (!$this->show_drafts) {
+                $posts->where('published', true);
+            }
             if (!empty($this->post_type_id)) {
                 $posts->where('post_type_id', $this->post_type_id);
             }
@@ -50,12 +57,13 @@
                     });
                 });
             }
-            return $posts->where('moderated', false)
+            return $posts->latest()
                 ->whereHas('ActivePostDetails', function($query) {
                     return $query->where('title', 'like', '%' . $this->search_term . '%')
                         ->orWhere('description', 'like', '%' . $this->search_term . '%')
                         ->orWhere('content', 'like', '%' . $this->search_term . '%');
-                })->with('ActivePostDetails', 'User')->withCount('Upvotes', 'Comments', 'Views')
+                })->with('ActivePostDetails', 'User')
+                ->withCount('Upvotes', 'Comments', 'Views')
                 ->paginate($this->pagination_count);
         }
     }

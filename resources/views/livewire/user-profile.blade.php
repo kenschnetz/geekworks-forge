@@ -1,7 +1,7 @@
 <div>
     @if($editing)
         <div class="max-w-2xl mx-auto px-4 lg:max-w-7xl">
-            <div class="my-3 bg-white shadow border border-orange-600 p-4 text-center">
+            <div class="my-3 bg-white dark:bg-zinc-700 shadow border border-orange-600 p-4 text-center">
                 <button wire:click="CancelEdit()" class="bg-gray-400 hover:bg-transparent text-white hover:text-gray-400 font-bold px-4 py-3 border border-gray-600" style="width:140px">
                     Cancel
                 </button>
@@ -16,7 +16,7 @@
             @include('components.user.profile-left-sidebar')
         </div>
         <main class="lg:col-span-9" x-data="{ show_user_menu: false }" x-cloak="">
-            <div class="bg-white p-4 shadow">
+            <div class="bg-white dark:bg-zinc-700 p-4 shadow">
                 <div class="flex xs:space-x-3 items-center justify-center">
                     @if($editing)
                         <button type="button" @class(['hidden xs:block flex-shrink-0 relative border-2 border-gray-300 border-dashed text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-800 p-4']) x-data="{}" x-on:click="window.livewire.emitTo('image-post-meta-modal', 'Show')">
@@ -81,34 +81,28 @@
                             <h2 class="text-sm md:text-base inline-block font-medium text-gray-500 uppercase tracking-wider">
                                 {{ $profile_user['character']->name }}
                             </h2>
-                        @endif
-                        <p class="text-sm md:text-base text-gray-400">
-                            Level {{ $profile_user['character']->level }} {{ $skill_level->name  }}
-                        </p>
-                        <p class="text-sm md:text-base text-gray-400">
-                            {{ $profile_user['character']->reputation_points }} reputation points
-                        </p>
-                    </div>
-                </div>
-                <hr class="mt-3" />
-                <div class="mt-3">
-                    @if($editing)
-                        <div class="flex space-x-3">
-                            <div class="min-w-0 flex-1">
-                                <div x-data="{bio: @entangle('profile_user.character.bio'), limit: 255 }">
-                                    <div class="border border-purple-800 focus:border-purple-800">
-                                        <span class="text-xs italic p-1 float-right" x-text="limit - bio.length" :class="{'text-gray-400':  bio.length <= limit, 'text-red-500':  bio.length > limit }"></span>
-                                        <div class="editable-div px-4 py-3 focus:outline-none" x-on:input="bio = $el.textContent" contenteditable placeholder="Character bio" wire:ignore>{{ $profile_user['character']->bio }}</div>
+                            <hr class="mt-3" />
+                            <div class="mt-3">
+                                @if($editing)
+                                    <div class="flex space-x-3">
+                                        <div class="min-w-0 flex-1">
+                                            <div x-data="{bio: @entangle('profile_user.character.bio'), limit: 255 }">
+                                                <div class="border border-purple-800 focus:border-purple-800">
+                                                    <span class="text-xs italic p-1 float-right" x-text="limit - bio.length" :class="{'text-gray-400':  bio.length <= limit, 'text-red-500':  bio.length > limit }"></span>
+                                                    <div class="editable-div px-4 py-3 focus:outline-none" x-on:input="bio = $el.textContent" contenteditable placeholder="Character bio" wire:ignore>{{ $profile_user['character']->bio }}</div>
+                                                </div>
+                                                @error('profile_user.character.bio') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
+                                            </div>
+                                        </div>
                                     </div>
-                                    @error('profile_user.character.bio') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
-                                </div>
+                                @else
+                                    <p class="text-gray-500">
+                                        {{ $profile_user['character']->bio }}
+                                    </p>
+                                @endif
                             </div>
-                        </div>
-                    @else
-                        <p class="text-gray-500">
-                            {{ $profile_user['character']->bio }}
-                        </p>
-                    @endif
+                        @endif
+                    </div>
                 </div>
                 <hr class="mt-3" />
                 <div class="mt-3 spacy-y-2 md:grid md:grid-cols-4 md:gap-x-2">
@@ -135,7 +129,7 @@
                 </div>
             </div>
             @if(count($top_posts) > 0)
-                <div class="mt-3 bg-white p-4 shadow">
+                <div class="mt-3 bg-white dark:bg-zinc-700 p-4 shadow">
                     <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
                         Top Posts
                     </h2>
@@ -143,8 +137,11 @@
                     @include('components.top-posts')
                 </div>
             @endif
+            <div class="w-full lg:hidden mt-3">
+                @include('components.user.profile-left-sidebar')
+            </div>
             @if(count($recent_posts) > 0)
-                <div class="mt-3 bg-white p-4 shadow">
+                <div class="mt-3 bg-white dark:bg-zinc-700 p-4 shadow">
                     <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
                         Recent Posts
                     </h2>

@@ -1,6 +1,6 @@
 <div class="w-full lg:block lg:col-span-3 mb-3 px-4 sm:p-0 sticky top-4 space-y-4">
-    <div class="bg-white shadow py-4">
-        <div class="mt-3 px-4">
+    <div class="bg-white dark:bg-zinc-700 shadow py-4">
+        <div class="px-4">
             <div class="w-full mt-2">
                 <x-author :author="$post->User"></x-author>
             </div>
@@ -38,8 +38,8 @@
                 <i class="mr-3 fas fa-th-large text-purple-800"></i>
                 <span class="hover:underline">Collect</span>
             </span>
-            @if($post->user_id !== auth()->user()->id && $post->ActivePostDetails->requesting_recommendations)
-                <a href="{{ route('collaborate', ['type' => Str::lower($post->Type->name), 'post_id' => $post->id]) }}" class="text-gray-900 group flex items-center mt-3" role="menuitem" tabindex="-1" id="options-menu-0-item-0">
+            @if($post->Type->name === 'Idea' && !$has_open_collaboration && $post->user_id !== auth()->user()->id && $post->ActivePostDetails->requesting_recommendations)
+                <a href="{{ route('collaborate', ['post_id' => $post->id]) }}" class="text-gray-900 group flex items-center mt-3" role="menuitem" tabindex="-1" id="options-menu-0-item-0">
                     <i class="mr-3 fas fa-file-edit text-purple-800"></i>
                     <span class="hover:underline">Collaborate</span>
                 </a>

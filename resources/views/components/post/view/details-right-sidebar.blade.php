@@ -5,7 +5,7 @@
             @include('components.post.view.tags')
         @endif
         @if($post->ActivePostDetails->Attributes->count() > 0)
-            <div class="bg-white shadow">
+            <div class="bg-white dark:bg-zinc-700 shadow">
                 <div class="p-4">
                     <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
                         Attributes
@@ -21,7 +21,7 @@
             </div>
         @endif
         @if($post->ActivePostDetails->Actions->count() > 0)
-            <div class="bg-white shadow">
+            <div class="bg-white dark:bg-zinc-700 shadow">
                 <div class="p-4">
                     <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
                         Actions

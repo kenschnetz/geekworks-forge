@@ -1,4 +1,4 @@
-<nav class="mt-12 bg-white border-b border-gray-200 flex rounded-lg shadow" aria-label="Breadcrumb">
+<nav class="mt-12 bg-white dark:bg-zinc-700 border-b border-gray-200 flex rounded-lg shadow" aria-label="Breadcrumb">
     <ol role="list" class="max-w-screen-xl w-full mx-auto px-4 flex space-x-4 sm:px-6 lg:px-8">
         <li class="flex-1 items-center">
             <div class="flex items-center">

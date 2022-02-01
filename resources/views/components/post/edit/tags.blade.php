@@ -1,4 +1,4 @@
-<div class="bg-white shadow">
+<div class="bg-white dark:bg-zinc-700 shadow">
     <div class="p-4">
         <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
             Tags
@@ -18,8 +18,10 @@
             </div>
         @endif
         @error('tags')<div class="mt-1"><span class="text-red-600 error italic mt-3">{{ $message }}</span></div>@enderror
-        <div class="mt-1">
-            <span class="text-sm italic text-purple-800 cursor-pointer hover:underline" x-data="{}" x-on:click="window.livewire.emitTo('tag-post-meta-modal', 'Show')">Manage Tags</span>
-        </div>
+        @if(!$is_collaboration)
+            <div class="mt-1">
+                <span class="text-sm italic text-purple-800 cursor-pointer hover:underline" x-data="{}" x-on:click="window.livewire.emitTo('tag-post-meta-modal', 'Show')">Manage Tags</span>
+            </div>
+        @endif
     </div>
 </div>

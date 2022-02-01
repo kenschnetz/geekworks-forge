@@ -17,7 +17,7 @@
         public UserModel $profile_user;
         public array $stats, $top_posts, $recent_posts, $recent_comments, $images = [];
         public array|null $profile_photo;
-        public bool $following, $can_edit = false, $editing = false;
+        public bool $following, $can_edit = false, $editing = false, $my_profile;
 
         protected $listeners = ['RefreshMeta'];
 
@@ -28,11 +28,16 @@
             if (empty($this->profile_user)) {
                 abort(404);
             }
+            $this->my_profile = auth()->user()->id === $this->profile_user->id;
             $this->skill_level = SkillLevelModel::where('points_required', '<=', $this->profile_user->Character->skill_points)->first();
             $this->stats = UserUtilities::GetStats($this->profile_user);
             // TODO: implement a post scoring system where every upvote, view and comment contributes to a post_score column on the posts table to make this faster
             $this->top_posts = $this->profile_user->Posts()->whereHas('Upvotes')->where('published', true)->where('moderated', false)->with('ActivePostDetails')->withCount('Upvotes')->orderBy('upvotes_count', 'DESC')->take(5)->get()->toArray();
-            $this->recent_posts = $this->profile_user->Posts()->latest()->with('ActivePostDetails')->take(5)->get()->toArray();
+            $recent_posts = $this->profile_user->Posts();
+            if (!$this->my_profile) {
+                $recent_posts->where('published', true)->where('moderated', false);
+            }
+            $this->recent_posts = $recent_posts->latest()->with('ActivePostDetails')->take(5)->get()->toArray();
             $this->recent_comments = $this->profile_user->Comments()->latest()->with('Post', 'Post.ActivePostDetails')->take(5)->get()->toArray();
             $this->following = auth()->user()->Follows()->where('followed_user_id', $this->profile_user->id)->exists();
             $this->can_edit = $this->profile_user->id === auth()->user()->id || auth()->user()->role_id === 1;

@@ -2,12 +2,13 @@
 
     namespace App\Models;
 
+    use Illuminate\Contracts\Auth\MustVerifyEmail;
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Foundation\Auth\User as Authenticatable;
     use Illuminate\Notifications\Notifiable;
     use Laravel\Sanctum\HasApiTokens;
 
-    class User extends Authenticatable {
+    class User extends Authenticatable implements MustVerifyEmail {
         use HasApiTokens, HasFactory, Notifiable;
 
         /**
@@ -21,6 +22,7 @@
             'password',
             'terms_accepted',
             'terms_accepted_at',
+            'last_password_reset_sent_at',
             'role_id',
             'unread_global_messages',
         ];
@@ -41,6 +43,7 @@
          * @var array<string, string>
          */
         protected $casts = [
+            'last_password_reset_sent_at' => 'datetime',
             'email_verified_at' => 'datetime',
         ];
 

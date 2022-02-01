@@ -7,6 +7,7 @@
 
     class ItemList extends Component {
         use WithPagination;
+        public array $route_params = ['item'];
         public string $user_name, $sort_field = '', $sort_direction = 'asc', $search_term = '';
         public int $pagination_count;
 

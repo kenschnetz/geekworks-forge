@@ -1,4 +1,4 @@
-<div class="p-6 sm:px-20 bg-white border-b border-gray-200">
+<div class="p-6 sm:px-20 bg-white dark:bg-zinc-700 border-b border-gray-200">
     @if ($delete)
         @include('components.delete.form')
     @else

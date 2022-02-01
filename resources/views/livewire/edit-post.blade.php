@@ -1,21 +1,27 @@
 <div class="w-full">
     <div class="max-w-3xl lg:max-w-7xl mx-auto sm:px-4 text-center">
-        <div class="bg-white border border-orange-600 p-4">
+        <div class="bg-white dark:bg-zinc-700 border border-orange-600 p-4">
             <button wire:click="Cancel()" class="bg-gray-400 hover:bg-transparent text-white hover:text-gray-400 font-bold px-4 py-3 border border-gray-600" style="width:140px">
                 Cancel
             </button>
-            @if($post->published)
-                <button wire:click="Unpublish()" class="bg-orange-500 hover:bg-transparent text-white hover:text-orange-500 font-bold px-4 py-3 border border-orange-500" style="width:140px">
-                    Unpublish
+            @if($is_collaboration)
+                <button wire:click="Submit()" class="bg-purple-800 hover:bg-transparent text-white hover:text-purple-800 font-bold px-4 py-3 border border-purple-800" style="width:140px">
+                    Submit
                 </button>
             @else
-                <button wire:click="Save(false)" class="bg-orange-500 hover:bg-transparent text-white hover:text-orange-500 font-bold px-4 py-3 border border-orange-500" style="width:140px">
-                    Save
+                @if($post->published)
+                    <button wire:click="Unpublish()" class="bg-orange-500 hover:bg-transparent text-white hover:text-orange-500 font-bold px-4 py-3 border border-orange-500" style="width:140px">
+                        Unpublish
+                    </button>
+                @else
+                    <button wire:click="Save(false)" class="bg-orange-500 hover:bg-transparent text-white hover:text-orange-500 font-bold px-4 py-3 border border-orange-500" style="width:140px">
+                        Save
+                    </button>
+                @endif
+                <button wire:click="Save(true)" class="bg-purple-800 hover:bg-transparent text-white hover:text-purple-800 font-bold px-4 py-3 border border-purple-800" style="width:140px">
+                    Publish
                 </button>
             @endif
-            <button wire:click="Save(true)" class="bg-purple-800 hover:bg-transparent text-white hover:text-purple-800 font-bold px-4 py-3 border border-purple-800" style="width:140px">
-                Publish
-            </button>
         </div>
     </div>
     <div class="max-w-3xl mx-auto sm:px-4 lg:max-w-7xl lg:grid lg:grid-cols-12 lg:gap-4 mt-3">
@@ -26,7 +32,7 @@
             @include('components.post.edit.details-left-sidebar')
         </div>
         <main class="lg:col-span-6 mb-3 px-4 sm:p-0">
-            <div class="bg-white px-4 py-6 shadow sm:p-6">
+            <div class="bg-white dark:bg-zinc-700 px-4 py-6 shadow sm:p-6">
                 <article aria-labelledby="question-title-81614" x-data="{ post_menu_open: false }">
                     <div class="flex space-x-3">
                         <div class="min-w-0 flex-1">
@@ -81,7 +87,7 @@
             </div>
             @if($post_type === 'idea')
                 <div class="col-span-4 px-4 sm:p-0">
-                    <div class="mt-3 bg-white shadow">
+                    <div class="mt-3 bg-white dark:bg-zinc-700 shadow">
                         <div class="p-6">
                             <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
                                 Collaborators
@@ -97,7 +103,7 @@
             @endif
             @if($is_collaboration)
                 <div class="col-span-4 px-4 sm:p-0">
-                    <div class="mt-3 bg-white shadow">
+                    <div class="mt-3 bg-white dark:bg-zinc-700 shadow">
                         <div class="p-6">
                             <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
                                 Summarize your collaboration
@@ -122,7 +128,7 @@
             @endif
             @if(!$is_collaboration)
                 <div class="col-span-4 px-4 sm:p-0">
-                    <div class="mt-3 bg-white shadow">
+                    <div class="mt-3 bg-white dark:bg-zinc-700 shadow">
                         <div class="p-6" x-data="{ show_advanced_options: false }" x-cloak>
                             @include('components.post.advanced-settings')
                         </div>

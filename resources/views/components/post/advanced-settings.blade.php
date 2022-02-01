@@ -6,11 +6,11 @@
     </span>
     <div x-show="show_advanced_options" class="mt-3">
         <div class="mt-3 w-full">
-            <p class="mt-3 text-gray-400">NOTE: the settings below are set to the recommended default.</p>
+            <p class="mt-3 text-gray-400">NOTE: the settings below are already set to the recommended defaults.</p>
         </div>
         <div class="mt-3 w-full">
             <div class="relative inline-block mr-4 align-middle select-none transition duration-200 ease-in">
-                <input wire:model="post.allow_conversions" type="checkbox" name="toggle" id="toggle" class="text-purple-800 focus:ring-purple-800 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                <input wire:model="post.allow_conversions" type="checkbox" name="toggle" id="toggle" class="text-purple-800 focus:ring-purple-800 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-zinc-700 border-4 appearance-none cursor-pointer"/>
                 <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
             </div>
             <div class="relative inline-block ml-4">
@@ -24,7 +24,7 @@
         </div>
         <div class="mt-3 w-full">
             <div class="relative inline-block mr-4 align-middle select-none transition duration-200 ease-in">
-                <input wire:model="post_details.requesting_recommendations" type="checkbox" name="toggle" id="toggle" class="text-purple-800 focus:ring-purple-800 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                <input wire:model="post_details.requesting_recommendations" type="checkbox" name="toggle" id="toggle" class="text-purple-800 focus:ring-purple-800 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-zinc-700 border-4 appearance-none cursor-pointer"/>
                 <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
             </div>
             <div class="relative inline-block ml-4">
@@ -39,7 +39,7 @@
         @if($post->allow_conversions)
             <div class="mt-3 w-full">
                 <div class="relative inline-block mr-4 align-middle select-none transition duration-200 ease-in">
-                    <input wire:model="post_details.requesting_conversions" type="checkbox" name="toggle" id="toggle" class="text-purple-800 focus:ring-purple-800 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                    <input wire:model="post_details.requesting_conversions" type="checkbox" name="toggle" id="toggle" class="text-purple-800 focus:ring-purple-800 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-zinc-700 border-4 appearance-none cursor-pointer"/>
                     <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
                 </div>
                 <div class="relative inline-block ml-4">
@@ -54,7 +54,7 @@
         @endif
         <div class="mt-3 w-full">
             <div class="relative inline-block mr-4 align-middle select-none transition duration-200 ease-in">
-                <input wire:model="post.is_art_only" type="checkbox" name="toggle" id="toggle" class="text-purple-800 focus:ring-purple-800 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                <input wire:model="post.is_art_only" type="checkbox" name="toggle" id="toggle" class="text-purple-800 focus:ring-purple-800 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-zinc-700 border-4 appearance-none cursor-pointer"/>
                 <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
             </div>
             <div class="relative inline-block ml-4">

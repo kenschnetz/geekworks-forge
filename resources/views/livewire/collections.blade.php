@@ -6,7 +6,7 @@
         <div class="mb-3">
             @include('components.list-search')
         </div>
-        <div class="bg-white shadow p-4">
+        <div class="bg-white dark:bg-zinc-700 shadow p-4">
             <x-table>
                 <x-slot name="head">
                     <x-table.heading sortable wire:click="SortBy('name')" :direction="$sort_field === 'name' ? $sort_direction : null"><span style="font-size: 14px !important; font-weight: bolder !important;">Name</span></x-table.heading>

@@ -1,7 +1,7 @@
 <div class="mt-12">
     <h2 class="text-gray-500 font-bold uppercase tracking-wide text-center">Step 4. Enter the main details for your {{ $post_system_name }} {{ $post_category_name }} {{ match($post->post_type_id) { 1 => 'Idea', 2 => 'Question', 3 => 'Article' } }}</h2>
 
-    <div class="mt-12 rounded-lg p-6 bg-white" x-data="{ show_advanced_options: false }" x-cloak>
+    <div class="mt-12 rounded-lg p-6 bg-white dark:bg-zinc-700" x-data="{ show_advanced_options: false }" x-cloak>
         <p class="mt-3 text-gray-400">The post title is the first thing people will see in the feed, so be creative!</p>
         <input wire:model="post_details.title" class="mt-3 w-full px-4 py-3 border border-purple-800 focus:outline-none focus:border-purple-800" placeholder="Post title" />
         @error('post_details.title') <span class="text-red-600 error italic">{{ $message }}</span> @enderror

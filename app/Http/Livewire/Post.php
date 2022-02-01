@@ -152,7 +152,10 @@
         public function Render() {
             $post = $this->GetPost();
             $comments = $this->GetComments($post);
-            return view('livewire.post', ['post' => $post, 'comments' => $comments]);
+            $has_open_collaboration = $post->ActivePostDetails->whereHas('Collaborations', function($query) use($post) {
+                $query->where('post_detail_id', $post->ActivePostDetails->id)->where('user_id', auth()->user()->id)->where('status', 'Open');
+            })->exists();
+            return view('livewire.post', ['post' => $post, 'has_open_collaboration' => $has_open_collaboration, 'comments' => $comments]);
         }
 
         private function GetPost() {

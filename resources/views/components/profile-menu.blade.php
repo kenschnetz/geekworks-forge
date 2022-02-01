@@ -1,18 +1,18 @@
 <nav {{ $attributes->merge(['class', 'style']) }}>
-    <a href="{{route('user-profile')}}" class="text-gray-900 group flex items-center px-3 py-2">
-        <i class="fal fa-user-circle text-gray-900 text-center" style="font-size: 1.4em !important; width: 32px !important;"></i>
+    <a href="{{route('user-profile')}}" class="text-gray-900 group flex items-center p-2">
+        <i class="fal fa-user-circle text-gray-900 text-center" style="width: 28px !important;"></i>
         <span class="ml-3 font-medium text-gray-500 tracking-wider inline-block align-middle hover:underline">
-            Your Profile
+            Profile
         </span>
     </a>
-    <a href="{{route('account')}}" class="text-gray-900 group flex items-center px-3 py-2">
-        <i class="fal fa-cog text-gray-900 text-center" style="font-size: 1.4em !important; width: 32px !important;"></i>
+    <a href="{{route('account')}}" class="text-gray-900 group flex items-center p-2">
+        <i class="fal fa-cog text-gray-900 text-center" style="width: 28px !important;"></i>
         <span class="ml-3 font-medium text-gray-500 tracking-wider inline-block align-middle hover:underline">
-            Your Account
+            Account
         </span>
     </a>
-    <a href="{{route('messenger')}}" class="text-gray-900 group flex items-center px-3 py-2">
-        <i class="fal fa-comments text-gray-900 text-center" style="font-size: 1.4em !important; width: 32px !important;"></i>
+    <a href="{{route('messenger')}}" class="text-gray-900 group flex items-center p-2">
+        <i class="fal fa-comments text-gray-900 text-center" style="width: 28px !important;"></i>
         <span class="ml-3 font-medium text-gray-500 tracking-wider inline-block align-middle hover:underline">
             Messenger
         </span>
@@ -23,16 +23,16 @@
         @endif
     </a>
 {{--TODO: add notifications here--}}
-    @if(Auth()->user()->IsAdmin())
-        <a href="{{route('admin-tools')}}" class="text-gray-900 group flex items-center px-3 py-2">
-            <i class="fal fa-user-crown text-gray-900 text-center" style="font-size: 1.4em !important; width: 32px !important;"></i>
-            <span class="ml-3 font-medium text-gray-500 tracking-wider inline-block align-middle hover:underline">
-                Admin Tools
-            </span>
-        </a>
-    @endif
-    <a href="{{route('logout')}}" class="text-gray-900 group flex items-center px-3 py-2">
-        <i class="fal fa-sign-out text-gray-900 text-center" style="font-size: 1.4em !important; width: 32px !important;"></i>
+{{--    @if(Auth()->user()->IsAdmin())--}}
+{{--        <a href="{{route('admin-tools')}}" class="text-gray-900 group flex items-center p-2">--}}
+{{--            <i class="fal fa-user-crown text-gray-900 text-center" style="width: 28px !important;"></i>--}}
+{{--            <span class="ml-3 font-medium text-gray-500 tracking-wider inline-block align-middle hover:underline">--}}
+{{--                Admin Tools--}}
+{{--            </span>--}}
+{{--        </a>--}}
+{{--    @endif--}}
+    <a href="{{route('logout')}}" class="text-gray-900 group flex items-center p-2">
+        <i class="fal fa-sign-out text-gray-900 text-center" style="width: 28px !important;"></i>
         <span class="ml-3 font-medium text-gray-500 tracking-wider inline-block align-middle hover:underline">
             Sign Out
         </span>

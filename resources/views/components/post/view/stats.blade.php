@@ -12,10 +12,11 @@
             <i class="fas fa-eye"></i>
             <span class="font-semi-bold text-gray-500">{{ App\Utilities\Number::Shorten($post->views_count) }}</span>
         </div>
-        {{--TODO: figure out where to put this--}}
+        @if($is_feed ?? false)
+            <div class="inline-block ml-auto text-sm text-gray-300 text-right">
+                {{ $post->created_at->diffForHumans() }}
+            </div>
+        @endif
     </div>
-{{--    <div class="text-sm text-gray-300 text-right">--}}
-{{--        {{ $post->created_at->diffForHumans() }}--}}
-{{--    </div>--}}
 </div>
 

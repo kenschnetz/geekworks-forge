@@ -164,5 +164,17 @@
                     'updated_at' => Carbon::now(),
                 ],
             ]);
+            DB::table('post_collaborations')->insert([
+                [
+                    'user_id' => 10,
+                    'post_detail_id' => 1,
+                    'title' => 'Forthin - Ring Of Spell Damaging',
+                    'description' => 'A ring that provides additional damage to spells multiple times per long rest',
+                    'content' => '<div>Forged in the depths of an active volcano, Forthin provides spellcasters the ability to strike their foes with additional damage multiple times per long rest.</div>',
+                    'summary' => 'Altered title slightly',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ],
+            ]);
         }
     }

@@ -15,6 +15,8 @@
                 $table->integer('role_id')->nullable()->after('password');
                 $table->boolean('terms_accepted')->default(false)->after('role_id');
                 $table->dateTime('terms_accepted_at')->nullable()->after('terms_accepted');
+                $table->dateTime('last_password_reset_sent_at')->nullable()->after('terms_accepted_at');
+                $table->boolean('dark_mode')->default(false)->after('last_password_reset_sent_at');
             });
         }
 

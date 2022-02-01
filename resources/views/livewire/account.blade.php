@@ -5,7 +5,7 @@
             <i class="fas fa-times text-white absolute top-1/3 right-3" wire:click="CloseNotification()"></i>
         </div>
     @endif
-    <div class="bg-white p-4 shadow">
+    <div class="bg-white dark:bg-zinc-700 p-4 shadow">
         <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
             Account Info
         </h2>
@@ -38,7 +38,7 @@
             </button>
         </div>
     </div>
-    <div class="mt-3 bg-white p-4 shadow">
+    <div class="mt-3 bg-white dark:bg-zinc-700 p-4 shadow">
         <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
             Change Password
         </h2>

@@ -8,7 +8,7 @@
                 @include('components.list-search')
             </div>
         @endif
-        <div class="bg-white shadow p-4">
+        <div class="bg-white dark:bg-zinc-700 shadow p-4">
             @if($items->count() > 0)
                 @include('components.dynamic-table')
             @else

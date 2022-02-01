@@ -13,7 +13,7 @@
             @if($posts->count() > 0)
                 <ul role="list" class="space-y-4">
                     @foreach($posts as $post)
-                        <li class="bg-white p-4 shadow sm:p-6">
+                        <li class="bg-white dark:bg-zinc-700 p-4 shadow sm:p-6">
                             @include('components.post.view.preview ')
                         </li>
                     @endforeach
@@ -23,7 +23,7 @@
                     {{ $posts->links() }}
                 @endif
             @else
-                <div class="bg-white p-4 shadow sm:p-6">
+                <div class="bg-white dark:bg-zinc-700 p-4 shadow sm:p-6">
                     No posts Found!
                 </div>
             @endif

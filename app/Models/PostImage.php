@@ -11,8 +11,8 @@
             'user_image_id' => null,
         ];
 
-        public function PostDetails() {
-            return $this->belongsTo(PostDetail::class);
+        public function Post() {
+            return $this->belongsTo(Post::class);
         }
 
         public function Image() {

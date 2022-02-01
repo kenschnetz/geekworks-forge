@@ -1,17 +1,12 @@
-<div class="flex space-x-3">
+<div class="flex space-x-3 items-center">
     @if(!empty($author))
         <div class="flex-shrink-0">
             <a href="{{ route('user-profile', ['user_name' => Str::lower($author->Character->name)]) }}">
                 <img class="h-10 w-10 rounded-full" src="{{ $author->Character->ProfilePhoto->path ?? '/storage/img/default-profile.jpg' }}" alt="">
             </a>
         </div>
-        <div class="min-w-0 flex-1">
-            <p class="text-sm font-medium text-gray-900">
-                <a href="{{ route('user-profile', ['user_name' => Str::lower($author->Character->name)]) }}" class="hover:underline font-medium text-purple-700">{{ $author->Character->name }}</a>
-            </p>
-            <p class="text-sm text-gray-500">
-                Level {{ $author->Character->level }}
-            </p>
+        <div class="min-w-0 flex-1 justify-center items-center">
+            <a href="{{ route('user-profile', ['user_name' => Str::lower($author->Character->name)]) }}" class="hover:underline text-sm font-medium text-purple-800 dark:text-gray-300">{{ $author->Character->name }}</a>
         </div>
     @else
         <div class="flex-shrink-0">

@@ -1,5 +1,5 @@
 <div>
-    <div class="mt-3 bg-white px-4 py-6 shadow sm:p-6">
+    <div class="mt-3 bg-white dark:bg-zinc-700 px-4 py-6 shadow sm:p-6">
         <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
             Leave A Comment
         </h2>

@@ -6,8 +6,8 @@
         <hr class="my-3" />
         <div x-data="{ tab: @entangle('tab') }" id="tab-wrapper" x-cloak>
             <nav class="bg-gray-100">
-                <a :class="{ 'bg-white border border-b-0': tab === 0 }" class="inline-block p-4 text-center rounded-tr-lg" style="min-width: 100px !important;" @click.prevent="tab = 0" href="#">List</a>
-                <a :class="{ 'bg-white border border-b-0': tab === 1 }" class="inline-block p-4 text-center rounded-tl-lg rounded-tr-lg" style="min-width: 100px !important;" @click.prevent="tab = 1" href="#">Add</a>
+                <a :class="{ 'bg-white dark:bg-zinc-700 border border-b-0': tab === 0 }" class="inline-block p-4 text-center rounded-tr-lg" style="min-width: 100px !important;" @click.prevent="tab = 0" href="#">List</a>
+                <a :class="{ 'bg-white dark:bg-zinc-700 border border-b-0': tab === 1 }" class="inline-block p-4 text-center rounded-tl-lg rounded-tr-lg" style="min-width: 100px !important;" @click.prevent="tab = 1" href="#">Add</a>
             </nav>
             <div x-show="tab === 0" class="p-3 border -mt-px">
                 <div class="flex items-center">

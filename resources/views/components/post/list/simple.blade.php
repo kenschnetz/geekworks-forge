@@ -5,7 +5,7 @@
                 <div class="min-w-0 flex-1">
                     <p class="font-medium text-gray-900">
                         <a href="{{ route('post', ['slug' => $post->slug]) }}" class="hover:underline font-medium text-purple-700">
-                            {{ $post->ActivePostDetails->title }}
+                            {{ $post->ActivePostDetails->title }} {{ $post->published ? '' : '[DRAFT]' }}
                         </a>
                     </p>
                 </div>

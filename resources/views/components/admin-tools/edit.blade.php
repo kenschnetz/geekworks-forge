@@ -1,4 +1,4 @@
-<div class="max-w-2xl mx-auto bg-white shadow p-4">
+<div class="max-w-2xl mx-auto bg-white dark:bg-zinc-700 shadow p-4">
     <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
         {{ $title }}
     </h2>

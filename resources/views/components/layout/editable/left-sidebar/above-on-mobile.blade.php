@@ -1,7 +1,7 @@
 <div class="w-full">
     @if($editing)
         <div class="max-w-3xl lg:max-w-7xl mx-auto sm:px-4 text-center">
-            <div class="bg-white border border-orange-600 p-4">
+            <div class="bg-white dark:bg-zinc-700 border border-orange-600 p-4">
                 {{ $edit_buttons }}
             </div>
         </div>

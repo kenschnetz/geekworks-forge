@@ -19,6 +19,8 @@
             'tags_accepted' => false,
             'attributes_accepted' => false,
             'actions_accepted' => false,
+            'status' => 'Open',
+            'outcome' => null,
         ];
 
         public static function Boot() {
@@ -35,7 +37,7 @@
         }
 
         public function PostDetails() {
-            return $this->belongsTo(PostDetail::class);
+            return $this->belongsTo(PostDetail::class, 'post_detail_id');
         }
 
         public function Tags() {
