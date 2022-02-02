@@ -29,7 +29,7 @@
         }
 
         public function CreateItem() {
-            $this->new_item->filename = $this->uploaded_file->getClientOriginalName();
+            $this->new_item->filename = optional($this->uploaded_file)->getClientOriginalName() ?? null;
             $this->validate();
             $path = $this->uploaded_file->store('/public/user-images/' . auth()->user()->id);
             $this->user_image->user_id = auth()->user()->id;
