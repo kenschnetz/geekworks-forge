@@ -14,14 +14,14 @@
                         @endif
                         <div class="relative flex items-start space-x-3">
                             <div class="relative">
-                                <a href="{{ route('user-profile', ['id' => $message->User->id]) }}">
+                                <a href="{{ route('user-profile', ['user_name' => $message->User->Character->user_name]) }}">
                                     <img class="h-10 w-10 rounded-full bg-gray-400 flex items-center justify-center border border-2 border-white" src="{{ ($message->User->Character->ProfilePhoto->path ?? '/storage/img/default-profile.jpg') }}" alt="">
                                 </a>
                             </div>
                             <div class="min-w-0 flex-1 ml-2 pl-2">
                                 <div>
                                     <div class="text-sm">
-                                        <a href="{{ route('user-profile', ['id' => $message->User->id]) }}" class="font-medium text-gray-900">{{ $message->User->Character->name ?? 'User#' . $message->User->id }}</a>
+                                        <a href="{{ route('user-profile', ['user_name' => $message->User->Character->user_name]) }}" class="font-medium text-gray-900">{{ $message->User->Character->name ?? 'User#' . $message->User->id }}</a>
                                     </div>
                                     <p class="text-sm text-gray-500">
                                         {{ $message->created_at->diffForHumans() }}
