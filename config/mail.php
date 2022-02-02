@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_DRIVER', 'sendmail'),
+    'default' => env('MAIL_MAILER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -114,13 +114,5 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
-
-    'stream' => [
-        'ssl' => [
-            'allow_self_signed' => true,
-            'verify_peer' => false,
-            'verify_peer_name' => false,
-        ],
-    ]
 
 ];
