@@ -31,7 +31,7 @@
                     }
                 }
             } else {
-                $this->RemoveItem($item);
+                $this->RemoveItem($this->selected_items[$item['id']]);
             }
         }
 
