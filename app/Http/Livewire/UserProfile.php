@@ -6,6 +6,7 @@
     use App\Models\SkillLevel as SkillLevelModel;
     use App\Models\UserFollow as UserFollowModel;
     use App\Utilities\User as UserUtilities;
+    use Illuminate\Foundation\Inspiring;
     use Illuminate\Support\Arr;
     use Illuminate\Support\Facades\Log;
     use Livewire\Component;
@@ -14,10 +15,11 @@
     class UserProfile extends Component {
         public string $user_name;
         public SkillLevelModel $skill_level;
-        public UserModel $profile_user;
+        public UserModel $profile_user, $profile_user_edits;
         public array $stats, $top_posts, $recent_posts, $recent_comments, $images = [];
         public array|null $profile_photo;
         public bool $following, $can_edit = false, $editing = false, $my_profile;
+        public string|null $bio;
 
         protected $listeners = ['RefreshMeta'];
 
@@ -72,11 +74,16 @@
         }
 
         public function EnableEditMode() {
+            $this->profile_user_edits = $this->profile_user;
             if ($this->can_edit) {
                 $this->editing = true;
             } else {
                 abort(403);
             }
+        }
+
+        public function Inspire() {
+            $this->profile_user_edits['character']->bio = Inspiring::quote();
         }
 
         public function CancelEdit() {
@@ -87,10 +94,11 @@
             if ($this->can_edit) {
                 $this->validate();
                 $this->profile_user->Character->user_image_id = $this->profile_photo['id'] ?? null;
-                $this->profile_user->Character->name = $this->profile_user['character']->name;
-                $this->profile_user->Character->bio = $this->profile_user['character']->bio;
+                $this->profile_user->Character->name = $this->profile_user_edits['character']->name;
+                $this->profile_user->Character->bio = $this->profile_user_edits['character']->bio;
                 $this->profile_user->Character->save();
                 $this->editing = false;
+                redirect()->route('user-profile');
             } else {
                 abort(403);
             }
@@ -101,14 +109,14 @@
         }
         protected function Rules() {
             return [
-                'profile_user.character.name' => [
+                'profile_user_edits.character.name' => [
                     'required',
                     'string',
                     'max:255',
                     Rule::unique('user_characters', 'name')->ignore($this->profile_user->Character->id)
                 ],
-                'profile_user.character.bio' => 'required|string|max:600',
-                'profile_user.character.user_image_id' => 'nullable|integer',
+                'profile_user_edits.character.bio' => 'required|string|max:600',
+                'profile_user_edits.character.user_image_id' => 'nullable|integer',
             ];
         }
     }
