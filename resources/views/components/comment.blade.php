@@ -28,7 +28,7 @@
                     </span>
                 @endif
                 @if($comment->User->id === $user->id)
-                    <span class="hover:underline mr-3" x-show="!deleting && !replying" x-on:click="$wire.set('editing_id', {{$comment->id}}), $wire.set('edit_comment_content', '{{$comment->comment}}'), editing = true">
+                    <span class="hover:underline mr-3" x-show="!deleting && !editing && !replying" x-on:click="$wire.set('editing_id', {{$comment->id}}), $wire.set('edit_comment_content', '{{$comment->comment}}'), editing = true">
                         Edit
                     </span>
                 @elseif(empty($comment->comment_id))
@@ -37,7 +37,7 @@
                     </span>
                 @endif
                 @if($comment->User->id === $user->id || ($user->IsStaff() || $user->IsAdmin()))
-                    <span class="hover:underline mr-3" x-show="!deleting && !replying" x-on:click="deleting = true" @click.away="deleting = false">
+                    <span class="hover:underline mr-3" x-show="!deleting && !editing && !replying" x-on:click="deleting = true" @click.away="deleting = false">
                         Delete
                     </span>
                     <span class="hover:underline mr-3" x-show="deleting" x-on:click="deleting = false" @click.away="deleting = false">
