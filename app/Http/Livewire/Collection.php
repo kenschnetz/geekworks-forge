@@ -4,6 +4,7 @@
 
     use App\Http\Livewire\Parent\Editable;
     use App\Models\Collection as CollectionModel;
+    use Illuminate\Validation\Rule;
     use Livewire\WithPagination;
 
     class Collection extends Editable {
@@ -19,7 +20,6 @@
             }
             $this->list_route = 'collections';
             $this->pagination_count = config('app.settings.post_pagination', 20);
-            $this->SetRules();
             $this->model = 'App\Models\Collection';
         }
 
@@ -28,10 +28,15 @@
             return view('livewire.collection', ['posts' => $posts->paginate($this->pagination_count)]);
         }
 
-        private function SetRules() {
-            $this->rules = [
+        protected function Rules() {
+            return [
                 'item.user_id' => 'required',
-                'item.name' => 'required',
+                'item.name' => [
+                    'required',
+                    'string',
+                    'max:255',
+                    Rule::unique('collections', 'name')->ignore(optional($this->item)->id)
+                ],
                 'item.description' => 'required|string',
                 'item.publicly_visible' => 'required|boolean',
             ];
