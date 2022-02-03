@@ -23,10 +23,6 @@
         public UserModel $user;
         public array $author, $canons = [], $collections = [];
         public bool|null $upvoted = null, $flagged = null;
-        public bool $replying = false, $editing = false;
-        public int|null $replying_to_id = null, $editing_comment_id = null;
-        public string|null $replying_to_name = null, $replying_to_comment = null;
-        public string $comment_content = '';
         protected $listeners = ['RefreshMeta'];
 
         public function Mount() {
@@ -83,46 +79,6 @@
             }
         }
 
-        public function EditComment($id, $comment) {
-            $this->editing = true;
-            $this->editing_comment_id = $id;
-            $this->comment_content = $comment;
-        }
-
-        public function ReplyTo($replying_to_id, $replying_to_name, $replying_to_comment) {
-            $this->replying = true;
-            $this->replying_to_id = $replying_to_id;
-            $this->replying_to_name = $replying_to_name;
-            $this->replying_to_comment = $replying_to_comment;
-        }
-
-        public function ClearCommentForm() {
-            $this->replying = false;
-            $this->editing = false;
-            $this->reset('replying_to_id', 'replying_to_name', 'replying_to_comment', 'editing_comment_id', 'comment_content');
-        }
-
-        public function SubmitComment() {
-            if (empty($this->editing_comment_id)) {
-                $comment = new CommentModel;
-            } else {
-                $comment = CommentModel::find($this->editing_comment_id);
-            }
-            $comment->post_id = $this->post_id;
-            $comment->user_id = $this->user->id;
-            $comment->comment_id = $this->replying_to_id;
-            $comment->comment = trim($this->comment_content);
-            $comment->save();
-            $this->ClearCommentForm();
-        }
-
-        public function DeleteComment($id) {
-            $comment = CommentModel::find($id);
-            if (!empty($comment)) {
-                $comment->delete();
-            }
-        }
-
         public function RefreshMeta($name, $selected_items, $removed_items) {
             $this->{Str::plural($name)} = $selected_items;
             $this->{'removed_' . Str::plural($name)} = $removed_items;
@@ -151,20 +107,15 @@
 
         public function Render() {
             $post = $this->GetPost();
-            $comments = $this->GetComments($post);
             $has_open_collaboration = $post->ActivePostDetails->whereHas('Collaborations', function($query) use($post) {
                 $query->where('post_detail_id', $post->ActivePostDetails->id)->where('user_id', auth()->user()->id)->where('status', 'Open');
             })->exists();
-            return view('livewire.post', ['post' => $post, 'has_open_collaboration' => $has_open_collaboration, 'comments' => $comments]);
+            return view('livewire.post', ['post' => $post, 'has_open_collaboration' => $has_open_collaboration]);
         }
 
         private function GetPost() {
             $post = PostModel::where('id', $this->post_id)->with('ActivePostDetails', 'ActivePostDetails.Tags', 'ActivePostDetails.Attributes', 'ActivePostDetails.Actions')->withCount('Upvotes', 'Comments', 'Views')->first();
             $this->upvoted = UpvoteModel::where('user_id', auth()->user()->id)->where('upvotable_id', $post->id)->exists();
             return $post;
-        }
-
-        private function GetComments($post) {
-            return $post->Comments()->whereNull('comment_id')->paginate($this->pagination_count, ['*'], 'commentsPage');
         }
     }
