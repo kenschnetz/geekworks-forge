@@ -47,7 +47,7 @@
             'email_verified_at' => 'datetime',
         ];
 
-        public function IsStaff() {
+	    public function IsStaff() {
             return $this->Role->name === 'Staff';
         }
 
