@@ -13,18 +13,12 @@
                 @else
                     <div>
                         @if($new_thread)
-                            <div x-data="{name: @entangle('selected_thread.name'), limit: 255 }">
-                                <div class="border border-purple-800 focus:border-purple-800">
-                                    <span class="text-xs italic p-1 float-right" x-text="(limit - name.length)" :class="{'text-gray-400':  name.length <= limit, 'text-red-500':  name.length > limit }"></span>
-                                    <div class="editable-div px-4 py-3 focus:outline-none" x-on:input="name = $el.textContent" contenteditable placeholder="Thread name" wire:ignore>{{ $selected_thread->name }}</div>
-                                </div>
+                            <div class="mt-3">
+                                <x-dynamic-input :key="'selected_thread.name'" :placeholder="'Thread name'">{{ $selected_thread->name }}</x-dynamic-input>
                                 @error('selected_thread.name') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
                             </div>
-                            <div class="mt-3" x-data="{description: @entangle('selected_thread.description'), limit: 255 }">
-                                <div class="border border-purple-800 focus:border-purple-800">
-                                    <span class="text-xs italic p-1 float-right" x-text="(limit - description.length)" :class="{'text-gray-400':  description.length <= limit, 'text-red-500':  description.length > limit }"></span>
-                                    <div class="editable-div px-4 py-3 focus:outline-none" x-on:input="description = $el.textContent" contenteditable placeholder="Thread description" wire:ignore>{{ $selected_thread->description }}</div>
-                                </div>
+                            <div class="mt-3">
+                                <x-dynamic-input :key="'selected_thread.description'" :placeholder="'Thread name'">{{ $selected_thread->description }}</x-dynamic-input>
                                 @error('selected_thread.description') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
                             </div>
                             <div class="mt-3 w-full">
@@ -59,8 +53,8 @@
                     <form id="comment-form" wire:submit.prevent="Submit">
                         @csrf
                         @error('content') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
-                        <div class="mt-3" x-data="{ content: @entangle('content') }">
-                            <div class="px-4 py-3 border border-purple-800 focus:outline-none focus:border-purple-800 editable-div" x-on:input="content = $el.textContent" contenteditable placeholder="Enter message" wire:ignore></div>
+                        <div class="mt-3">
+                            <x-dynamic-input :limit="0" :key="'content'" :placeholder="'Enter message'" wire:ignore>{{ $content }}</x-dynamic-input>
                         </div>
                         <div class="mt-1 text-right">
                             <button type="submit" x-on:click="content = null" class="mt-1 bg-purple-800 hover:bg-transparent text-white hover:text-purple-800 font-bold px-4 py-3 border border-purple-800">

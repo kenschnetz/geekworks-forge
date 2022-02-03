@@ -27,26 +27,16 @@
                 <article aria-labelledby="question-title-81614" x-data="{ post_menu_open: false }">
                     <div class="flex space-x-3">
                         <div class="min-w-0 flex-1">
-                            <div x-data="{title: @entangle('post_details.title'), limit: 255 }">
-                                <div class="border border-purple-800 focus:border-purple-800">
-                                    <span class="text-xs italic p-1 float-right" x-text="limit - title.length" :class="{'text-gray-400':  title.length <= limit, 'text-red-500':  title.length > limit }"></span>
-                                    <div class="editable-div px-4 py-3 focus:outline-none" x-on:input="title = $el.textContent" contenteditable placeholder="Post title">{{ $post_details->title }}</div>
-                                </div>
-                                @error('post_details.title') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
-                            </div>
+                            <x-dynamic-input :key="'post_details.title'" :placeholder="'Post title'">{{ $post_details->title }}</x-dynamic-input>
+                            @error('post_details.title') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
                         </div>
                     </div>
                     <div class="mt-1">
                         <div class="mt-3 bg-gray-100 rounded w-1/4" style="height: 20px;"></div>
                     </div>
                     <div class="mt-3">
-                        <div x-data="{description: @entangle('post_details.description'), limit: 255 }">
-                            <div class="border border-purple-800 focus:border-purple-800">
-                                <span class="text-xs italic p-1 float-right" x-text="limit - description.length" :class="{'text-gray-400':  description.length <= limit, 'text-red-500':  description.length > limit }"></span>
-                                <div class="editable-div px-4 py-3 focus:outline-none" x-on:input="description = $el.textContent" contenteditable placeholder="Post description">{{ $post_details->description }}</div>
-                            </div>
-                            @error('post_details.description') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
-                        </div>
+                        <x-dynamic-input :key="'post_details.description'" :placeholder="'Post description'">{{ $post_details->description }}</x-dynamic-input>
+                        @error('post_details.description') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
                     </div>
                     <hr class="mt-3" />
                     <div class="mt-3 space-y-4">

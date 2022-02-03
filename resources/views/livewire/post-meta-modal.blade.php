@@ -51,24 +51,14 @@
                     <div class="w-full p-3">
                         <div class="flex space-x-3">
                             <div class="min-w-0 flex-1">
-                                <div x-data="{name: @entangle('new_item.name'), limit: 255 }">
-                                    <div class="border border-purple-800 focus:border-purple-800">
-                                        <span x-show="name?.length > 0" class="text-xs italic p-1 float-right" x-text="limit - name?.length" :class="{'text-gray-400':  name?.length <= limit, 'text-red-500':  name?.length > limit }"></span>
-                                        <div class="editable-div px-4 py-3 focus:outline-none" x-on:blur="name = $el.textContent" contenteditable placeholder="Name">{{ $new_item->name }}</div>
-                                    </div>
-                                    @error('new_item.name') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
-                                </div>
+                                <x-dynamic-input :key="'new_item.name'" :placeholder="'Name'">{{ $new_item->name }}</x-dynamic-input>
+                                @error('new_item.name') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
                             </div>
                         </div>
                         <div class="mt-3 flex space-x-3">
                             <div class="min-w-0 flex-1">
-                                <div x-data="{description: @entangle('new_item.description'), limit: 255 }">
-                                    <div class="border border-purple-800 focus:border-purple-800">
-                                        <span x-show="description?.length > 0" class="text-xs italic p-1 float-right" x-text="limit - description?.length" :class="{'text-gray-400':  description?.length <= limit, 'text-red-500':  description?.length > limit }"></span>
-                                        <div class="editable-div px-4 py-3 focus:outline-none" x-on:blur="description = $el.textContent" contenteditable placeholder="Description">{{ $new_item->description }}</div>
-                                    </div>
-                                    @error('new_item.description') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
-                                </div>
+                                <x-dynamic-input :key="'new_item.description'" :placeholder="'Name'">{{ $new_item->description }}</x-dynamic-input>
+                                @error('new_item.description') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
                             </div>
                         </div>
                         <button x-show="!isUploading" class="mt-3 cursor-pointer inline-block bg-orange-600 hover:bg-transparent text-white hover:text-orange-600 font-bold px-4 py-3 border border-orange-600" type="submit" x-on:click="">

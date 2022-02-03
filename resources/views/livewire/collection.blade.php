@@ -14,25 +14,15 @@
         @if($editing)
             <div class="flex space-x-3">
                 <div class="min-w-0 flex-1">
-                    <div>
-                        <div class="border border-purple-800 focus:border-purple-800">
-                            <span class="text-xs italic p-1 float-right" x-text="limit - item.length" :class="{'text-gray-400':  item.length <= limit, 'text-red-500':  item.length > limit }"></span>
-                            <div class="editable-div px-4 py-3 focus:outline-none" x-on:input="name = $el.textContent" contenteditable placeholder="Collection name" wire:ignore>{{ $item->name }}</div>
-                        </div>
-                        @error('item.name') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
-                    </div>
+                    <x-dynamic-input :key="'item.name'" :placeholder="'Collection name'">{{ $item->name }}</x-dynamic-input>
+                    @error('item.name') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
                 </div>
             </div>
             <hr class="mt-3"/>
             <div class="mt-3 flex space-x-3">
                 <div class="min-w-0 flex-1">
-                    <div>
-                        <div class="border border-purple-800 focus:border-purple-800">
-                            <span class="text-xs italic p-1 float-right" x-text="limit - item.length" :class="{'text-gray-400':  item.length <= limit, 'text-red-500':  item.length > limit }"></span>
-                            <div class="editable-div px-4 py-3 focus:outline-none" x-on:input="description = $el.textContent" contenteditable placeholder="Collection description" wire:ignore>{{ $item->description }}</div>
-                        </div>
-                        @error('item.description') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
-                    </div>
+                    <x-dynamic-input :key="'item.description'" :placeholder="'Collection description'">{{ $item->description }}</x-dynamic-input>
+                    @error('item.description') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
                 </div>
             </div>
             <hr class="mt-3"/>
@@ -72,4 +62,5 @@
     <x-slot name="right_sidebar">
         @include('components.collection.view.right-sidebar')
     </x-slot>
+{{--TODO: change left sidebar to have a link back to collections and a delete button--}}
 </x-layout.editable.left-sidebar.above-on-mobile>

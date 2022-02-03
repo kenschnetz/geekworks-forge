@@ -12,24 +12,14 @@
         <hr class="mt-3"/>
         <div class="mt-3 flex space-x-3">
             <div class="min-w-0 flex-1">
-                <div x-data="{name: @entangle('user.name'), limit: 255 }">
-                    <div class="border border-purple-800 focus:border-purple-800">
-                        <span class="text-xs italic p-1 float-right" x-text="limit - name.length" :class="{'text-gray-400':  name.length <= limit, 'text-red-500':  name.length > limit }"></span>
-                        <div class="editable-div px-4 py-3 focus:outline-none" x-on:input="name = $el.textContent" contenteditable placeholder="Name" wire:ignore>{{ $user->name }}</div>
-                    </div>
-                    @error('user.name') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
-                </div>
+                <x-dynamic-input :key="'user.name'" :placeholder="'User name'">{{ $user->name }}</x-dynamic-input>
+                @error('user.name') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
             </div>
         </div>
         <div class="mt-3 flex space-x-3">
             <div class="min-w-0 flex-1">
-                <div x-data="{email: @entangle('user.email'), limit: 255 }">
-                    <div class="border border-purple-800 focus:border-purple-800">
-                        <span class="text-xs italic p-1 float-right" x-text="limit - email.length" :class="{'text-gray-400':  email.length <= limit, 'text-red-500':  email.length > limit }"></span>
-                        <div class="editable-div px-4 py-3 focus:outline-none" x-on:input="email = $el.textContent" contenteditable placeholder="Name" wire:ignore>{{ $user->email }}</div>
-                    </div>
-                    @error('user.email') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
-                </div>
+                <x-dynamic-input :key="'user.email'" :placeholder="'User email'">{{ $user->email }}</x-dynamic-input>
+                @error('user.email') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
             </div>
         </div>
         <div class="mt-3 text-right">
@@ -45,24 +35,12 @@
         <hr class="mt-3"/>
         <div class="mt-3 flex space-x-3">
             <div class="min-w-0 flex-1">
-                <div x-data="{new_password: @entangle('new_password'), limit: 255 }">
-                    <div class="border border-purple-800 focus:border-purple-800">
-                        <span class="text-xs italic p-1 float-right" x-text="limit - new_password.length" :class="{'text-gray-400':  new_password.length <= limit, 'text-red-500':  new_password.length > limit }"></span>
-                        <div class="editable-div px-4 py-3 focus:outline-none" x-on:input="new_password = $el.textContent" contenteditable placeholder="New password" wire:ignore>{{ $new_password }}</div>
-                    </div>
-                    @error('new_password') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
-                </div>
+                <x-dynamic-input :limit="30" :key="'new_password'" :placeholder="'New password'">{{ $new_password }}</x-dynamic-input>
             </div>
         </div>
         <div class="mt-3 flex space-x-3">
             <div class="min-w-0 flex-1">
-                <div x-data="{new_password_confirmation: @entangle('new_password_confirmation'), limit: 255 }">
-                    <div class="border border-purple-800 focus:border-purple-800">
-                        <span class="text-xs italic p-1 float-right" x-text="limit - new_password_confirmation.length" :class="{'text-gray-400':  new_password_confirmation.length <= limit, 'text-red-500':  new_password_confirmation.length > limit }"></span>
-                        <div class="editable-div px-4 py-3 focus:outline-none" x-on:input="new_password_confirmation = $el.textContent"  contenteditable placeholder="Confirm password" wire:ignore>{{ $new_password_confirmation }}</div>
-                    </div>
-                    @error('new_password_confirmation') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
-                </div>
+                <x-dynamic-input :limit="30" :key="'new_password_confirmation'" :placeholder="'Confirm password'">{{ $new_password_confirmation }}</x-dynamic-input>
             </div>
         </div>
         <div class="mt-3 text-right">

@@ -22,9 +22,7 @@
         @endif
         <form id="comment-form" wire:submit.prevent="SubmitComment">
             @csrf
-            <div class="mt-3" x-data="{ comment_content: @entangle('comment_content') }">
-                <div class="px-4 py-3 border border-purple-800 focus:outline-none focus:border-purple-800" x-on:blur="comment_content = $el.textContent" contenteditable placeholder="Enter comment">{{ $comment_content }}</div>
-            </div>
+            <x-dynamic-input :limit="0" :key="'comment_content'" :placeholder="'Comment'">{{ $comment_content }}</x-dynamic-input>
             <div class="mt-1 text-right">
                 <button type="submit" class="mt-1 bg-purple-800 hover:bg-transparent text-white hover:text-purple-800 font-bold px-4 py-3 border border-purple-800">
                     Submit

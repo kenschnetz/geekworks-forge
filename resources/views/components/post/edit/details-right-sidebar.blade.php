@@ -14,12 +14,9 @@
                                         <span class="font-bold">{{ $post_attribute['name'] }}:</span> {{ $post_attribute['value'] }}
                                     </div>
                                 @else
-                                    <div class="border border-gray-200 mt-2 px-2 py-1" x-data="{value: '', limit: 255 }">
+                                    <div class="border border-gray-200 mt-2 px-2 py-1" wire:key="post_attribute_{{ $post_attribute['id'] }}">
                                         <span class="font-bold">{{ $post_attribute['name'] }}:</span>
-                                        <div class="my-1 border border-purple-800 focus:border-purple-800">
-                                            <span class="text-xs italic p-1 float-right" x-text="limit - value?.length" :class="{'text-gray-400':  value?.length <= limit, 'text-red-500':  value?.length > limit }"></span>
-                                            <div class="editable-div px-2 py-1 focus:outline-none" x-init="value = $el.textContent" x-on:input="value = $el.textContent, $wire.set('attributes.{{$post_attribute['id']}}.value', value)" contenteditable placeholder="Value">{{ $post_attribute['value'] }}</div>
-                                        </div>
+                                        <x-dynamic-input :key="'attributes.' . $post_attribute['id'] . '.value'" :placeholder="'Value'">{{ $post_attribute['value'] }}</x-dynamic-input>
                                     </div>
                                     @error('attributes.' . $post_attribute['id'] . '.value') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
                                 @endif
@@ -33,7 +30,7 @@
                     </div>
                     @if(!$is_collaboration)
                         <div class="mt-1">
-                            <span class="text-sm italic text-purple-800 cursor-pointer hover:underline" x-data="{}" x-on:click="window.livewire.emitTo('attribute-post-meta-modal', 'Show')">Manage Attributes</span>
+                            <span class="text-sm italic text-purple-800 cursor-pointer hover:underline" x-data="{}" x-on:click="window.livewire.emitTo('attribute-post-meta-modal', 'Show')" wire:ignore>Manage Attributes</span>
                         </div>
                     @endif
                 </div>
@@ -51,12 +48,9 @@
                                         <span class="font-bold">{{ $post_action['name'] }}:</span> {{ $post_action['value'] }}
                                     </div>
                                 @else
-                                    <div class="border border-gray-200 mt-2 px-2 py-1" x-data="{value: '', limit: 255 }">
+                                    <div class="border border-gray-200 mt-2 px-2 py-1" wire:key="post_action_{{ $post_action['id'] }}">
                                         <span class="font-bold">{{ $post_action['name'] }}:</span>
-                                        <div class="my-1 border border-purple-800 focus:border-purple-800">
-                                            <span class="text-xs italic p-1 float-right" x-text="limit - value?.length" :class="{'text-gray-400':  value?.length <= limit, 'text-red-500':  value?.length > limit }"></span>
-                                            <div class="editable-div px-2 py-1 focus:outline-none" x-init="value = $el.textContent" x-on:input="value = $el.textContent" contenteditable placeholder="Value" x-on:blur="$wire.set('actions.{{$post_action['id']}}.value', value)">{{ $post_action['value'] }}</div>
-                                        </div>
+                                        <x-dynamic-input :key="'actions.' . $post_action['id'] . '.value'" :placeholder="'Value'">{{ $post_action['value'] }}</x-dynamic-input>
                                     </div>
                                     @error('actions.' . $post_action['id'] . '.value') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
                                 @endif

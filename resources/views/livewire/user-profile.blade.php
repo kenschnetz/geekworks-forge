@@ -68,13 +68,8 @@
                         @if($editing)
                             <div class="flex space-x-3">
                                 <div class="min-w-0 flex-1">
-                                    <div x-data="{name: @entangle('profile_user.character.name'), limit: 255 }">
-                                        <div class="border border-purple-800 focus:border-purple-800">
-                                            <span class="text-xs italic p-1 float-right" x-text="limit - name.length" :class="{'text-gray-400':  name.length <= limit, 'text-red-500':  name.length > limit }"></span>
-                                            <div class="editable-div px-4 py-3 focus:outline-none" x-on:input="name = $el.textContent" contenteditable placeholder="Character name" wire:ignore>{{ $profile_user['character']->name }}</div>
-                                        </div>
-                                        @error('profile_user.character.name') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
-                                    </div>
+                                    <x-dynamic-input :key="'profile_user_edits.character.name'" :placeholder="'Character name'">{{ $profile_user_edits['character']->name }}</x-dynamic-input>
+                                    @error('profile_user_edits.character.name') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         @else
@@ -87,13 +82,8 @@
                             @if($editing)
                                 <div class="flex space-x-3">
                                     <div class="min-w-0 flex-1">
-                                        <div x-data="{bio: @entangle('profile_user.character.bio'), limit: 255 }">
-                                            <div class="border border-purple-800 focus:border-purple-800">
-                                                <span class="text-xs italic p-1 float-right" x-text="limit - bio.length" :class="{'text-gray-400':  bio.length <= limit, 'text-red-500':  bio.length > limit }"></span>
-                                                <div class="editable-div px-4 py-3 focus:outline-none" x-on:input="bio = $el.textContent" contenteditable placeholder="Character bio" wire:ignore>{{ $profile_user['character']->bio }}</div>
-                                            </div>
-                                            @error('profile_user.character.bio') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
-                                        </div>
+                                        <x-dynamic-input :key="'profile_user_edits.character.bio'" :placeholder="'Character name'"><i class="fas fa-sync-alt text-gray-200 hover:text-purple-800 cursor-pointer mr-3" wire:click="Inspire()" x-on:click.debounce="SetValue(), SetLength()"></i>{{ $profile_user_edits['character']->bio }}</x-dynamic-input>
+                                        @error('profile_user_edits.character.bio') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                             @else
@@ -107,22 +97,22 @@
                 <hr class="mt-3" />
                 <div class="mt-3 spacy-y-2 md:grid md:grid-cols-4 md:gap-x-2">
                     <div class="w-full md:col-span-1">
-                        <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['idea_count'] <= 0, 'text-purple-800' => $stats['idea_count'] > 0]) style="height: 80px;">
+                        <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['idea_count'] <= 0, 'text-orange-600' => $stats['idea_count'] > 0]) style="height: 80px;">
                             {{ $stats['idea_count'] }} {{ $stats['idea_count'] === 1 ? 'idea' : 'ideas' }}
                         </div>
                     </div>
                     <div class="w-full mt-3 md:m-0 md:col-span-1">
-                        <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['question_count'] <= 0, 'text-purple-800' => $stats['question_count'] > 0]) style="height: 80px;">
+                        <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['question_count'] <= 0, 'text-orange-600' => $stats['question_count'] > 0]) style="height: 80px;">
                             {{ $stats['question_count'] }} {{ $stats['question_count'] === 1 ? 'question' : 'questions' }}
                         </div>
                     </div>
                     <div class="w-full mt-3 md:m-0 md:col-span-1">
-                        <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['article_count'] <= 0, 'text-purple-800' => $stats['article_count'] > 0]) style="height: 80px;">
+                        <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['article_count'] <= 0, 'text-orange-600' => $stats['article_count'] > 0]) style="height: 80px;">
                             {{ $stats['article_count'] }} {{ $stats['article_count'] === 1 ? 'article' : 'articles' }}
                         </div>
                     </div>
                     <div class="w-full mt-3 md:m-0 md:col-span-1">
-                        <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['comment_count'] <= 0, 'text-purple-800' => $stats['comment_count'] > 0]) style="height: 80px;">
+                        <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['comment_count'] <= 0, 'text-orange-600' => $stats['comment_count'] > 0]) style="height: 80px;">
                             {{ $stats['comment_count'] }} {{ $stats['comment_count'] === 1 ? 'comment' : 'comments' }}
                         </div>
                     </div>
