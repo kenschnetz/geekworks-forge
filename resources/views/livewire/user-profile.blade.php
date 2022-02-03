@@ -82,7 +82,12 @@
                             @if($editing)
                                 <div class="flex space-x-3">
                                     <div class="min-w-0 flex-1">
-                                        <x-dynamic-input :key="'profile_user_edits.character.bio'" :placeholder="'Character name'"><i class="fas fa-sync-alt text-gray-200 hover:text-purple-800 cursor-pointer mr-3" wire:click="Inspire()" x-on:click.debounce="SetValue(), SetLength()"></i>{{ $profile_user_edits['character']->bio }}</x-dynamic-input>
+                                        <x-dynamic-input :key="'profile_user_edits.character.bio'" :placeholder="'Character name'">
+                                            <x-slot name="pre">
+                                                <i class="fas fa-sync-alt text-gray-200 hover:text-purple-800 cursor-pointer mr-3" style="font-size: 1.5em;" wire:click="Inspire()" x-on:click.debounce="SetValue(), SetLength()"></i>
+                                            </x-slot>
+                                            {{ $profile_user_edits['character']->bio }}
+                                        </x-dynamic-input>
                                         @error('profile_user_edits.character.bio') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
