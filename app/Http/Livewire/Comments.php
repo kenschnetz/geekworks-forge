@@ -11,7 +11,7 @@
         use WithPagination;
 
 //        TODO: add upvote feature
-        
+
         public Model $post, $user;
         public int|null $replying_to_id = null, $editing_id = null;
         public string $new_comment_content = '', $reply_comment_content = '', $edit_comment_content = '';
