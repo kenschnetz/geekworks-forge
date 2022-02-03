@@ -4,6 +4,7 @@
 
     use App\Models\Canon as CanonModel;
     use App\Http\Livewire\Parent\Editable;
+    use Illuminate\Validation\Rule;
     use Livewire\WithPagination;
 
     class Canon extends Editable {
@@ -19,7 +20,6 @@
             }
             $this->list_route = 'canons';
             $this->pagination_count = config('app.settings.post_pagination', 20);
-            $this->SetRules();
             $this->model = 'App\Models\Canon';
         }
 
@@ -31,10 +31,15 @@
             return view('livewire.canon', ['posts' => $posts->paginate($this->pagination_count)]);
         }
 
-        private function SetRules() {
-            $this->rules = [
-                'item.user_id' => 'required',
-                'item.name' => 'required',
+        protected function Rules() {
+            return [
+                'item.user_id' => 'required|integer',
+                'item.name' => [
+                    'required',
+                    'string',
+                    'max:255',
+                    Rule::unique('canons', 'name')->ignore(optional($this->item)->id)
+                ],
                 'item.description' => 'required|string',
                 'item.publicly_visible' => 'required|boolean',
                 'item.allow_collaboration' => 'required|boolean',
