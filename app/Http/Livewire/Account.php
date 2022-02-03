@@ -3,6 +3,7 @@
     namespace App\Http\Livewire;
 
     use App\Models\User as UserModel;
+    use Illuminate\Validation\Rule;
     use Livewire\Component;
 
     class Account extends Component {
@@ -26,7 +27,7 @@
 
         public function ChangePassword() {
             $this->validate([
-                'new_password' => 'string|required|confirmed|max:255',
+                'new_password' => 'string|required|confirmed|max:30',
             ]);
             $this->user->password = bcrypt($this->new_password);
             $this->user->save();
@@ -40,7 +41,12 @@
         protected function Rules() {
             return [
                 'user.name' => 'required|string|max:255',
-                'user.email' => 'required|string|max:255',
+                'user.email' => [
+                    'required',
+                    'string',
+                    'max:255',
+                    Rule::unique('users', 'email')->ignore(optional($this->user)->id)
+                ],
             ];
         }
     }
