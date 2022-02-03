@@ -65,12 +65,12 @@
             </div>
         @endif
         <div class="hidden md:block mt-3 px-4 sm:p-0">
-            @include('components.comments')
+            @livewire('comments', ['post' => $post])
         </div>
     </main>
     @include('components.post.view.details-right-sidebar')
     <div class="md:hidden mt-3 px-4 sm:p-0">
-        @include('components.comments')
+        @livewire('comments', ['post' => $post])
     </div>
     @livewire('canonize-modal', ['post' => $post, 'post_details' => $post->ActivePostDetails, 'selected_items' => $canons, 'removed_items' => []])
     @livewire('collect-modal', ['post' => $post, 'post_details' => $post->ActivePostDetails, 'selected_items' => $collections, 'removed_items' => []])
