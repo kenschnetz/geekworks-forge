@@ -11,7 +11,7 @@
                 <article aria-labelledby="question-title-81614" x-data="{ post_menu_open: false }">
                     <div class="flex space-x-3">
                         <div class="min-w-0 flex-1 relative">
-                            <i @class(['absolute top-0 right-0 fas text-gray-300 text-center', 'fa-exclamation-square' => $post->post_type_id === 1, 'fa-question-square' => $post->post_type_id === 2, 'fa-rss-square' => $post->post_type_id === 3]) style="font-size: 1.4em !important; width: 32px !important;"></i>
+                            <i @class(['float-right fas text-gray-300 text-center', 'fa-exclamation-square' => $post->post_type_id === 1, 'fa-question-square' => $post->post_type_id === 2, 'fa-rss-square' => $post->post_type_id === 3]) style="font-size: 1.4em !important; width: 32px !important;"></i>
                             <h2 id="question-title-81614" class="text-lg font-bold text-gray-900">
                                 {{ $post->ActivePostDetails->title }}
                             </h2>
