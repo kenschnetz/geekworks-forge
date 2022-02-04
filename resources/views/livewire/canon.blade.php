@@ -21,7 +21,10 @@
             <hr class="mt-3"/>
             <div class="mt-3 flex space-x-3">
                 <div class="min-w-0 flex-1">
-                    <x-dynamic-input :key="'item.description'" :placeholder="'Canon description'">{{ $item->description }}</x-dynamic-input>
+{{--                    <x-dynamic-input :limit="0" :key="'item.description'" :placeholder="'Canon description'">{{ $item->description }}</x-dynamic-input>--}}
+                    <div class="mt-3 space-y-4" wire:ignore>
+                        <trix-editor class="trix-editor" x-data x-on:trix-change="$dispatch('input', event.target.value)" wire:model.debounce.1000ms="item.description" wire:key="post-rich-editor"></trix-editor>
+                    </div>
                     @error('item.description') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
                 </div>
             </div>
