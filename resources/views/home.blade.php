@@ -5,8 +5,8 @@
         </p>
     </div>
     <div class="flex flex-wrap content-center justify-center" style="height: 100vh !important; background-image: url('/storage/img/forge-bg.jpg') !important; background-size: cover !important; background-position: center center !important; background-repeat: no-repeat !important; margin-top: -60px !important;">
-        <div class="bg-white dark:bg-zinc-700 rounded">
-            <img src="/storage/img/logo.png" style="height: 80px">
+        <div class="bg-white dark:bg-zinc-700 p-4">
+            <img src="/storage/img/logo.png" style="height: 40px">
         </div>
     </div>
     <div style="height: 120px !important; margin-top: -120px !important;">

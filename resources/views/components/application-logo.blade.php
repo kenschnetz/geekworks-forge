@@ -1,1 +1,3 @@
-<img src="/storage/img/logo.png" style="height: 40px">
+<div class="py-4">
+    <img src="/storage/img/logo.png" style="height: 24px">
+</div>
