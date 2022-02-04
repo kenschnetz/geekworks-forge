@@ -102,19 +102,25 @@
                 <hr class="mt-3" />
                 <div class="mt-3 spacy-y-2 md:grid md:grid-cols-4 md:gap-x-2">
                     <div class="w-full md:col-span-1">
-                        <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['idea_count'] <= 0, 'text-orange-600' => $stats['idea_count'] > 0]) style="height: 80px;">
-                            {{ $stats['idea_count'] }} {{ $stats['idea_count'] === 1 ? 'idea' : 'ideas' }}
-                        </div>
+                        <a @if($stats['idea_count'] > 0) href="{{ route('ideas', ['user_name' => $profile_user['character']->name]) }}" @endif>
+                            <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['idea_count'] <= 0, 'text-purple-600 hover:underline' => $stats['idea_count'] > 0]) style="height: 80px;">
+                                {{ $stats['idea_count'] }} {{ $stats['idea_count'] === 1 ? 'idea' : 'ideas' }}
+                            </div>
+                        </a>
                     </div>
                     <div class="w-full mt-3 md:m-0 md:col-span-1">
-                        <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['question_count'] <= 0, 'text-orange-600' => $stats['question_count'] > 0]) style="height: 80px;">
-                            {{ $stats['question_count'] }} {{ $stats['question_count'] === 1 ? 'question' : 'questions' }}
-                        </div>
+                        <a @if($stats['question_count'] > 0) href="{{ route('questions', ['user_name' => $profile_user['character']->name]) }}" @endif>
+                            <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['question_count'] <= 0, 'text-purple-600 hover:underline' => $stats['question_count'] > 0]) style="height: 80px;">
+                                {{ $stats['question_count'] }} {{ $stats['question_count'] === 1 ? 'question' : 'questions' }}
+                            </div>
+                        </a>
                     </div>
                     <div class="w-full mt-3 md:m-0 md:col-span-1">
-                        <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['article_count'] <= 0, 'text-orange-600' => $stats['article_count'] > 0]) style="height: 80px;">
-                            {{ $stats['article_count'] }} {{ $stats['article_count'] === 1 ? 'article' : 'articles' }}
-                        </div>
+                        <a @if($stats['question_count'] > 0) href="{{ route('questions', ['user_name' => $profile_user['character']->name]) }}" @endif>
+                            <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['article_count'] <= 0, 'text-purple-600 hover:underline' => $stats['article_count'] > 0]) style="height: 80px;">
+                                {{ $stats['article_count'] }} {{ $stats['article_count'] === 1 ? 'article' : 'articles' }}
+                            </div>
+                        </a>
                     </div>
                     <div class="w-full mt-3 md:m-0 md:col-span-1">
                         <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['comment_count'] <= 0, 'text-orange-600' => $stats['comment_count'] > 0]) style="height: 80px;">
