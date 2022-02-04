@@ -13,7 +13,6 @@
             <x-table>
                 <x-slot name="head">
                     <x-table.heading sortable wire:click="SortBy('name')" :direction="$sort_field === 'name' ? $sort_direction : null"><span style="font-size: 14px !important; font-weight: bolder !important;">Name</span></x-table.heading>
-                    <x-table.heading class="text-left"><span style="font-size: 14px !important; font-weight: bolder !important;">Description</span></x-table.heading>
                 </x-slot>
                 <x-slot name="body">
                     @foreach($collections as $collection)
@@ -23,15 +22,6 @@
                                     <span class="inline-flex space-x-2 truncate text-sm leading-5">
                                         <p class="text-cool-gray-600">
                                             {{ $collection->name }}
-                                        </p>
-                                    </span>
-                                </a>
-                            </x-table.cell>
-                            <x-table.cell>
-                                <a class="block px-6 py-4" href="{{ route('collection', ['slug' => $collection->slug]) }}">
-                                    <span class="inline-flex space-x-2 truncate text-sm leading-5">
-                                        <p class="text-cool-gray-600">
-                                            {{ Str::limit($collection->description, 60) }}
                                         </p>
                                     </span>
                                 </a>
