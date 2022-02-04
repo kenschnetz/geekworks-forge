@@ -1,8 +1,16 @@
 <x-layout.editable.left-sidebar.above-on-mobile :editing="$editing">
     <x-slot name="edit_buttons">
-        <button wire:click="ToggleEditing()" class="bg-gray-400 hover:bg-transparent text-white hover:text-gray-400 font-bold px-4 py-3 border border-gray-600" style="width:140px">
-            Cancel
-        </button>
+        @if(empty($this->item->id))
+            <a href="{{route('canons')}}">
+                <button class="bg-gray-400 hover:bg-transparent text-white hover:text-gray-400 font-bold px-4 py-3 border border-gray-600" style="width:140px">
+                    Cancel
+                </button>
+            </a>
+        @else
+            <button wire:click="ToggleEditing()" class="bg-gray-400 hover:bg-transparent text-white hover:text-gray-400 font-bold px-4 py-3 border border-gray-600" style="width:140px">
+                Cancel
+            </button>
+        @endif
         <button wire:click="Save()" class="bg-orange-500 hover:bg-transparent text-white hover:text-orange-500 font-bold px-4 py-3 border border-orange-500" style="width:140px">
             Save
         </button>
