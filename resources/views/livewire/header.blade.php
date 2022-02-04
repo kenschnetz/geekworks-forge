@@ -1,23 +1,28 @@
 <header class="bg-white dark:bg-zinc-700 shadow-sm" x-data="{ mobile_menu_open: false, profile_menu_open: false }">
-    <div class="max-w-7xl mx-auto px-4">
-        <div class="relative flex justify-between py-6">
-            <div class="flex md:absolute md:left-0 md:inset-y-0 lg:static xl:col-span-6">
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="{{route('home')}}">
-                        <x-application-logo></x-application-logo>
-                    </a>
-                </div>
+    <div class="max-w-2xl mx-auto p-4 lg:max-w-7xl">
+        <div class="relative flex justify-between">
+            <div class="flex-1 flex xl:col-span-6">
+                <a href="{{route('home')}}">
+                    <x-application-logo></x-application-logo>
+                </a>
             </div>
-            <div class="flex items-center md:absolute md:right-0 md:inset-y-0 lg:hidden">
+            <div class="hidden lg:flex-1 lg:flex lg:items-center lg:justify-center">
+                <a href="{{ route('post-search') }}" class="inline-flex items-center justify-center px-4 py-2 border border-transparent font-bold text-sm shadow-sm text-white bg-purple-800 hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:purple-800 uppercase" style="width: 150px">
+                    Search
+                </a>
+                <a href="{{ route('new-post') }}" class="inline-flex items-center justify-center px-4 py-2 border border-transparent font-bold text-sm shadow-sm text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 uppercase" style="width: 150px">
+                    New Post
+                </a>
+            </div>
+            <div class="flex-1 flex items-center justify-end lg:hidden">
                 <button @click="mobile_menu_open = !mobile_menu_open" type="button" class="-mx-2 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500" aria-expanded="false">
-                    <span class="sr-only">Open menu</span>
-                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-bars fa-2x"></i>
                     @if($notifications)
                         <span class="absolute top-0 right-0 inline-flex items-center justify-center leading-none p-2 transform translate-x-3/4 translate-y-1/4 bg-red-600 rounded-full border border-white" />
                     @endif
                 </button>
             </div>
-            <div class="hidden lg:flex lg:items-center lg:justify-end">
+            <div class="hidden lg:flex-1 lg:flex lg:items-center lg:justify-end">
                 <div class="flex-shrink-0 relative ml-5">
                     <div>
                         <button @click="profile_menu_open = !profile_menu_open" @click.away="profile_menu_open = false" type="button" class="bg-white dark:bg-zinc-700 rounded-full flex" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
@@ -32,10 +37,15 @@
                         <x-profile-menu class="text-sm text-gray-700"></x-profile-menu>
                     </div>
                 </div>
-                <a href="{{ route('new-post') }}" class="ml-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium shadow-sm text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
-                    New Post
-                </a>
             </div>
+        </div>
+        <div class="mt-3 lg:hidden flex">
+            <a href="{{ route('post-search') }}" class="flex-1 p-4 flex align-middle justify-center border border-transparent font-bold text-sm shadow-sm text-white bg-purple-800 hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:purple-800 uppercase">
+                Search
+            </a>
+            <a href="{{ route('new-post') }}" class="flex-1 p-4 flex align-middle justify-center border border-transparent font-bold text-sm shadow-sm text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 uppercase">
+                New Post
+            </a>
         </div>
     </div>
     <div x-show="mobile_menu_open">
