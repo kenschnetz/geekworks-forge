@@ -2,7 +2,9 @@
 
     namespace App\Http\Livewire;
 
+    use App\Models\Comment;
     use App\Models\Comment as CommentModel;
+    use App\Models\Upvote as UpvoteModel;
     use Illuminate\Database\Eloquent\Model;
     use Livewire\Component;
     use Livewire\WithPagination;
@@ -20,6 +22,18 @@
         public function Mount() {
             $this->user = auth()->user();
             $this->pagination_count = config('app.settings.post_pagination', 20);
+        }
+
+        public function Upvote($comment_id) {
+            $upvote = new UpvoteModel;
+            $upvote->user_id = $this->user->id;
+            $upvote->upvotable_id = $comment_id;
+            $upvote->upvotable_type = 'App\Models\Comment';
+            $upvote->save();
+        }
+
+        public function RemoveUpvote($comment_id) {
+            CommentModel::find($comment_id)->Upvotes()->where('user_id', $this->user->id)->delete();
         }
 
         public function SubmitEdit() {
@@ -67,6 +81,14 @@
         }
 
         public function Render() {
-            return view('livewire.comments', ['comments' => $this->post->Comments()->whereNull('comment_id')->latest()->paginate($this->pagination_count, ['*'], 'commentsPage')]);
+            $comments = $this->post
+                ->Comments()
+                ->whereNull('comment_id')
+                ->with('Upvoted', function($query) {
+                    $query->where('user_id', $this->user->id)->exists();
+                })->withCount('Upvotes')
+                ->latest()
+                ->paginate($this->pagination_count, ['*'], 'commentsPage');
+            return view('livewire.comments', ['comments' => $comments]);
         }
     }

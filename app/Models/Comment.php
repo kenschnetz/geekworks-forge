@@ -29,4 +29,12 @@
         public function Comments() {
             return $this->hasMany(Comment::class);
         }
+
+        public function Upvotes() {
+            return $this->morphMany(Upvote::class, 'Upvotable');
+        }
+
+        public function Upvoted() {
+            return $this->morphOne(Upvote::class, 'Upvotable');
+        }
     }

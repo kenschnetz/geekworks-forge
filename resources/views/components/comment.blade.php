@@ -23,30 +23,40 @@
             </div>
             <div class="flex justify-start items-center text-sm text-gray-400 my-1">
                 @if($comment->User->id !== $user->id)
-                    <span class="hover:underline mr-3" x-show="!deleting && !replying && !editing">
-                        Upvote
-                    </span>
+                    @if($comment->upvoted)
+                        <span class="hover:underline mr-3 cursor-pointer" x-show="!deleting && !replying && !editing" wire:click="RemoveUpvote({{$comment->id}})">
+                            Remove Upvote
+                        </span>
+                    @else
+                        <span class="hover:underline mr-3 cursor-pointer" x-show="!deleting && !replying && !editing" wire:click="Upvote({{$comment->id}})">
+                            Upvote
+                        </span>
+                    @endif
                 @endif
                 @if($comment->User->id === $user->id)
-                    <span class="hover:underline mr-3" x-show="!deleting && !editing && !replying" x-on:click="$wire.set('editing_id', {{$comment->id}}), $wire.set('edit_comment_content', '{{$comment->comment}}'), editing = true">
+                    <span class="hover:underline mr-3 cursor-pointer" x-show="!deleting && !editing && !replying" x-on:click="$wire.set('editing_id', {{$comment->id}}), $wire.set('edit_comment_content', '{{$comment->comment}}'), editing = true">
                         Edit
                     </span>
                 @elseif(empty($comment->comment_id))
-                    <span class="hover:underline mr-3" x-show="!deleting && !editing && !replying" x-on:click="$wire.set('replying_to_id', {{$comment->id}}), replying = true">
+                    <span class="hover:underline mr-3 cursor-pointer" x-show="!deleting && !editing && !replying" x-on:click="$wire.set('replying_to_id', {{$comment->id}}), replying = true">
                         Reply
                     </span>
                 @endif
                 @if($comment->User->id === $user->id || ($user->IsStaff() || $user->IsAdmin()))
-                    <span class="hover:underline mr-3" x-show="!deleting && !editing && !replying" x-on:click="deleting = true" @click.away="deleting = false">
+                    <span class="hover:underline mr-3 cursor-pointer" x-show="!deleting && !editing && !replying" x-on:click="deleting = true" @click.away="deleting = false">
                         Delete
                     </span>
-                    <span class="hover:underline mr-3" x-show="deleting" x-on:click="deleting = false" @click.away="deleting = false">
+                    <span class="hover:underline mr-3 cursor-pointer" x-show="deleting" x-on:click="deleting = false" @click.away="deleting = false">
                         Cancel
                     </span>
-                    <span class="hover:underline mr-3 text-red-600" x-show="deleting" wire:click="DeleteComment({{$comment->id}})" @click.away="deleting = false">
+                    <span class="hover:underline mr-3 cursor-pointer text-red-600" x-show="deleting" wire:click="DeleteComment({{$comment->id}})" @click.away="deleting = false">
                         Confirm Delete
                     </span>
                 @endif
+                <div class="ml-auto inline-block flex items-center space-x-2 text-sm text-gray-300 font-semi-bold">
+                    <i class="fas fa-thumbs-up mr-1 text-xs"></i>
+                    <span>{{ App\Utilities\Number::Shorten($comment->upvotes_count) }}</span>
+                </div>
             </div>
             <div class="ml-8">
                 <div x-show="replying" class="bg-gray-50 border w-full p-4 mt-3">
