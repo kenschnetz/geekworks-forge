@@ -2,6 +2,9 @@
     <div class="lg:col-span-3">
         @include('components.collection.list.left-sidebar')
     </div>
+    <div class="block lg:hidden">
+        @include('components.collection.list.right-sidebar')
+    </div>
     <main class="lg:col-span-6">
         <div class="mb-3">
             @include('components.list-search')
@@ -55,7 +58,7 @@
             @endif
         </div>
     </main>
-    <div class="lg:col-span-3">
+    <div class="hidden lg:block lg:col-span-3">
         @include('components.collection.list.right-sidebar')
     </div>
 </div>

@@ -123,6 +123,9 @@
                     </div>
                 </div>
             </div>
+            <div class="w-full lg:hidden mt-3">
+                @include('components.user.profile-left-sidebar')
+            </div>
             @if(count($top_posts) > 0)
                 <div class="mt-3 bg-white dark:bg-zinc-700 p-4 shadow">
                     <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
@@ -132,9 +135,6 @@
                     @include('components.top-posts')
                 </div>
             @endif
-            <div class="w-full lg:hidden mt-3">
-                @include('components.user.profile-left-sidebar')
-            </div>
             @if(count($recent_posts) > 0)
                 <div class="mt-3 bg-white dark:bg-zinc-700 p-4 shadow">
                     <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">

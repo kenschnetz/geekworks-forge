@@ -1,6 +1,6 @@
 <div class="lg:col-span-4 mb-3">
     <div class="sticky top-4 space-y-1">
-        <div class="bg-white dark:bg-zinc-700 rounded-lg shadow px-4 py-6 space-y-1">
+        <div class="bg-white dark:bg-zinc-700 shadow px-4 py-6 space-y-1">
             <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
                 Threads
             </h2>

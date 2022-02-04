@@ -42,7 +42,7 @@
                 </article>
             </div>
         </div>
-        <div class="mt-3 md:hidden">
+        <div class="mt-3 lg:hidden">
             @include('components.post.view.details-left-sidebar')
         </div>
         @if($post->Collaborators()->count() > 0)
@@ -64,12 +64,12 @@
                 </div>
             </div>
         @endif
-        <div class="hidden md:block mt-3 px-4 sm:p-0">
+        <div class="hidden lg:block mt-3 px-4 sm:p-0">
             @livewire('comments', ['post' => $post])
         </div>
     </main>
     @include('components.post.view.details-right-sidebar')
-    <div class="md:hidden mt-3 px-4 sm:p-0">
+    <div class="lg:hidden mt-3 px-4 sm:p-0">
         @livewire('comments', ['post' => $post])
     </div>
     @livewire('canonize-modal', ['post' => $post, 'post_details' => $post->ActivePostDetails, 'selected_items' => $canons, 'removed_items' => []])

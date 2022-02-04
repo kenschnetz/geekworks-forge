@@ -1,4 +1,4 @@
-<div class="w-full lg:block lg:col-span-3 mb-3 px-4 sm:p-0 sticky top-4 space-y-4">
+<div class="w-full lg:block lg:col-span-3 mb-3 lg:px-4 sm:p-0 sticky top-4 space-y-4">
     <div class="bg-white dark:bg-zinc-700 shadow p-4">
         @if($editing)
             <div class="mt-3 bg-gray-100 rounded w-2/3" style="height: 20px;"></div>

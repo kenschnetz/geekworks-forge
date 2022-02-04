@@ -1,4 +1,4 @@
-<div class="max-w-2xl mx-auto sm:px-4 lg:max-w-7xl">
+<div class="max-w-2xl mx-auto px-4 lg:max-w-7xl">
     <div class="lg:col-span-5 bg-white dark:bg-zinc-700 p-4 text-center">
         <button wire:click="Cancel()" class="bg-gray-400 hover:bg-transparent text-white hover:text-gray-400 font-bold px-4 py-3 border border-gray-600" style="width:140px">
             Back
