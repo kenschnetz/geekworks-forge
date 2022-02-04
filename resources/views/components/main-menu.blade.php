@@ -1,5 +1,5 @@
-<nav class="sticky top-4" wire:ignore>
-    <div class="sm:p-4 space-y-1">
+<nav wire:ignore>
+    <div class="sm:p-4 lg:space-y-1">
         <a href="{{ route('home') }}" @class(['group flex items-center p-2 text-gray-500 dark:text-gray-400', 'bg-gray-200 dark:bg-zinc-900' => request()->routeIs('home')])>
             <i @class(['fa-home-alt text-center', 'fal text-gray-900 dark:text-gray-400' => !request()->routeIs('home'), 'fa text-orange-500' => request()->routeIs('home')]) style="width: 28px !important;"></i>
             <span class="ml-3 text-sm font-medium uppercase tracking-wider align-middle hover:underline" style="margin-top: 2px !important;">
