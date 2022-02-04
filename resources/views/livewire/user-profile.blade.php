@@ -73,7 +73,7 @@
                                 </div>
                             </div>
                         @else
-                            <h2 class="text-sm md:text-base inline-block font-medium text-gray-500 uppercase tracking-wider">
+                            <h2 class="text-sm md:text-base inline-block text-lg text-gray-500 tracking-wider">
                                 {{ $profile_user['character']->name }}
                             </h2>
                         @endif
