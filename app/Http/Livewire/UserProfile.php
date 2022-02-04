@@ -9,6 +9,7 @@
     use Illuminate\Foundation\Inspiring;
     use Illuminate\Support\Arr;
     use Illuminate\Support\Facades\Log;
+    use Illuminate\Support\Str;
     use Livewire\Component;
     use Illuminate\Validation\Rule;
 
@@ -94,7 +95,7 @@
             if ($this->can_edit) {
                 $this->validate();
                 $this->profile_user->Character->user_image_id = $this->profile_photo['id'] ?? null;
-                $this->profile_user->Character->name = $this->profile_user_edits['character']->name;
+                $this->profile_user->Character->name = str_replace(' ', '', ucwords($this->profile_user_edits['character']->name));
                 $this->profile_user->Character->bio = $this->profile_user_edits['character']->bio;
                 $this->profile_user->Character->save();
                 $this->editing = false;
