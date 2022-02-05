@@ -13,8 +13,8 @@
                 x-on:scroll.window="scrollBackTop = (window.pageYOffset > window.outerHeight * 0.5) ? true : false"
                 x-on:click="window.scrollTo({top: 0, left: 0, behavior: 'smooth'});"
                 aria-label="Back to top"
-                class="text-white px-4 py-2 bg-orange-600 hover:bg-purple-800 focus:outline-none">
-                <i class="fal fa-chevron-double-up fa-2x"></i>
+                class="text-white px-4 py-1 bg-orange-600 hover:bg-purple-800 focus:outline-none">
+                <i class="fal fa-angle-double-up fa-2x"></i>
             </button>
         </div>
     </div>
