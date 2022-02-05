@@ -1,4 +1,4 @@
-<header class="bg-white dark:bg-zinc-700 shadow-sm" x-data="{ mobile_menu_open: false, profile_menu_open: false }">
+<header id="header" class="bg-white dark:bg-zinc-700 shadow-sm" x-data="{ mobile_menu_open: false, profile_menu_open: false }">
     <div class="max-w-2xl mx-auto p-4 lg:max-w-7xl">
         <div class="relative flex justify-between">
             <div class="flex-1 flex xl:col-span-6">
