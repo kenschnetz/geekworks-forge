@@ -12,6 +12,6 @@
     @elseif($step === 3)
             @include('components.post.new.details')
     @endif
-{{--TODO: add breadcrumbs--}}
+{{--TODO: add breadcrumbs for each step --}}
 {{--    @include('components.post.new.breadcrumbs')--}}
 </div>
