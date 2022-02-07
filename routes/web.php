@@ -531,11 +531,7 @@
     Route::get('/search', function () {
         return view('components.layout', [
             'view' => 'post-search',
-            'properties' => [],
-            'show_breadcrumbs' => true,
-            'breadcrumbs' => [
-                ['name' => 'Search'],
-            ]
+            'properties' => []
         ]);
     })->name('post-search')->middleware('terms', 'auth', 'verified');
 
@@ -545,6 +541,7 @@
             'properties' => [],
             'show_breadcrumbs' => true,
             'breadcrumbs' => [
+                ['name' => 'Search', 'route' => 'post-search'],
                 ['name' => 'Search Results'],
             ]
         ]);
