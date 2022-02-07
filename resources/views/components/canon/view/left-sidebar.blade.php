@@ -4,9 +4,9 @@
         @if($item->user_id === auth()->user()->id && !$editing)
             <hr class="mt-3" />
             <div class="mt-3">
-                <span class="text-gray-900 group flex items-center" wire:click="ToggleEditing()">
-                    <i class="mr-3 fas fa-edit text-purple-700"></i>
-                    <span class="hover:underline">Edit</span>
+                <span class="text-gray-900 dark:text-gray-300 group flex items-center" wire:click="ToggleEditing()">
+                    <i class="mr-3 fas fa-edit text-purple-700 dark:text-purple-500"></i>
+                    <span class="hover:underline cursor-pointer">Edit</span>
                 </span>
             </div>
         @endif

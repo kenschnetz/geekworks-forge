@@ -23,7 +23,7 @@
                     {{ $posts->links() }}
                 @endif
             @else
-                <div class="bg-white dark:bg-zinc-700 p-4 shadow sm:p-6">
+                <div class="bg-white dark:bg-zinc-700 p-4 shadow sm:p-6 dark:text-gray-300">
                     No posts Found!
                 </div>
             @endif

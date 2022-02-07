@@ -12,7 +12,7 @@
                     <div class="flex space-x-3">
                         <div class="min-w-0 flex-1 relative">
                             <i @class(['float-right fas text-gray-300 text-center', 'fa-exclamation-square' => $post->post_type_id === 1, 'fa-question-square' => $post->post_type_id === 2, 'fa-rss-square' => $post->post_type_id === 3]) style="font-size: 1.4em !important; width: 32px !important;"></i>
-                            <h2 id="question-title-81614" class="text-lg font-bold text-gray-900">
+                            <h2 id="question-title-81614" class="text-lg font-bold text-gray-900 dark:text-gray-300">
                                 {{ $post->ActivePostDetails->title }}
                             </h2>
                         </div>
@@ -22,7 +22,7 @@
                         @section('page-description')
                             {{ url($post->ActivePostDetails->description) }}
                         @endsection
-                        <div class="mt-3 text-sm text-gray-500">
+                        <div class="mt-3 text-sm text-gray-500 dark:text-gray-400">
                             <i>{{ $post->ActivePostDetails->description }}</i>
                         </div>
                         <hr class="mt-3" />
@@ -36,7 +36,7 @@
                         </div>
                         <hr class="mt-3" />
                     @endif
-                    <div class="mt-3 space-y-4">
+                    <div class="mt-3 space-y-4 dark:text-gray-300">
                         {!! $post->ActivePostDetails->content !!}
                     </div>
                 </article>
@@ -49,7 +49,7 @@
             <div class="mt-3 px-4 sm:p-0 mb-3 lg:m-0">
                 <div class="bg-white dark:bg-zinc-700 shadow">
                     <div class="p-6">
-                        <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
+                        <h2 class="text-center font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider inline-block align-middle">
                             Collaborators
                         </h2>
                         <hr class="mt-3" />

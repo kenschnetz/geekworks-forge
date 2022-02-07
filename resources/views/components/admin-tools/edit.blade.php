@@ -1,5 +1,5 @@
-<div class="max-w-2xl mx-auto bg-white dark:bg-zinc-700 shadow p-4">
-    <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
+<div class="max-w-2xl mx-auto bg-white dark:bg-zinc-700 shadow p-4 dark:text-gray-300">
+    <h2 class="text-center font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider inline-block align-middle">
         {{ $title }}
     </h2>
     <hr class="mt-3" />

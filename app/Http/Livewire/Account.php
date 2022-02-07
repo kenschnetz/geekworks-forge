@@ -10,9 +10,11 @@
         public string|null $notification = null;
         public UserModel $user;
         public string $new_password = '', $new_password_confirmation = '';
+        public bool $dark_mode;
 
         public function Mount() {
             $this->user = UserModel::find(auth()->user()->id);
+            $this->dark_mode = auth()->user()->dark_mode;
         }
 
         public function CloseNotification() {
@@ -32,6 +34,12 @@
             $this->user->password = bcrypt($this->new_password);
             $this->user->save();
             return redirect()->route('account', ['notification' => 'Password reset successful']);
+        }
+
+        public function ToggleTheme() {
+            auth()->user()->dark_mode = $this->dark_mode;
+            auth()->user()->save();
+            redirect()->route('account');
         }
 
         public function Render() {

@@ -7,7 +7,7 @@
         </li>
         @foreach($selected_thread->Messages()->latest()->limit($current_pagination_count)->get() as $index => $message)
             @if(!empty($message))
-                <li>
+                <li class="dark:text-gray-300">
                     <div class="relative pb-4">
                         @if(!$loop->last || ($loop->last && !$all_messages_loaded))
                             <span class="absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
@@ -21,13 +21,13 @@
                             <div class="min-w-0 flex-1 ml-2 pl-2">
                                 <div>
                                     <div class="text-sm">
-                                        <a href="{{ route('user-profile', ['user_name' => $message->User->Character->name]) }}" class="font-medium text-gray-900">{{ $message->User->Character->name ?? 'User#' . $message->User->id }}</a>
+                                        <a href="{{ route('user-profile', ['user_name' => $message->User->Character->name]) }}" class="font-medium text-gray-900 dark:text-gray-300">{{ $message->User->Character->name ?? 'User#' . $message->User->id }}</a>
                                     </div>
                                     <p class="text-sm text-gray-500">
                                         {{ $message->created_at->diffForHumans() }}
                                     </p>
                                 </div>
-                                <div class="mt-2 text-sm text-gray-700">
+                                <div class="mt-2 text-sm text-gray-700 dark:text-gray-300">
                                     <p>
                                         {{ $message->message }}
                                     </p>

@@ -2,14 +2,14 @@
     <div x-data="{ replying: false, editing: false, deleting: false}">
         <div class="block">
             <div class="flex justify-center items-center space-x-2 relative">
-                <div class="bg-gray-50 border w-full p-4">
+                <div class="bg-gray-50 dark:bg-zinc-600 border w-full p-4">
                     <span class="absolute top-3 right-3 text-xs text-gray-400">{{ $comment->created_at->diffForHumans() }}</span>
                     @include('components.author', ['author' => $comment->User])
-                    <div x-show="!editing" class="mt-3">
+                    <div x-show="!editing" class="mt-3 dark:text-gray-400">
                         {{ $comment->comment }}
                     </div>
                     <div x-show="editing" class="mt-3">
-                        <x-dynamic-input :limit="0" :key="'edit_comment_content'" :placeholder="'Edit comment'" class="flex items-center">
+                        <x-dynamic-input :limit="0" :key="'edit_comment_content'" :placeholder="'Edit comment'" class="flex items-center dark:text-gray-400">
                             <x-slot name="pre">
                                 <i class="fas fa-ban text-gray-200 hover:text-purple-700 cursor-pointer mr-3" style="font-size: 1.5em !important;" x-on:click="editing = false, $wire.set('edit_comment_content', '')"></i>
                             </x-slot>

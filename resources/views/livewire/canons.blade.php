@@ -20,7 +20,7 @@
                                 <x-table.cell>
                                     <a class="block px-6 py-4" href="{{ route('canon', ['slug' => $canon->slug]) }}">
                                         <span class="inline-flex space-x-2 truncate text-sm leading-5">
-                                            <p class="text-cool-gray-600">
+                                            <p class="text-cool-gray-600 dark:text-gray-300">
                                                 {{ $canon->name }}
                                             </p>
                                         </span>
@@ -37,11 +37,11 @@
             @if(count($canons) <= 0)
                 <hr class="my-3" />
                 <div class="mt-3">
-                    <span class="font-medium">
+                    <span class="font-medium dark:text-gray-300">
                         @if(auth()->user()->id === $user->id)
                             No Canons found... why not <a class="text-orange-600 hover:underline" href="{{route('canon')}}">create one</a>?
                         @else
-                            <a class="text-purple-700" href="{{ route('user-profile', ['user_name' => $user->Character->name]) }}">{{ $user->Character->name }}</a> has no public Canons!
+                            <a class="text-purple-700 dark:text-purple-500" href="{{ route('user-profile', ['user_name' => $user->Character->name]) }}">{{ $user->Character->name }}</a> has no public Canons!
                         @endif
                     </span>
                 </div>

@@ -5,12 +5,12 @@
 ])
 
 <th
-    {{ $attributes->merge(['class' => 'px-6 py-3 bg-cool-gray-50'])->only('class') }}
+    {{ $attributes->merge(['class' => 'px-6 py-3 bg-cool-gray-50 dark:text-gray-300'])->only('class') }}
 >
     @unless ($sortable)
-        <span class="text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider">{{ $slot }}</span>
+        <span class="text-left text-xs leading-4 font-medium text-cool-gray-500 dark:text-gray-300 uppercase tracking-wider">{{ $slot }}</span>
     @else
-        <button {{ $attributes->except('class') }} class="flex space-x-1 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider group focus:outline-none focus:underline">
+        <button {{ $attributes->except('class') }} class="flex space-x-1 text-left text-xs leading-4 font-medium text-cool-gray-500 dark:text-gray-300 uppercase tracking-wider group focus:outline-none focus:underline">
             <span>{{ $slot }}</span>
 
             <span class="relative flex">

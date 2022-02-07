@@ -18,18 +18,17 @@
     <x-slot name="left_sidebar">
         @include('components.canon.view.left-sidebar')
     </x-slot>
-    <div class="bg-white dark:bg-zinc-700 p-4 shadow" x-data="{ name: @entangle('item.name'), description: @entangle('item.description'), limit: 255 }" x-cloak>
+    <div class="bg-white dark:bg-zinc-700 p-4 shadow dark:text-gray-300" x-data="{ name: @entangle('item.name'), description: @entangle('item.description'), limit: 255 }" x-cloak>
         @if($editing)
             <div class="flex space-x-3">
-                <div class="min-w-0 flex-1">
-                    <x-dynamic-input :key="'item.name'" :placeholder="'Canon name'">{{ $item->name }}</x-dynamic-input>
+                <div class="min-w-0 flex-1 dark:text-gray-300">
+                    <x-dynamic-input :key="'item.name'" :placeholder="'Canon name'" class="dark:text-gray-300">{{ $item->name }}</x-dynamic-input>
                     @error('item.name') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
                 </div>
             </div>
             <hr class="mt-3"/>
             <div class="mt-3 flex space-x-3">
                 <div class="min-w-0 flex-1">
-{{--                    <x-dynamic-input :limit="0" :key="'item.description'" :placeholder="'Canon description'">{{ $item->description }}</x-dynamic-input>--}}
                     <div class="mt-3 space-y-4" wire:ignore>
                         <trix-editor class="trix-editor" x-data x-on:trix-change="$dispatch('input', event.target.value)" wire:model.debounce.1000ms="item.description" wire:key="post-rich-editor"></trix-editor>
                     </div>
@@ -39,7 +38,7 @@
             <hr class="mt-3"/>
             <div class="mt-3 w-full">
                 <div class="relative inline-block mr-4 align-middle select-none transition duration-200 ease-in">
-                    <input wire:model="item.publicly_visible" type="checkbox" name="public" id="public" class="text-purple-700 focus:ring-purple-700 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-zinc-700 border-4 appearance-none cursor-pointer"/>
+                    <input wire:model="item.publicly_visible" type="checkbox" name="public" id="public" class="text-purple-700 focus:ring-purple-700 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
                     <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
                 </div>
                 <div class="relative inline-block ml-4">
@@ -49,7 +48,7 @@
             @if($item->publicly_visible)
                 <div class="mt-3 w-full">
                     <div class="relative inline-block mr-4 align-middle select-none transition duration-200 ease-in">
-                        <input wire:model="item.allow_collaboration" type="checkbox" name="public" id="public" class="text-purple-700 focus:ring-purple-700 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-zinc-700 border-4 appearance-none cursor-pointer"/>
+                        <input wire:model="item.allow_collaboration" type="checkbox" name="public" id="public" class="text-purple-700 focus:ring-purple-700 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
                         <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
                     </div>
                     <div class="relative inline-block ml-4">
@@ -59,7 +58,7 @@
                 @if($item->allow_collaboration)
                     <div class="mt-3 w-full">
                         <div class="relative inline-block mr-4 align-middle select-none transition duration-200 ease-in">
-                            <input wire:model="item.require_approval" type="checkbox" name="public" id="public" class="text-purple-700 focus:ring-purple-700 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-zinc-700 border-4 appearance-none cursor-pointer"/>
+                            <input wire:model="item.require_approval" type="checkbox" name="public" id="public" class="text-purple-700 focus:ring-purple-700 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
                             <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
                         </div>
                         <div class="relative inline-block ml-4">
@@ -69,7 +68,7 @@
                 @endif
             @endif
         @else
-            <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
+            <h2 class="text-center font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider inline-block align-middle">
                 {{ $item->name }}
             </h2>
             <hr class="mt-3"/>

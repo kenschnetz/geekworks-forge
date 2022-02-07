@@ -7,12 +7,12 @@
         @if($post->ActivePostDetails->Attributes->count() > 0)
             <div class="bg-white dark:bg-zinc-700 shadow">
                 <div class="p-4">
-                    <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
+                    <h2 class="text-center font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider inline-block align-middle">
                         Attributes
                     </h2>
                     <div class="mt-2">
                         @foreach($post->ActivePostDetails->Attributes as $post_attribute)
-                            <div class="border border-gray-200 mt-2 p-2 text-sm">
+                            <div class="border border-gray-200 mt-2 p-2 text-sm dark:text-gray-300">
                                 <span class="font-bold">{{ $post_attribute->Attribute->name }}:</span> {{ $post_attribute->value }}
                             </div>
                         @endforeach
@@ -23,12 +23,12 @@
         @if($post->ActivePostDetails->Actions->count() > 0)
             <div class="bg-white dark:bg-zinc-700 shadow">
                 <div class="p-4">
-                    <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
+                    <h2 class="text-center font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider inline-block align-middle">
                         Actions
                     </h2>
                     <div class="mt-2">
                         @foreach($post->ActivePostDetails->Actions as $post_action)
-                            <div class="border border-gray-200 mt-2 p-2 text-sm">
+                            <div class="border border-gray-200 mt-2 p-2 text-sm dark:text-gray-300">
                                 <span class="font-bold">{{ $post_action->Action->name }}:</span> {{ $post_action->value }}
                             </div>
                         @endforeach

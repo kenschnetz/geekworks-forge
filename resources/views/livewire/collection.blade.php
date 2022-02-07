@@ -22,7 +22,7 @@
         @if($editing)
             <div class="flex space-x-3">
                 <div class="min-w-0 flex-1">
-                    <x-dynamic-input :key="'item.name'" :placeholder="'Collection name'">{{ $item->name }}</x-dynamic-input>
+                    <x-dynamic-input :key="'item.name'" :placeholder="'Collection name'" class="dark:text-gray-300">{{ $item->name }}</x-dynamic-input>
                     @error('item.name') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
                 </div>
             </div>
@@ -31,15 +31,15 @@
                 <div class="min-w-0 flex-1">
 {{--                    <x-dynamic-input :limit="0" :key="'item.description'" :placeholder="'Collection description'">{{ $item->description }}</x-dynamic-input>--}}
                     <div class="mt-3 space-y-4" wire:ignore>
-                        <trix-editor class="trix-editor" x-data x-on:trix-change="$dispatch('input', event.target.value)" wire:model.debounce.1000ms="item.description" wire:key="post-rich-editor"></trix-editor>
+                        <trix-editor class="trix-editor dark:text-gray-300" x-data x-on:trix-change="$dispatch('input', event.target.value)" wire:model.debounce.1000ms="item.description" wire:key="post-rich-editor"></trix-editor>
                     </div>
                     @error('item.description') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
                 </div>
             </div>
             <hr class="mt-3"/>
-            <div class="mt-3 w-full">
+            <div class="mt-3 w-full dark:text-gray-300">
                 <div class="relative inline-block mr-4 align-middle select-none transition duration-200 ease-in">
-                    <input wire:model="item.publicly_visible" type="checkbox" name="public" id="public" class="text-purple-700 focus:ring-purple-700 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-zinc-700 border-4 appearance-none cursor-pointer"/>
+                    <input wire:model="item.publicly_visible" type="checkbox" name="public" id="public" class="text-purple-700 focus:ring-purple-700 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
                     <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
                 </div>
                 <div class="relative inline-block ml-4">
@@ -47,18 +47,18 @@
                 </div>
             </div>
         @else
-            <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
+            <h2 class="text-center font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider inline-block align-middle">
                 {{ $item->name }}
             </h2>
             <hr class="mt-3"/>
-            <div class="mt-3">
+            <div class="mt-3 dark:text-gray-300">
                 {!! $item->description !!}
             </div>
         @endif
     </div>
     @if(optional($posts)->count() > 0 ?? false)
         <div class="mt-3 bg-white dark:bg-zinc-700 p-4 shadow">
-            <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
+            <h2 class="text-center font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider inline-block align-middle">
                 Posts
             </h2>
             <hr class="mt-3"/>

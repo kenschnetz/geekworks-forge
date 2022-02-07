@@ -499,9 +499,7 @@
             'properties' => ['action' => $action, 'actionable_id' => $actionable_id],
             'show_breadcrumbs' => true,
             'breadcrumbs' => [
-                ['name' => auth()->user()->Character->name, 'route' => 'user-profile'],
-                ['name' => 'Notifications', 'route' => 'user-notification'],
-                ['name' => 'Notification'],
+                ['name' => 'Messenger'],
             ]
         ]);
     })->name('messenger')->middleware('terms', 'auth', 'verified');
@@ -718,7 +716,7 @@
             'show_breadcrumbs' => !empty($slug),
             'breadcrumbs' => [
                 ['name' => $user->Character->name, 'route' => 'user-profile', 'route_params' => ['user_name' => $user->Character->name]],
-                ['name' => 'Collections', 'route' => 'canons', 'route_params' => ['user_name' => $user->Character->name]],
+                ['name' => 'Collections', 'route' => 'collections', 'route_params' => ['user_name' => $user->Character->name]],
                 ['name' => optional($collection)->name],
             ]
         ]);

@@ -4,7 +4,7 @@
             Back
         </button>
         @if($collaboration->status === 'Open')
-            <button wire:click="Close()" class="bg-red-600 hover:bg-transparent text-white hover:text-red-600 font-bold px-4 py-3 border border-red-800" style="width:140px">
+            <button wire:click="Close()" class="bg-red-600 dark:bg-red-500 hover:bg-transparent text-white hover:text-red-600 font-bold px-4 py-3 border border-red-800" style="width:140px">
                 {{ $my_collaboration ? 'Withdraw' : 'Decline' }}
             </button>
             @if(!$my_collaboration && ($collaboration->title_accepted || $collaboration->description_accepted || $collaboration->content_accepted))
@@ -15,22 +15,22 @@
         @endif
     </div>
     <div class="lg:col-span-5 bg-white dark:bg-zinc-700 p-4 mt-3">
-        <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
-            Collaboration request for <a class="text-purple-700 hover:underline" href="{{ route('post', ['slug' => $original_post_details->Post->slug]) }}">{{ $original_post_details->title }}</a>
+        <h2 class="text-center font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider inline-block align-middle">
+            Collaboration request for <a class="text-purple-700 dark:text-purple-500 hover:underline" href="{{ route('post', ['slug' => $original_post_details->Post->slug]) }}">{{ $original_post_details->title }}</a>
         </h2>
         <hr class="mt-3" />
-        <p class="mt-3">
+        <p class="mt-3 dark:text-gray-300">
             {{ $collaboration->summary }}
         </p>
     </div>
     <div class="hidden lg:block lg:flex lg:space-x-4 mt-3">
         <div class="lg:flex-1 bg-white dark:bg-zinc-700 p-4">
-            <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider align-middle">
+            <h2 class="text-center font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider align-middle">
                 Original
             </h2>
         </div>
         <div class="lg:flex-1 bg-white dark:bg-zinc-700 p-4">
-            <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider align-middle">
+            <h2 class="text-center font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider align-middle">
                 Collaboration
             </h2>
         </div>
@@ -39,7 +39,7 @@
     @if($this->has_title_changes)
         <div class="lg:flex lg:space-x-4 mt-3">
             <div class="lg:flex-1 bg-white dark:bg-zinc-700 p-4 flex items-center">
-                <div>
+                <div class="dark:text-gray-300">
                     <div class="text-sm underline">Original Title</div>
                     @if($collaboration->status === 'Open' && $collaboration->title_accepted)
                         {{ $new_post_details->title }}
@@ -59,8 +59,8 @@
                     @endif
                 </div>
             @endif
-            <div class="lg:flex-1 bg-white dark:bg-zinc-700 p-4 flex items-center">
-                <div>
+            <div class="lg:flex-1 bg-white dark:bg-zinc-700 dark:text-gray-300 p-4 flex items-center">
+                <div class="dark:text-gray-300">
                     <div class="text-sm underline">Collaboration Title</div>
                     @if($collaboration->status === 'Open' && $collaboration->title_accepted)
                         {{ $collaboration->title }}
@@ -74,7 +74,7 @@
     @if($this->has_description_changes)
         <div class="lg:flex lg:space-x-4 mt-3">
             <div class="lg:flex-1 bg-white dark:bg-zinc-700 p-4 flex items-center">
-                <div>
+                <div class="dark:text-gray-300">
                     <div class="text-sm underline">Original Description</div>
                     @if($collaboration->status === 'Open' && $collaboration->description_accepted)
                         {{ $new_post_details->description }}
@@ -95,7 +95,7 @@
                 </div>
             @endif
             <div class="lg:flex-1 bg-white dark:bg-zinc-700 p-4 flex items-center">
-                <div>
+                <div class="dark:text-gray-300">
                     <div class="text-sm underline">Collaboration Description</div>
                     @if($collaboration->status === 'Open' && $collaboration->description_accepted)
                         {{ $collaboration->description }}
@@ -109,7 +109,7 @@
     @if($this->has_content_changes)
         <div class="lg:flex lg:space-x-4 mt-3">
             <div class="lg:flex-1 bg-white dark:bg-zinc-700 p-4 flex items-center">
-                <div>
+                <div class="dark:text-gray-300">
                     <div class="text-sm underline">Original Content</div>
                     @if($collaboration->status === 'Open' && $collaboration->content_accepted)
                         {!! $new_post_details->content !!}
@@ -130,7 +130,7 @@
                 </div>
             @endif
             <div class="lg:flex-1 bg-white dark:bg-zinc-700 p-4">
-                <div>
+                <div class="dark:text-gray-300">
                     <div class="text-sm underline">Collaboration Content</div>
                     @if($collaboration->status === 'Open' && $collaboration->content_accepted)
                         {!! $collaboration->content !!}

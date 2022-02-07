@@ -1,6 +1,6 @@
 <div class="max-w-3xl mx-auto lg:max-w-7xl">
     <div class="bg-white dark:bg-zinc-700 px-4 py-6 shadow sm:p-6">
-        <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
+        <h2 class="text-center font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider inline-block align-middle">
             Leave A Comment
         </h2>
         <div class="mt-3">
@@ -14,7 +14,7 @@
         </div>
         @error('reply_comment_content') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
         <hr class="my-3"/>
-        <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
+        <h2 class="text-center font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider inline-block align-middle">
             Recent Comments
         </h2>
         @if($post->Comments->count() > 0)

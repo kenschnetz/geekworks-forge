@@ -1,19 +1,19 @@
 <nav {{ $attributes->merge(['class', 'style']) }}>
-    <a href="{{route('user-profile')}}" class="text-gray-900 group flex items-center p-2">
-        <i class="fal fa-user-circle text-gray-900 text-center" style="width: 28px !important;"></i>
-        <span class="ml-3 font-medium text-gray-500 tracking-wider inline-block align-middle hover:underline">
+    <a href="{{route('user-profile')}}" class="text-gray-500 dark:text-gray-300 group flex items-center p-2">
+        <i class="fal fa-user-circle text-center" style="width: 28px !important;"></i>
+        <span class="ml-3 font-medium tracking-wider inline-block align-middle hover:underline">
             Profile
         </span>
     </a>
-    <a href="{{route('account')}}" class="text-gray-900 group flex items-center p-2">
-        <i class="fal fa-cog text-gray-900 text-center" style="width: 28px !important;"></i>
-        <span class="ml-3 font-medium text-gray-500 tracking-wider inline-block align-middle hover:underline">
+    <a href="{{route('account')}}" class="text-gray-500 dark:text-gray-300 group flex items-center p-2">
+        <i class="fal fa-cog text-center" style="width: 28px !important;"></i>
+        <span class="ml-3 font-medium tracking-wider inline-block align-middle hover:underline">
             Account
         </span>
     </a>
-    <a href="{{route('messenger')}}" class="text-gray-900 group flex items-center p-2">
-        <i class="fal fa-comments text-gray-900 text-center" style="width: 28px !important;"></i>
-        <span class="ml-3 font-medium text-gray-500 tracking-wider inline-block align-middle hover:underline">
+    <a href="{{route('messenger')}}" class="text-gray-500 dark:text-gray-300 group flex items-center p-2">
+        <i class="fal fa-comments text-center" style="width: 28px !important;"></i>
+        <span class="ml-3 font-medium tracking-wider inline-block align-middle hover:underline">
             Messenger
         </span>
         @if(auth()->user()->MessengerNotifications())
@@ -24,22 +24,22 @@
     </a>
 {{--TODO: add notifications here--}}
     @if(Auth()->user()->IsAdmin())
-        <a href="{{route('admin-tools')}}" class="text-gray-900 group flex items-center p-2">
-            <i class="fal fa-user-crown text-gray-900 text-center" style="width: 28px !important;"></i>
-            <span class="ml-3 font-medium text-gray-500 tracking-wider inline-block align-middle hover:underline">
+        <a href="{{route('admin-tools')}}" class="text-gray-500 dark:text-gray-300 group flex items-center p-2">
+            <i class="fal fa-user-crown text-center" style="width: 28px !important;"></i>
+            <span class="ml-3 font-medium tracking-wider inline-block align-middle hover:underline">
                 Admin Tools
             </span>
         </a>
     @endif
-    <a href="{{route('tickets')}}" class="text-gray-900 group flex items-center p-2">
-        <i class="fal fa-hand-holding-medical text-gray-900 text-center" style="width: 28px !important;"></i>
-        <span class="ml-3 font-medium text-gray-500 tracking-wider inline-block align-middle hover:underline">
+    <a href="{{route('tickets')}}" class="text-gray-500 dark:text-gray-300 group flex items-center p-2">
+        <i class="fal fa-hand-holding-medical text-center" style="width: 28px !important;"></i>
+        <span class="ml-3 font-medium tracking-wider inline-block align-middle hover:underline">
             Help
         </span>
     </a>
-    <a href="{{route('logout')}}" class="text-gray-900 group flex items-center p-2">
-        <i class="fal fa-sign-out text-gray-900 text-center" style="width: 28px !important;"></i>
-        <span class="ml-3 font-medium text-gray-500 tracking-wider inline-block align-middle hover:underline">
+    <a href="{{route('logout')}}" class="text-gray-500 dark:text-gray-300 group flex items-center p-2">
+        <i class="fal fa-sign-out text-center" style="width: 28px !important;"></i>
+        <span class="ml-3 font-medium tracking-wider inline-block align-middle hover:underline">
             Sign Out
         </span>
     </a>

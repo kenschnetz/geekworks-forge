@@ -6,7 +6,14 @@
             </a>
         </div>
         <div class="min-w-0 flex-1 justify-center items-center">
-            <a href="{{ route('user-profile', ['user_name' => Str::lower($author->Character->name)]) }}" class="hover:underline text-sm font-medium text-purple-700 dark:text-gray-300">{{ $author->Character->name }}</a>
+            <a href="{{ route('user-profile', ['user_name' => $author->Character->name]) }}" class="hover:underline text-sm font-medium text-purple-700 dark:text-purple-500">{{ $author->Character->name }}</a>
+            @if($author->IsStaff())
+                <i class="fas fa-crown text-purple-500"></i>
+            @elseif($author->IsAdmin())
+                <i class="fas fa-shield text-purple-500"></i>
+            @elseif($author->IsTester())
+                <i class="fas fa-vial text-purple-500"></i>
+            @endif
         </div>
     @else
         <div class="flex-shrink-0">
