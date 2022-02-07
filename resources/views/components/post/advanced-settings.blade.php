@@ -5,6 +5,8 @@
         </span>
     </span>
     <div x-show="show_advanced_options" class="mt-3">
+{{--        TODO: add option to change System and Category via searchable dropdown--}}
+{{--        <hr class="mt-3" />--}}
         <div class="mt-3 w-full">
             <p class="mt-3 text-gray-400">NOTE: the settings below are already set to the recommended defaults.</p>
         </div>
@@ -24,18 +26,18 @@
         </div>
         <div class="mt-3 w-full">
             <div class="relative inline-block mr-4 align-middle select-none transition duration-200 ease-in">
-                <input wire:model="post_details.requesting_recommendations" type="checkbox" name="toggle" id="toggle" class="text-purple-800 focus:ring-purple-800 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-zinc-700 border-4 appearance-none cursor-pointer"/>
+                <input wire:model="post_details.requesting_collaborations" type="checkbox" name="toggle" id="toggle" class="text-purple-800 focus:ring-purple-800 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-zinc-700 border-4 appearance-none cursor-pointer"/>
                 <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
             </div>
             <div class="relative inline-block ml-4">
-                Request recommendations
+                Request collaborations
             </div>
         </div>
         <div class="mt-3 text-gray-400 ml-8">
-            If on, this post will be highlighted to other users who are looking to collaborate. Don't worry, you will be able to review and control all recommendations!
+            If on, this post will be highlighted to other users who are looking to collaborate. Don't worry, you will be able to review and control all collaborations!
             <hr class="mt-1" />
         </div>
-        @error('post_details.requesting_recommendations') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
+        @error('post_details.requesting_collaborations') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
         @if($post->allow_conversions)
             <div class="mt-3 w-full">
                 <div class="relative inline-block mr-4 align-middle select-none transition duration-200 ease-in">
