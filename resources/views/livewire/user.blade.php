@@ -10,7 +10,7 @@
                 @endforeach
             </select>
         </label>
-        @error('item.role_id') <span class="text-red-500">System is required</span> @enderror
+        @error('item.role_id') <span class="text-red-500">Role is required</span> @enderror
     </div>
     <div class="mt-3 w-full">
         <label class="text-gray-500 text-sm">Name
@@ -57,5 +57,5 @@
             @endif
         </div>
     @endif
-{{--TODO: add tools for banning, muting, user admin notes, etc.--}}
+{{--TODO: add tools for banning, muting, user admin notes, etc. from this screen--}}
 </x-admin-tools.edit>
