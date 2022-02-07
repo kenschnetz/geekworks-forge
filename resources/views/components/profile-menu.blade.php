@@ -22,6 +22,12 @@
             </span>
         @endif
     </a>
+    <a href="{{route('tickets')}}" class="text-gray-900 group flex items-center p-2">
+        <i class="fal fa-hand-holding-medical text-gray-900 text-center" style="width: 28px !important;"></i>
+        <span class="ml-3 font-medium text-gray-500 tracking-wider inline-block align-middle hover:underline">
+            Help
+        </span>
+    </a>
 {{--TODO: add notifications here--}}
     @if(Auth()->user()->IsAdmin())
         <a href="{{route('admin-tools')}}" class="text-gray-900 group flex items-center p-2">

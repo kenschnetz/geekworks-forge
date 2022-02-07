@@ -183,6 +183,10 @@
             return $this->hasMany(UserViolation::class);
         }
 
+        public function Tickets() {
+            return $this->hasMany(Ticket::class);
+        }
+
         public function Canons() {
             return $this->hasMany(Canon::class);
         }

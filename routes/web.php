@@ -528,6 +528,29 @@
         ]);
     })->name('flag-content')->middleware('terms', 'auth', 'verified');
 
+    Route::get('/tickets', function () {
+        return view('components.layout', [
+            'view' => 'tickets',
+            'properties' => [],
+            'show_breadcrumbs' => true,
+            'breadcrumbs' => [
+                ['name' => 'Support Tickets'],
+            ]
+        ]);
+    })->name('tickets')->middleware('terms', 'auth', 'verified');
+
+    Route::get('/ticket/{id?}', function ($id = null) {
+        return view('components.layout', [
+            'view' => 'ticket',
+            'properties' => ['id' => $id],
+            'show_breadcrumbs' => true,
+            'breadcrumbs' => [
+                ['name' => 'Support Tickets', 'route' => 'tickets'],
+                ['name' => 'Request'],
+            ]
+        ]);
+    })->name('ticket')->middleware('terms', 'auth', 'verified');
+
     Route::get('/search', function () {
         return view('components.layout', [
             'view' => 'post-search',
