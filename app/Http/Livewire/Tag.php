@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Livewire;
+    namespace App\Http\Livewire;
 
-use Livewire\Component;
+    use Livewire\Component;
 
-class Tag extends Component
-{
-    public function render()
-    {
-        return view('livewire.tag');
+    class Tag extends Component {
+        public function Render() {
+            return view('livewire.tag');
+        }
     }
-}
