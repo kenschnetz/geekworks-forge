@@ -263,7 +263,7 @@
 
     Route::get('/admin/attribute/{id?}', function ($id = null) {
         return view('components.layout', [
-            'view' => 'attribute',
+            'view' => 'admin-attribute',
             'properties' => ['item_id' => $id],
             'show_breadcrumbs' => true,
             'breadcrumbs' => [
