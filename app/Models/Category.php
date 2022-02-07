@@ -23,6 +23,10 @@
             return $this->belongsTo(Category::class);
         }
 
+        public function Categories() {
+            return $this->hasMany(Category::class);
+        }
+
         public function Posts() {
             return $this->hasMany(Post::class);
         }
