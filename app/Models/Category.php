@@ -8,6 +8,7 @@
         protected $guarded = ['id'];
         protected $attributes = [
             'user_id' => null,
+            'category_id' => null,
             'name' => null,
             'slug' => null,
             'description' => null,
@@ -16,6 +17,10 @@
 
         public function User() {
             return $this->belongsTo(User::class);
+        }
+
+        public function Category() {
+            return $this->belongsTo(Category::class);
         }
 
         public function Posts() {
