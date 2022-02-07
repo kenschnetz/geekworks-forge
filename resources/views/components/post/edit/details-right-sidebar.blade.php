@@ -30,7 +30,7 @@
                     </div>
                     @if(!$is_collaboration)
                         <div class="mt-1">
-                            <span class="text-sm italic text-purple-800 cursor-pointer hover:underline" x-data="{}" x-on:click="window.livewire.emitTo('attribute-post-meta-modal', 'Show')" wire:ignore>Manage Attributes</span>
+                            <span class="text-sm italic text-purple-700 cursor-pointer hover:underline" x-data="{}" x-on:click="window.livewire.emitTo('attribute-post-meta-modal', 'Show')" wire:ignore>Manage Attributes</span>
                         </div>
                     @endif
                 </div>
@@ -64,7 +64,7 @@
                     </div>
                     @if(!$is_collaboration)
                         <div class="mt-1">
-                            <span class="text-sm italic text-purple-800 cursor-pointer hover:underline" x-data="{}" x-on:click="window.livewire.emitTo('action-post-meta-modal', 'Show')">Manage Actions</span>
+                            <span class="text-sm italic text-purple-700 cursor-pointer hover:underline" x-data="{}" x-on:click="window.livewire.emitTo('action-post-meta-modal', 'Show')">Manage Actions</span>
                         </div>
                     @endif
                 </div>

@@ -6,7 +6,7 @@
         <hr class="mt-2" />
         <div class="mt-2">
             @foreach($post->ActivePostDetails->Tags as $post_tag)
-                <a href="{{ route('tag-posts', ['tag_slug' => $post_tag->Tag->slug]) }}" class="relative inline-flex items-center rounded-full mt-1 px-3 py-0.5 text-sm bg-purple-800 text-white border border-purple-800 hover:shadow hover:text-purple-800 hover:bg-white dark:bg-zinc-700">
+                <a href="{{ route('tag-posts', ['tag_slug' => $post_tag->Tag->slug]) }}" class="relative inline-flex items-center rounded-full mt-1 px-3 py-0.5 text-sm bg-purple-700 text-white border border-purple-700 hover:shadow hover:text-purple-700 hover:bg-white dark:bg-zinc-700">
                     {{ $post_tag->Tag->name }}
                 </a>
             @endforeach

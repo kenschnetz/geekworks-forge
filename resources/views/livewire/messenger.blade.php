@@ -22,7 +22,7 @@
                         </div>
                         <div class="mt-3 w-full">
                             <div class="relative inline-block mr-4 align-middle select-none transition duration-200 ease-in">
-                                <input wire:model="selected_thread.private" type="checkbox" name="toggle" id="toggle" class="text-purple-800 focus:ring-purple-800 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-zinc-700 border-4 appearance-none cursor-pointer"/>
+                                <input wire:model="selected_thread.private" type="checkbox" name="toggle" id="toggle" class="text-purple-700 focus:ring-purple-700 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-zinc-700 border-4 appearance-none cursor-pointer"/>
                                 <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
                             </div>
                             <div class="relative inline-block ml-4">
@@ -56,12 +56,12 @@
                         <x-dynamic-input :limit="0" :key="'content'" :placeholder="'Enter message'" wire:ignore>{{ $content }}</x-dynamic-input>
                     </div>
                     <div class="mt-1 text-right">
-                        <button type="submit" x-on:click="content = null" class="mt-1 bg-purple-800 hover:bg-transparent text-white hover:text-purple-800 font-bold px-4 py-3 border border-purple-800">
+                        <button type="submit" x-on:click="content = null" class="mt-1 bg-purple-700 hover:bg-transparent text-white hover:text-purple-700 font-bold px-4 py-3 border border-purple-700">
                             Submit
                         </button>
                     </div>
                 </form>
-                <div class="mt-3 border border-purple-800 bg-gray-50">
+                <div class="mt-3 border border-purple-700 bg-gray-50">
                     @if($selected_thread->messages->count() > 0)
                         <div style="max-height: 50vh; overflow-x: hidden; overflow-y: scroll;" x-data="{ scroll: () => { $el.scrollTo(0, $el.scrollHeight); } }" x-init="scroll()" x-cloak>
                             @include('components.messenger.messages')

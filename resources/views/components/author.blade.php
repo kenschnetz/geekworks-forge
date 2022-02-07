@@ -6,7 +6,7 @@
             </a>
         </div>
         <div class="min-w-0 flex-1 justify-center items-center">
-            <a href="{{ route('user-profile', ['user_name' => Str::lower($author->Character->name)]) }}" class="hover:underline text-sm font-medium text-purple-800 dark:text-gray-300">{{ $author->Character->name }}</a>
+            <a href="{{ route('user-profile', ['user_name' => Str::lower($author->Character->name)]) }}" class="hover:underline text-sm font-medium text-purple-700 dark:text-gray-300">{{ $author->Character->name }}</a>
         </div>
     @else
         <div class="flex-shrink-0">

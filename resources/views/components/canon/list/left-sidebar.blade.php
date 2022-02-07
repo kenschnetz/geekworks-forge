@@ -6,7 +6,7 @@
             </h2>
             <hr class="mt-3" />
             <a href="{{ route('canon') }}" class="mt-3 text-gray-900 group flex items-center cursor-pointer">
-                <i class="mr-3 fas fa-globe text-purple-800"></i>
+                <i class="mr-3 fas fa-globe text-purple-700"></i>
                 <span class="hover:underline">New Canon</span>
             </a>
         </div>

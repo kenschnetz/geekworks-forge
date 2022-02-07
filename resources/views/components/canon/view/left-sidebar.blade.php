@@ -5,7 +5,7 @@
             <hr class="mt-3" />
             <div class="mt-3">
                 <span class="text-gray-900 group flex items-center" wire:click="ToggleEditing()">
-                    <i class="mr-3 fas fa-edit text-purple-800"></i>
+                    <i class="mr-3 fas fa-edit text-purple-700"></i>
                     <span class="hover:underline">Edit</span>
                 </span>
             </div>

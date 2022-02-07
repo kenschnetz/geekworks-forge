@@ -7,7 +7,7 @@
             <x-dynamic-input :limit="0" :key="'new_comment_content'" :placeholder="'Say something inspirational!'" class="flex items-center">
                 {{ $new_comment_content }}
                 <x-slot name="post">
-                    <i class="ml-auto pl-3 fas fa-share-square text-gray-200 hover:text-purple-800 cursor-pointer" x-on:click="$wire.SubmitNewComment()" style="font-size: 1.5em !important;"></i>
+                    <i class="ml-auto pl-3 fas fa-share-square text-gray-200 hover:text-purple-700 cursor-pointer" x-on:click="$wire.SubmitNewComment()" style="font-size: 1.5em !important;"></i>
                 </x-slot>
             </x-dynamic-input>
             @error('new_comment_content') <span class="text-red-600 error italic">{{ $message }}</span> @enderror

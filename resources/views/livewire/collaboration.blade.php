@@ -8,7 +8,7 @@
                 {{ $my_collaboration ? 'Withdraw' : 'Decline' }}
             </button>
             @if(!$my_collaboration && ($collaboration->title_accepted || $collaboration->description_accepted || $collaboration->content_accepted))
-                <button wire:click="Collaborate()" class="bg-purple-800 hover:bg-transparent text-white hover:text-purple-800 font-bold px-4 py-3 border border-purple-800" style="width:140px">
+                <button wire:click="Collaborate()" class="bg-purple-700 hover:bg-transparent text-white hover:text-purple-700 font-bold px-4 py-3 border border-purple-700" style="width:140px">
                     Collaborate
                 </button>
             @endif
@@ -16,7 +16,7 @@
     </div>
     <div class="lg:col-span-5 bg-white dark:bg-zinc-700 p-4 mt-3">
         <h2 class="text-center font-medium text-gray-500 uppercase tracking-wider inline-block align-middle">
-            Collaboration request for <a class="text-purple-600 hover:underline" href="{{ route('post', ['slug' => $original_post_details->Post->slug]) }}">{{ $original_post_details->title }}</a>
+            Collaboration request for <a class="text-purple-700 hover:underline" href="{{ route('post', ['slug' => $original_post_details->Post->slug]) }}">{{ $original_post_details->title }}</a>
         </h2>
         <hr class="mt-3" />
         <p class="mt-3">
@@ -147,7 +147,7 @@
 {{--        </div>--}}
 {{--        @if(!$my_collaboration)--}}
 {{--            <div class="lg:flex-none p-2 flex items-center justify-center">--}}
-{{--                <i class="text-orange-600 hover:text-purple-800 fas fa-chevron-circle-left fa-2x cursor-pointer"></i>--}}
+{{--                <i class="text-orange-600 hover:text-purple-700 fas fa-chevron-circle-left fa-2x cursor-pointer"></i>--}}
 {{--            </div>--}}
 {{--        @endif--}}
 {{--        <div class="lg:flex-1 bg-white dark:bg-zinc-700 p-4">--}}
@@ -160,7 +160,7 @@
 {{--        </div>--}}
 {{--        @if(!$my_collaboration)--}}
 {{--            <div class="lg:flex-none p-2 flex items-center justify-center">--}}
-{{--                <i class="text-orange-600 hover:text-purple-800 fas fa-chevron-circle-left fa-2x cursor-pointer"></i>--}}
+{{--                <i class="text-orange-600 hover:text-purple-700 fas fa-chevron-circle-left fa-2x cursor-pointer"></i>--}}
 {{--            </div>--}}
 {{--        @endif--}}
 {{--        <div class="lg:flex-1 bg-white dark:bg-zinc-700 p-4">--}}
@@ -173,7 +173,7 @@
 {{--        </div>--}}
 {{--        @if(!$my_collaboration)--}}
 {{--            <div class="lg:flex-none p-2 flex items-center justify-center">--}}
-{{--                <i class="text-orange-600 hover:text-purple-800 fas fa-chevron-circle-left fa-2x cursor-pointer"></i>--}}
+{{--                <i class="text-orange-600 hover:text-purple-700 fas fa-chevron-circle-left fa-2x cursor-pointer"></i>--}}
 {{--            </div>--}}
 {{--        @endif--}}
 {{--        <div class="lg:flex-1 bg-white dark:bg-zinc-700 p-4">--}}

@@ -5,7 +5,7 @@
                 Cancel
             </button>
             @if($is_collaboration)
-                <button wire:click="Submit()" class="bg-purple-800 hover:bg-transparent text-white hover:text-purple-800 font-bold px-4 py-3 border border-purple-800" style="width:140px">
+                <button wire:click="Submit()" class="bg-purple-700 hover:bg-transparent text-white hover:text-purple-700 font-bold px-4 py-3 border border-purple-700" style="width:140px">
                     Submit
                 </button>
             @else
@@ -18,7 +18,7 @@
                         Save
                     </button>
                 @endif
-                <button wire:click="Save(true)" class="bg-purple-800 hover:bg-transparent text-white hover:text-purple-800 font-bold px-4 py-3 border border-purple-800" style="width:140px">
+                <button wire:click="Save(true)" class="bg-purple-700 hover:bg-transparent text-white hover:text-purple-700 font-bold px-4 py-3 border border-purple-700" style="width:140px">
                     Publish
                 </button>
             @endif
@@ -50,7 +50,7 @@
                     @if(!$is_collaboration)
                         <hr class="mt-3" />
                         <div class="mt-3 space-y-4">
-                            <button type="button" @class(['relative block w-full border-2 border-gray-300 border-dashed text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-800', ' p-12' => empty($post_image), 'p-3' => !empty($post_image)]) x-data="{}" x-on:click="window.livewire.emitTo('image-post-meta-modal', 'Show')">
+                            <button type="button" @class(['relative block w-full border-2 border-gray-300 border-dashed text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-700', ' p-12' => empty($post_image), 'p-3' => !empty($post_image)]) x-data="{}" x-on:click="window.livewire.emitTo('image-post-meta-modal', 'Show')">
                                 @if(empty($post_image))
                                     <i class="fas fa-image-polaroid text-gray-300 fa-3x"></i>
                                     <span class="mt-2 block font-medium text-gray-300">

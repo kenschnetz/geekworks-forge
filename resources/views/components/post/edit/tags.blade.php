@@ -7,7 +7,7 @@
         @if(count($tags) > 0)
             <div class="mt-2">
                 @foreach($tags as $post_tag)
-                    <span class="relative inline-flex items-center rounded-full mt-1 px-3 py-0.5 text-sm bg-purple-800 text-white border border-purple-800">
+                    <span class="relative inline-flex items-center rounded-full mt-1 px-3 py-0.5 text-sm bg-purple-700 text-white border border-purple-700">
                         {{ $post_tag['name'] }}
                     </span>
                 @endforeach
@@ -20,7 +20,7 @@
         @error('tags')<div class="mt-1"><span class="text-red-600 error italic mt-3">{{ $message }}</span></div>@enderror
         @if(!$is_collaboration)
             <div class="mt-1">
-                <span class="text-sm italic text-purple-800 cursor-pointer hover:underline" x-data="{}" x-on:click="window.livewire.emitTo('tag-post-meta-modal', 'Show')">Manage Tags</span>
+                <span class="text-sm italic text-purple-700 cursor-pointer hover:underline" x-data="{}" x-on:click="window.livewire.emitTo('tag-post-meta-modal', 'Show')">Manage Tags</span>
             </div>
         @endif
     </div>

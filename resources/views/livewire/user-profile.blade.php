@@ -19,7 +19,7 @@
             <div class="bg-white dark:bg-zinc-700 p-4 shadow">
                 <div class="flex xs:space-x-3 items-center justify-center">
                     @if($editing)
-                        <button type="button" @class(['hidden xs:block flex-shrink-0 relative border-2 border-gray-300 border-dashed text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-800 p-4']) x-data="{}" x-on:click="window.livewire.emitTo('image-post-meta-modal', 'Show')">
+                        <button type="button" @class(['hidden xs:block flex-shrink-0 relative border-2 border-gray-300 border-dashed text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-700 p-4']) x-data="{}" x-on:click="window.livewire.emitTo('image-post-meta-modal', 'Show')">
                             @if(empty($profile_photo['path']))
                                 <div class="xs:w-24 xs:h-24">
                                     <i class="fas fa-image-polaroid text-gray-300 fa-3x"></i>
@@ -43,7 +43,7 @@
                     @endif
                     <div class="min-w-0 flex-1">
                         @if($editing)
-                            <button type="button" @class(['relative xs:hidden mb-3 mt-8 block w-full border-2 border-gray-300 border-dashed text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-800 p-6']) x-data="{}" x-on:click="window.livewire.emitTo('image-post-meta-modal', 'Show')">
+                            <button type="button" @class(['relative xs:hidden mb-3 mt-8 block w-full border-2 border-gray-300 border-dashed text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-700 p-6']) x-data="{}" x-on:click="window.livewire.emitTo('image-post-meta-modal', 'Show')">
                                 @if(empty($profile_photo['path']))
                                     <div class="w-full">
                                         <i class="fas fa-image-polaroid text-gray-300 fa-3x"></i>
@@ -84,7 +84,7 @@
                                     <div class="min-w-0 flex-1">
                                         <x-dynamic-input :key="'profile_user_edits.character.bio'" :placeholder="'Character name'">
                                             <x-slot name="pre">
-                                                <i class="fas fa-sync-alt text-gray-200 hover:text-purple-800 cursor-pointer mr-3" style="font-size: 1.5em;" wire:click="Inspire()" x-on:click.debounce="SetValue(), SetLength()"></i>
+                                                <i class="fas fa-sync-alt text-gray-200 hover:text-purple-700 cursor-pointer mr-3" style="font-size: 1.5em;" wire:click="Inspire()" x-on:click.debounce="SetValue(), SetLength()"></i>
                                             </x-slot>
                                             {{ $profile_user_edits['character']->bio }}
                                         </x-dynamic-input>
@@ -103,21 +103,21 @@
                 <div class="mt-3 spacy-y-2 md:grid md:grid-cols-4 md:gap-x-2">
                     <div class="w-full md:col-span-1">
                         <a @if($stats['idea_count'] > 0) href="{{ route('ideas', ['user_name' => $profile_user['character']->name]) }}" @endif>
-                            <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['idea_count'] <= 0, 'text-purple-600 hover:underline' => $stats['idea_count'] > 0]) style="height: 80px;">
+                            <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['idea_count'] <= 0, 'text-purple-700 hover:underline' => $stats['idea_count'] > 0]) style="height: 80px;">
                                 {{ $stats['idea_count'] }} {{ $stats['idea_count'] === 1 ? 'idea' : 'ideas' }}
                             </div>
                         </a>
                     </div>
                     <div class="w-full mt-3 md:m-0 md:col-span-1">
                         <a @if($stats['question_count'] > 0) href="{{ route('questions', ['user_name' => $profile_user['character']->name]) }}" @endif>
-                            <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['question_count'] <= 0, 'text-purple-600 hover:underline' => $stats['question_count'] > 0]) style="height: 80px;">
+                            <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['question_count'] <= 0, 'text-purple-700 hover:underline' => $stats['question_count'] > 0]) style="height: 80px;">
                                 {{ $stats['question_count'] }} {{ $stats['question_count'] === 1 ? 'question' : 'questions' }}
                             </div>
                         </a>
                     </div>
                     <div class="w-full mt-3 md:m-0 md:col-span-1">
                         <a @if($stats['question_count'] > 0) href="{{ route('questions', ['user_name' => $profile_user['character']->name]) }}" @endif>
-                            <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['article_count'] <= 0, 'text-purple-600 hover:underline' => $stats['article_count'] > 0]) style="height: 80px;">
+                            <div @class(['w-full flex items-center justify-center inline-block font-bold uppercase tracking-wider border border-gray-200 p-1', 'text-gray-400' => $stats['article_count'] <= 0, 'text-purple-700 hover:underline' => $stats['article_count'] > 0]) style="height: 80px;">
                                 {{ $stats['article_count'] }} {{ $stats['article_count'] === 1 ? 'article' : 'articles' }}
                             </div>
                         </a>

@@ -15,7 +15,7 @@
         </div>
     @endif
     <div class="mt-3">
-        <h2 class="mt-4 text-base font-medium text-purple-800 dark:text-gray-300">
+        <h2 class="mt-4 text-base font-medium text-purple-700 dark:text-gray-300">
             <a href="{{ route('post', ['slug' => $post->slug]) }}" class="hover:underline">
                 <strong>{{ $post->ActivePostDetails->title }} {{ $post->published ? '' : '[DRAFT]' }}</strong>
             </a>

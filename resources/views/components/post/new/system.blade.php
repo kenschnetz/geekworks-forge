@@ -5,7 +5,7 @@
         @foreach ($systems as $system)
             <div class="md:col-span-1 relative group bg-white dark:bg-zinc-700 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500 md:flex">
                 <div>
-                    <h3 class="text-purple-800 text-lg font-bold text-gray-500 hover:underline cursor-pointer" wire:click="ChooseSystem({{ $system->id }}, '{{ $system->name }}')">
+                    <h3 class="text-purple-700 text-lg font-bold text-gray-500 hover:underline cursor-pointer" wire:click="ChooseSystem({{ $system->id }}, '{{ $system->name }}')">
                         {{ $system->name }} <i class="fas fa-caret-right ml-3"></i>
                     </h3>
                     <p class="mt-2 text-sm">

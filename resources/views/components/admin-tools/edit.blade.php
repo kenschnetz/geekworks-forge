@@ -10,7 +10,7 @@
             <button wire:click="Cancel()" class="bg-gray-400 hover:bg-transparent text-white hover:text-gray-400 font-bold px-4 py-3 border border-gray-600 w-full sm:w-1/4" style="width:140px">
                 Cancel
             </button>
-            <button wire:click="Save()" class="bg-purple-800 hover:bg-transparent text-white hover:text-purple-800 font-bold px-4 py-3 border border-purple-800 w-full sm:w-1/4" style="width:140px">
+            <button wire:click="Save()" class="bg-purple-700 hover:bg-transparent text-white hover:text-purple-700 font-bold px-4 py-3 border border-purple-700 w-full sm:w-1/4" style="width:140px">
                 Save
             </button>
         </div>

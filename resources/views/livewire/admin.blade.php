@@ -4,7 +4,7 @@
             <div class="relative group bg-white dark:bg-zinc-700 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500 md:flex">
                 <div>
                     <a href="{{ route($tool->route) }}">
-                        <h3 class="text-purple-800 text-lg font-bold text-gray-500 hover:underline cursor-pointer">
+                        <h3 class="text-purple-700 text-lg font-bold text-gray-500 hover:underline cursor-pointer">
                             {{ $tool->name }} <i class="fas fa-caret-right ml-3"></i>
                         </h3>
                     </a>

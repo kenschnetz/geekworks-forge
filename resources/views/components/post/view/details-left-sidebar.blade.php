@@ -13,7 +13,7 @@
         <div class="mt-3 px-4">
             @if($post->user_id === auth()->user()->id)
                 <a href="{{ match($post->post_type_id) { 1 => route('idea', ['post_id' => $post->id]), 2 => route('question', ['post_id' => $post->id]), 3 => route('article', ['post_id' => $post->id]) } }}" class="text-gray-900 group flex items-center" role="menuitem" tabindex="-1" id="options-menu-0-item-0">
-                    <i class="mr-3 fas fa-edit text-purple-800"></i>
+                    <i class="mr-3 fas fa-edit text-purple-700"></i>
                     <span class="hover:underline">Edit</span>
                 </a>
             @endif
@@ -23,24 +23,24 @@
                         <i class="mr-3 fas fa-thumbs-down text-red-600"></i>
                         <span class="hover:underline">Remove upvote</span>
                     @else
-                        <i class="mr-3 fas fa-thumbs-up text-purple-800"></i>
+                        <i class="mr-3 fas fa-thumbs-up text-purple-700"></i>
                         <span class="hover:underline">Upvote</span>
                     @endif
                 </div>
             @endif
             @if($post->user_id === auth()->user()->id || !$post->locked_canon)
                 <span class="text-gray-900 group flex items-center mt-3 cursor-pointer" x-data="{}" x-on:click="window.livewire.emitTo('canonize-modal', 'Show')">
-                    <i class="mr-3 fas fa-vector-square text-purple-800"></i>
+                    <i class="mr-3 fas fa-vector-square text-purple-700"></i>
                     <span class="hover:underline">Canonize</span>
                 </span>
             @endif
             <span class="text-gray-900 group flex items-center mt-3 cursor-pointer" x-data="{}" x-on:click="window.livewire.emitTo('collect-modal', 'Show')">
-                <i class="mr-3 fas fa-th-large text-purple-800"></i>
+                <i class="mr-3 fas fa-th-large text-purple-700"></i>
                 <span class="hover:underline">Collect</span>
             </span>
             @if($post->Type->name === 'Idea' && !$has_open_collaboration && $post->user_id !== auth()->user()->id && $post->ActivePostDetails->requesting_collaborations)
                 <a href="{{ route('collaborate', ['post_id' => $post->id]) }}" class="text-gray-900 group flex items-center mt-3" role="menuitem" tabindex="-1" id="options-menu-0-item-0">
-                    <i class="mr-3 fas fa-file-edit text-purple-800"></i>
+                    <i class="mr-3 fas fa-file-edit text-purple-700"></i>
                     <span class="hover:underline">Collaborate</span>
                 </a>
             @endif

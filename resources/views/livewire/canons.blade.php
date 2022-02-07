@@ -41,7 +41,7 @@
                         @if(auth()->user()->id === $user->id)
                             No Canons found... why not <a class="text-orange-600 hover:underline" href="{{route('canon')}}">create one</a>?
                         @else
-                            <a class="text-purple-800" href="{{ route('user-profile', ['user_name' => $user->Character->name]) }}">{{ $user->Character->name }}</a> has no public Canons!
+                            <a class="text-purple-700" href="{{ route('user-profile', ['user_name' => $user->Character->name]) }}">{{ $user->Character->name }}</a> has no public Canons!
                         @endif
                     </span>
                 </div>

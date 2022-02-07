@@ -3,7 +3,7 @@
         <ol role="list" class="flex items-center space-x-4">
             <li>
                 <div>
-                    <a href="{{ route('home') }}" class="text-purple-600 hover:text-gray-500 p-4">
+                    <a href="{{ route('home') }}" class="text-purple-700 hover:text-gray-500 p-4">
                         <i class="fas fa-home-alt"></i>
                     </a>
                 </div>
@@ -15,7 +15,7 @@
                 <li>
                     <div>
                         @if(!$loop->last)
-                            <a href="{{ route($breadcrumb['route'], $breadcrumb['route_params'] ?? []) }}" class="text-purple-600 hover:text-gray-500 p-4 text-sm">
+                            <a href="{{ route($breadcrumb['route'], $breadcrumb['route_params'] ?? []) }}" class="text-purple-700 hover:text-gray-500 p-4 text-sm">
                                 {{ $breadcrumb['name'] }}
                             </a>
                         @else

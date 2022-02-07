@@ -14,7 +14,7 @@
                     <input wire:model="search_term" class="w-full rounded py-4 px-6 text-gray-700 leading-tight focus:outline-none" id="item-search" type="text" placeholder="Filter" wire:model.lazy="search_term">
                 </div>
                 <hr class="my-3" />
-                <div class="bg-purple-800 p-1 text-white text-sm" x-text="tooltip"></div>
+                <div class="bg-purple-700 p-1 text-white text-sm" x-text="tooltip"></div>
                 {{--TODO: add toggle to only show selected items--}}
                 {{--TODO: add button to remove all current selections--}}
                 <div @class(['mt-3 gap-1', 'grid grid-cols-2 md:grid-cols-4' => $name !== 'image', 'w-full md:grid md:grid-cols-3' => $name === 'image'])>

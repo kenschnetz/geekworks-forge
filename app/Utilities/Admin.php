@@ -55,6 +55,11 @@
                     'name' => 'Actions',
                     'description' => 'Manage Post Actions.'
                 ],
+                (object)[
+                    'route' => 'tickets',
+                    'name' => 'Tickets',
+                    'description' => 'Manage Support Requests.'
+                ],
             ]);
         }
 	}

@@ -11,11 +11,11 @@
                     <div x-show="editing" class="mt-3">
                         <x-dynamic-input :limit="0" :key="'edit_comment_content'" :placeholder="'Edit comment'" class="flex items-center">
                             <x-slot name="pre">
-                                <i class="fas fa-ban text-gray-200 hover:text-purple-800 cursor-pointer mr-3" style="font-size: 1.5em !important;" x-on:click="editing = false, $wire.set('edit_comment_content', '')"></i>
+                                <i class="fas fa-ban text-gray-200 hover:text-purple-700 cursor-pointer mr-3" style="font-size: 1.5em !important;" x-on:click="editing = false, $wire.set('edit_comment_content', '')"></i>
                             </x-slot>
                             {{ $edit_comment_content }}
                             <x-slot name="post">
-                                <i class="ml-auto pl-3 fas fa-share-square text-gray-200 hover:text-purple-800 cursor-pointer" x-on:click="$wire.SubmitEdit().then(result => { editing = result })" style="font-size: 1.5em !important;"></i>
+                                <i class="ml-auto pl-3 fas fa-share-square text-gray-200 hover:text-purple-700 cursor-pointer" x-on:click="$wire.SubmitEdit().then(result => { editing = result })" style="font-size: 1.5em !important;"></i>
                             </x-slot>
                         </x-dynamic-input>
                     </div>
@@ -62,11 +62,11 @@
                 <div x-show="replying" class="bg-gray-50 border w-full p-4 mt-3">
                     <x-dynamic-input :limit="0" :key="'reply_comment_content'" :placeholder="'Reply'" class="flex items-center">
                         <x-slot name="pre">
-                            <i class="fas fa-ban text-gray-200 hover:text-purple-800 cursor-pointer mr-3" style="font-size: 1.5em !important;" x-on:click="replying = false, $wire.set('reply_comment_content', '')"></i>
+                            <i class="fas fa-ban text-gray-200 hover:text-purple-700 cursor-pointer mr-3" style="font-size: 1.5em !important;" x-on:click="replying = false, $wire.set('reply_comment_content', '')"></i>
                         </x-slot>
                         {{ $reply_comment_content }}
                         <x-slot name="post">
-                            <i class="ml-auto pl-3 fas fa-share-square text-gray-200 hover:text-purple-800 cursor-pointer" x-on:click="$wire.SubmitReply().then(result => { replying = $wire.get('replying') })" style="font-size: 1.5em !important;"></i>
+                            <i class="ml-auto pl-3 fas fa-share-square text-gray-200 hover:text-purple-700 cursor-pointer" x-on:click="$wire.SubmitReply().then(result => { replying = $wire.get('replying') })" style="font-size: 1.5em !important;"></i>
                         </x-slot>
                     </x-dynamic-input>
                     @error('reply_comment_content') <span class="text-red-600 error italic">{{ $message }}</span> @enderror
@@ -88,7 +88,7 @@
 {{--            {{ $comment->comment }}--}}
 {{--        </div>--}}
 {{--        <div class="mt-3">--}}
-{{--            <span x-show="!replying" x-on:click="replying = true, $wire.set('replying_to_id', {{$comment->id}})" @click.away="replying = false" class="inline-block text-xs align-bottom cursor-pointer text-purple-600"><i>Reply</i></span>--}}
+{{--            <span x-show="!replying" x-on:click="replying = true, $wire.set('replying_to_id', {{$comment->id}})" @click.away="replying = false" class="inline-block text-xs align-bottom cursor-pointer text-purple-700"><i>Reply</i></span>--}}
 {{--            @if($user->IsStaff() || $user->IsAdmin())--}}
 {{--                <span x-show="!deleting && !replying" x-on:click="deleting = true" @click.away="deleting = false" class="inline-block text-xs align-bottom cursor-pointer text-red-600 float-right"><i>Delete</i></span>--}}
 {{--                <span x-show="deleting" wire:click="DeleteComment({{$comment->id}})" @click.away="deleting = false" class="inline-block text-xs align-bottom cursor-pointer text-red-600 float-right"><i>Confirm</i></span>--}}
@@ -98,11 +98,11 @@
 {{--        <div x-show="replying" class="mt-3">--}}
 {{--            <x-dynamic-input :limit="0" :key="'reply_comment'" :placeholder="'Reply'" class="flex items-center">--}}
 {{--                <x-slot name="pre">--}}
-{{--                    <i class="fas fa-ban text-gray-200 hover:text-purple-800 cursor-pointer mr-3" style="font-size: 1.5em !important;" x-on:click="replying = false, $wire.set('reply_comment', '')"></i>--}}
+{{--                    <i class="fas fa-ban text-gray-200 hover:text-purple-700 cursor-pointer mr-3" style="font-size: 1.5em !important;" x-on:click="replying = false, $wire.set('reply_comment', '')"></i>--}}
 {{--                </x-slot>--}}
 {{--                {{ $reply_comment }}--}}
 {{--                <x-slot name="post">--}}
-{{--                    <i class="ml-auto pl-3 fas fa-share-square text-gray-200 hover:text-purple-800 cursor-pointer" x-on:click="$wire.SubmitReply().then(result => { replying = result })" style="font-size: 1.5em !important;"></i>--}}
+{{--                    <i class="ml-auto pl-3 fas fa-share-square text-gray-200 hover:text-purple-700 cursor-pointer" x-on:click="$wire.SubmitReply().then(result => { replying = result })" style="font-size: 1.5em !important;"></i>--}}
 {{--                </x-slot>--}}
 {{--            </x-dynamic-input>--}}
 {{--            @error('reply_content') <span class="text-red-600 error italic">{{ $message }}</span> @enderror--}}

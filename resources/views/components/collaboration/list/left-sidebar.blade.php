@@ -7,7 +7,7 @@
             <hr class="mt-3" />
             <div class="mt-3 w-full">
                 <div class="relative inline-block mr-4 align-middle select-none transition duration-200 ease-in">
-                    <input wire:model="show_your_requests" wire:click="$set('show_requests_from_others', false)" type="checkbox" name="toggle" id="toggle" class="text-purple-800 focus:ring-purple-800 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-zinc-700 border-4 appearance-none cursor-pointer"/>
+                    <input wire:model="show_your_requests" wire:click="$set('show_requests_from_others', false)" type="checkbox" name="toggle" id="toggle" class="text-purple-700 focus:ring-purple-700 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-zinc-700 border-4 appearance-none cursor-pointer"/>
                     <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
                 </div>
                 <div class="relative inline-block ml-4">
@@ -16,7 +16,7 @@
             </div>
             <div class="mt-3 w-full">
                 <div class="relative inline-block mr-4 align-middle select-none transition duration-200 ease-in">
-                    <input wire:model="show_requests_from_others" wire:click="$set('show_your_requests', false)" type="checkbox" name="toggle" id="toggle" class="text-purple-800 focus:ring-purple-800 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-zinc-700 border-4 appearance-none cursor-pointer"/>
+                    <input wire:model="show_requests_from_others" wire:click="$set('show_your_requests', false)" type="checkbox" name="toggle" id="toggle" class="text-purple-700 focus:ring-purple-700 toggle-checkbox absolute block w-6 h-6 rounded-full bg-white dark:bg-zinc-700 border-4 appearance-none cursor-pointer"/>
                     <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
                 </div>
                 <div class="relative inline-block ml-4">
