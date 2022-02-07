@@ -5,7 +5,7 @@
     use Livewire\Component;
 
     class Flag extends Component {
-        public function render() {
-            return view('livewire.user-mute');
+        public function Render() {
+            return view('livewire.flag');
         }
     }
