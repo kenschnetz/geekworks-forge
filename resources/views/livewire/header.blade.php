@@ -24,18 +24,23 @@
             </div>
             <div class="hidden lg:flex-1 lg:flex lg:items-center lg:justify-end">
                 <div class="flex-shrink-0 relative ml-5">
-                    <div>
-                        <button @click="profile_menu_open = !profile_menu_open" @click.away="profile_menu_open = false" type="button" class="bg-white dark:bg-zinc-700 rounded-full flex" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                            <span class="sr-only">Open user menu</span>
-                            <img class="h-8 w-8 rounded-full border border-gray-300" src="{{$profile_image_path}}" alt="profile-image" />
-                            @if($notifications > 0)
-                                <span class="absolute top-0 right-0 inline-flex items-center justify-center leading-none p-2 transform translate-x-1/2 -translate-y-1/3 bg-red-600 rounded-full border border-white" />
-                            @endif
-                        </button>
-                    </div>
-                    <div x-show="profile_menu_open" class="origin-top-right absolute z-10 right-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-zinc-700 ring-1 ring-black ring-opacity-5 py-1 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                        <x-profile-menu class="text-sm text-gray-700"></x-profile-menu>
-                    </div>
+                    @if(auth()->check())
+                        <div>
+                            <button @click="profile_menu_open = !profile_menu_open" @click.away="profile_menu_open = false" type="button" class="bg-white dark:bg-zinc-700 rounded-full flex" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="h-8 w-8 rounded-full border border-gray-300" src="{{$profile_image_path}}" alt="profile-image" />
+                                @if($notifications > 0)
+                                    <span class="absolute top-0 right-0 inline-flex items-center justify-center leading-none p-2 transform translate-x-1/2 -translate-y-1/3 bg-red-600 rounded-full border border-white" />
+                                @endif
+                            </button>
+                        </div>
+                        <div x-show="profile_menu_open" class="origin-top-right absolute z-10 right-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-zinc-700 ring-1 ring-black ring-opacity-5 py-1 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                            <x-profile-menu class="text-sm text-gray-700"></x-profile-menu>
+                        </div>
+                    @else
+                        <a href="{{ route('login') }}" class="text-sm underline mr-3">Log in</a>
+                        <a href="{{ route('register') }}" class="text-sm underline">Register</a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -51,6 +56,8 @@
     <div x-show="mobile_menu_open">
         <x-main-menu class="py-5 border border-gray-200"></x-main-menu>
         <hr />
-        <x-profile-menu class="py-5 text-sm font-semibold text-gray-500 uppercase tracking-wider align-middle"></x-profile-menu>
+        @if(auth()->check())
+            <x-profile-menu class="py-5 text-sm font-semibold text-gray-500 uppercase tracking-wider align-middle"></x-profile-menu>
+        @endif
     </div>
 </header>

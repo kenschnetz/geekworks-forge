@@ -17,9 +17,11 @@
         protected $listeners = ['MessengerNotificationsRead' => 'GetMessengerNotifications'];
 
         public function Mount() {
-            $this->user = Auth::user();
-            $this->profile_image_path = empty($this->user->Character->ProfilePhoto->path) ? '/storage/img/default-profile.jpg' : $this->user->Character->ProfilePhoto->path;
-            $this->GetMessengerNotifications();
+            if (auth()->check()) {
+                $this->user = auth()->user();
+                $this->profile_image_path = empty($this->user->Character->ProfilePhoto->path) ? '/storage/img/default-profile.jpg' : $this->user->Character->ProfilePhoto->path;
+                $this->GetMessengerNotifications();
+            }
             $this->menu_show_systems = !empty(Request::route('system_slug'));
             $this->menu_show_categories = !empty(Request::route('category_slug'));
         }

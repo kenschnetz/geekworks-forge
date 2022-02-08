@@ -16,7 +16,7 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-zinc-900">
+        <div class="min-h-screen bg-gray-100 dark:bg-zinc-900" style="background-image: url('/storage/img/forge-bg.png'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover; background-position: center center;">
             <main>
                 {{ $slot }}
             </main>

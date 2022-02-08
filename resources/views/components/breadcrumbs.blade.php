@@ -9,22 +9,24 @@
                 </div>
             </li>
             @foreach($breadcrumbs as $index => $breadcrumb)
-                <li>
-                    <i class="fal fa-chevron-left fa-flip-horizontal text-gray-400 dark:text-gray-300"></i>
-                </li>
-                <li>
-                    <div>
-                        @if(!$loop->last)
-                            <a href="{{ route($breadcrumb['route'], $breadcrumb['route_params'] ?? []) }}" class="text-purple-700 dark:text-purple-500 hover:text-gray-500 p-4 text-sm">
-                                {{ $breadcrumb['name'] }}
-                            </a>
-                        @else
-                            <span class="p-4 text-sm dark:text-gray-300">
-                                {{ $breadcrumb['name'] }}
-                            </span>
-                        @endif
-                    </div>
-                </li>
+                @if(!optional($breadcrumb)['hide'] ?? true)
+                    <li>
+                        <i class="fal fa-chevron-left fa-flip-horizontal text-gray-400 dark:text-gray-300"></i>
+                    </li>
+                    <li>
+                        <div>
+                            @if(!$loop->last)
+                                <a href="{{ route($breadcrumb['route'], $breadcrumb['route_params'] ?? []) }}" class="text-purple-700 dark:text-purple-500 hover:text-gray-500 p-4 text-sm">
+                                    {{ $breadcrumb['name'] }}
+                                </a>
+                            @else
+                                <span class="p-4 text-sm dark:text-gray-300">
+                                    {{ $breadcrumb['name'] }}
+                                </span>
+                            @endif
+                        </div>
+                    </li>
+                @endif
             @endforeach
         </ol>
     </div>

@@ -8,7 +8,7 @@
             <div class="mt-3 bg-gray-100 rounded w-1/2" style="height: 20px;"></div>
             <div class="mt-3 bg-gray-100 rounded w-1/2" style="height: 20px;"></div>
         @else
-            @if(!$my_profile)
+            @if(!$my_profile && auth()->check())
                 <div class="mb-3 text-gray-900 dark:text-gray-300 group flex items-center cursor-pointer" wire:click="ToggleFollow()">
                     @if($following)
                         <i class="mr-3 fas fa-user-minus text-red-600 dark:text-red-500"></i>
@@ -29,20 +29,27 @@
                     <span class="hover:underline">Edit Profile</span>
                 </div>
             @endif
-            <hr class="mt-3" />
+            @if(!auth()->check())
+                <div class="text-gray-900 dark:text-gray-300 group flex items-center cursor-pointer">
+                    <i class="mr-3 fas fa-user-plus text-purple-700 dark:text-purple-500"></i>
+                    <a href="{{ route('login') }}" class="hover:underline">Follow</a>
+                </div>
+            @endif
             <div class="mt-3">
                 <a href="{{ route('user-posts', ['user_name' => $user_name]) }}" class="text-gray-900 dark:text-gray-300 group flex items-center cursor-pointer">
                     <i class="mr-3 fas fa-list text-purple-700 dark:text-purple-500"></i>
                     <span class="hover:underline">Posts</span>
                 </a>
-                <a href="{{ route('canons', ['user_name' => $user_name]) }}" class="mt-3 text-gray-900 dark:text-gray-300 group flex items-center cursor-pointer">
-                    <i class="mr-3 fas fa-globe text-purple-700 dark:text-purple-500"></i>
-                    <span class="hover:underline">Canons</span>
-                </a>
-                <a href="{{ route('collections', ['user_name' => $user_name]) }}" class="mt-3 text-gray-900 dark:text-gray-300 group flex items-center cursor-pointer">
-                    <i class="mr-3 fas fa-layer-group text-purple-700 dark:text-purple-500"></i>
-                    <span class="hover:underline">Collections</span>
-                </a>
+                @if(auth()->check())
+                    <a href="{{ route('canons', ['user_name' => $user_name]) }}" class="mt-3 text-gray-900 dark:text-gray-300 group flex items-center cursor-pointer">
+                        <i class="mr-3 fas fa-globe text-purple-700 dark:text-purple-500"></i>
+                        <span class="hover:underline">Canons</span>
+                    </a>
+                    <a href="{{ route('collections', ['user_name' => $user_name]) }}" class="mt-3 text-gray-900 dark:text-gray-300 group flex items-center cursor-pointer">
+                        <i class="mr-3 fas fa-layer-group text-purple-700 dark:text-purple-500"></i>
+                        <span class="hover:underline">Collections</span>
+                    </a>
+                @endif
             </div>
             @if($my_profile)
                 <div class="mt-3">

@@ -64,4 +64,21 @@
             </span>
         </a>
     </div>
+    @if(!auth()->check())
+        <hr class="lg:hidden" />
+        <div class="lg:hidden sm:p-4 lg:space-y-1">
+            <a href="{{ route('login') }}" class="group flex items-center p-2 text-gray-500 dark:text-gray-300">
+                <i class="fal fa-sign-in text-gray-900 dark:text-gray-300 text-center" style="width: 28px !important;"></i>
+                <span class="ml-3 text-sm font-medium uppercase tracking-wider align-middle hover:underline" style="margin-top: 2px !important;">
+                    Login
+                </span>
+            </a>
+            <a href="{{ route('register') }}" class="group flex items-center p-2 text-gray-500 dark:text-gray-300">
+                <i class="fal fa-user-plus text-gray-900 dark:text-gray-300 text-center" style="width: 28px !important;"></i>
+                <span class="ml-3 text-sm font-medium uppercase tracking-wider align-middle hover:underline" style="margin-top: 2px !important;">
+                    Register
+                </span>
+            </a>
+        </div>
+    @endif
 </nav>

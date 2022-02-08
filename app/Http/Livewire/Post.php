@@ -20,7 +20,6 @@
         public string|null $slug;
         public int|null $post_id;
         public int $pagination_count;
-        public UserModel $user;
         public array $author, $canons = [], $collections = [];
         public bool|null $upvoted = null, $flagged = null;
         protected $listeners = ['RefreshMeta'];
@@ -31,33 +30,34 @@
                 $post = PostModel::where('slug', $this->slug)->with('Type')->first();
                 $this->post_id = $post->id;
                 $this->pagination_count = config('app.settings.post_pagination', 20);
-                $this->user = auth()->user();
                 $this->author = $post->User()->with('Character')->first()->toArray();
-                $post_view = PostViewModel::where('user_id', auth()->user()->id)->where('post_id', $this->post_id)->first();
-                if (empty($post_view)) {
-                    $post_view = new PostViewModel;
-                    $post_view->user_id = auth()->user()->id;
-                    $post_view->post_id = $this->post_id;
-                }
-                $post_view->updated_at = Carbon::now();
-                $post_view->save();
-                $canon_posts = $post->CanonPosts()->get();
-                foreach($canon_posts as $canon_post) {
-                    $selected_canon = [
-                        'id' => $canon_post->id,
-                        'name' => $canon_post->Canon->name,
-                        'description' => $canon_post->Canon->description,
-                    ];
-                    $this->canons[$canon_post->Canon->id] = $selected_canon;
-                }
-                $collection_posts = $post->CollectionPosts()->get();
-                foreach($collection_posts as $collection_post) {
-                    $selected_collection = [
-                        'id' => $collection_post->id,
-                        'name' => $collection_post->Collection->name,
-                        'description' => $collection_post->Collection->description,
-                    ];
-                    $this->collections[$collection_post->Collection->id] = $selected_collection;
+                if (auth()->check()) {
+                    $post_view = PostViewModel::where('user_id', auth()->user()->id)->where('post_id', $this->post_id)->first();
+                    if (empty($post_view)) {
+                        $post_view = new PostViewModel;
+                        $post_view->user_id = auth()->user()->id;
+                        $post_view->post_id = $this->post_id;
+                    }
+                    $post_view->updated_at = Carbon::now();
+                    $post_view->save();
+                    $canon_posts = $post->CanonPosts()->get();
+                    foreach ($canon_posts as $canon_post) {
+                        $selected_canon = [
+                            'id' => $canon_post->id,
+                            'name' => $canon_post->Canon->name,
+                            'description' => $canon_post->Canon->description,
+                        ];
+                        $this->canons[$canon_post->Canon->id] = $selected_canon;
+                    }
+                    $collection_posts = $post->CollectionPosts()->get();
+                    foreach ($collection_posts as $collection_post) {
+                        $selected_collection = [
+                            'id' => $collection_post->id,
+                            'name' => $collection_post->Collection->name,
+                            'description' => $collection_post->Collection->description,
+                        ];
+                        $this->collections[$collection_post->Collection->id] = $selected_collection;
+                    }
                 }
             } else {
                 abort(404);
@@ -107,15 +107,15 @@
 
         public function Render() {
             $post = $this->GetPost();
-            $has_open_collaboration = $post->ActivePostDetails->whereHas('Collaborations', function($query) use($post) {
+            $has_open_collaboration = auth()->check() ? $post->ActivePostDetails->whereHas('Collaborations', function($query) use($post) {
                 $query->where('post_detail_id', $post->ActivePostDetails->id)->where('user_id', auth()->user()->id)->where('status', 'Open');
-            })->exists();
+            })->exists() : false;
             return view('livewire.post', ['post' => $post, 'has_open_collaboration' => $has_open_collaboration]);
         }
 
         private function GetPost() {
             $post = PostModel::where('id', $this->post_id)->with('ActivePostDetails', 'ActivePostDetails.Tags', 'ActivePostDetails.Attributes', 'ActivePostDetails.Actions')->withCount('Upvotes', 'Comments', 'Views')->first();
-            $this->upvoted = UpvoteModel::where('user_id', auth()->user()->id)->where('upvotable_id', $post->id)->exists();
+            $this->upvoted = auth()->check() ? UpvoteModel::where('user_id', auth()->user()->id)->where('upvotable_id', $post->id)->exists() : false;
             return $post;
         }
     }

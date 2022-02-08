@@ -19,15 +19,11 @@
     require __DIR__ . '/auth.php';
 
     Route::get('/', function () {
-        if (Auth::check()) {
-            return view('components.layout', [
-                'view' => 'feed',
-                'properties' => [],
-            ]);
-        } else {
-            return view('home');
-        }
-    })->name('home')->middleware('verified-if-authed', 'terms');
+        return view('components.layout', [
+            'view' => 'feed',
+            'properties' => [],
+        ]);
+    })->name('home');
 
     Route::get('/logout', function () {
         Auth()->logout();
@@ -461,7 +457,7 @@
                 ['name' => $user_name],
             ]
         ]);
-    })->name('user-profile')->middleware('terms', 'auth', 'verified');
+    })->name('user-profile');
 
     Route::get('/account/{notification?}', function ($notification = null) {
         return view('components.layout', [
@@ -477,9 +473,14 @@
     Route::get('/user/{user_name}/posts', function ($user_name) {
         return view('components.layout', [
             'view' => 'user-posts',
-            'properties' => ['user_name' => $user_name]
+            'properties' => ['user_name' => $user_name],
+            'show_breadcrumbs' => true,
+            'breadcrumbs' => [
+                ['name' => $user_name, 'route' => 'user-profile', 'route_params' => ['user_name' => $user_name]],
+                ['name' => 'Posts'],
+            ]
         ]);
-    })->name('user-posts')->middleware('terms', 'auth', 'verified');
+    })->name('user-posts');
 
     Route::get('/user-notifications', function () {
         return view('components.layout', [
@@ -554,7 +555,7 @@
             'view' => 'post-search',
             'properties' => []
         ]);
-    })->name('post-search')->middleware('terms', 'auth', 'verified');
+    })->name('post-search');
 
     Route::get('/search-results', function () {
         return view('components.layout', [
@@ -576,17 +577,17 @@
     })->name('new-post')->middleware('terms', 'auth', 'verified');
 
     Route::get('/ideas/{user_name?}', function ($user_name = null) {
-        $user_id = \App\Models\UserCharacter::where('name', $user_name)->first()->User->id;
+        $user_id = \App\Models\UserCharacter::where('name', $user_name)->first()->User->id ?? null;
         return view('components.layout', [
             'view' => 'ideas',
             'properties' => ['user_id' => $user_id],
             'show_breadcrumbs' => true,
             'breadcrumbs' => [
-                ['name' => $user_name, 'route' => 'user-profile', 'route_params' => ['user_name' => $user_name]],
+                ['name' => $user_name, 'route' => 'user-profile', 'route_params' => ['user_name' => $user_name], 'hide' => empty($user_name)],
                 ['name' => 'Ideas'],
             ]
         ]);
-    })->name('ideas')->middleware('terms', 'auth', 'verified');
+    })->name('ideas');
 
     Route::get('/idea/{post_id}', function ($post_id) {
         return view('components.layout', [
@@ -596,17 +597,17 @@
     })->name('idea')->middleware('terms', 'auth', 'verified');
 
     Route::get('/questions/{user_name?}', function ($user_name = null) {
-        $user_id = \App\Models\UserCharacter::where('name', $user_name)->first()->User->id;
+        $user_id = \App\Models\UserCharacter::where('name', $user_name)->first()->User->id ?? null;
         return view('components.layout', [
             'view' => 'questions',
             'properties' => ['user_id' => $user_id],
             'show_breadcrumbs' => true,
             'breadcrumbs' => [
-                ['name' => $user_name, 'route' => 'user-profile', 'route_params' => ['user_name' => $user_name]],
+                ['name' => $user_name, 'route' => 'user-profile', 'route_params' => ['user_name' => $user_name], 'hide' => empty($user_name)],
                 ['name' => 'Questions'],
             ]
         ]);
-    })->name('questions')->middleware('terms', 'auth', 'verified');
+    })->name('questions');
 
     Route::get('/question/{post_id?}', function ($post_id = null) {
         return view('components.layout', [
@@ -616,17 +617,17 @@
     })->name('question')->middleware('terms', 'auth', 'verified');
 
     Route::get('/articles/{user_name?}', function ($user_name = null) {
-        $user_id = \App\Models\UserCharacter::where('name', $user_name)->first()->User->id;
+        $user_id = \App\Models\UserCharacter::where('name', $user_name)->first()->User->id ?? null;
         return view('components.layout', [
             'view' => 'articles',
             'properties' => ['user_id' => $user_id],
             'show_breadcrumbs' => true,
             'breadcrumbs' => [
-                ['name' => $user_name, 'route' => 'user-profile', 'route_params' => ['user_name' => $user_name]],
+                ['name' => $user_name, 'route' => 'user-profile', 'route_params' => ['user_name' => $user_name], 'hide' => empty($user_name)],
                 ['name' => 'Articles'],
             ]
         ]);
-    })->name('articles')->middleware('terms', 'auth', 'verified');
+    })->name('articles');
 
     Route::get('/article/{post_id?}', function ($post_id = null) {
         return view('components.layout', [
@@ -756,7 +757,7 @@
                 ['name' => \App\Models\System::where('slug', $system_slug)->first()->name],
             ]
         ]);
-    })->name('system-posts')->middleware('terms', 'auth', 'verified');
+    })->name('system-posts');
 
     Route::get('/category/{category_slug}', function ($category_slug) {
         return view('components.layout', [
@@ -767,7 +768,7 @@
                 ['name' => \App\Models\Category::where('slug', $category_slug)->first()->name],
             ]
         ]);
-    })->name('category-posts')->middleware('terms', 'auth', 'verified');
+    })->name('category-posts');
 
     Route::get('/tag-list', function () {
         return view('components.layout', [
@@ -778,7 +779,7 @@
                 ['name' => 'Tags'],
             ]
         ]);
-    })->name('tag-list')->middleware('terms', 'auth', 'verified');
+    })->name('tag-list');
 
     Route::get('/tag/{tag_slug}', function ($tag_slug) {
         return view('components.layout', [
@@ -790,11 +791,11 @@
                 ['name' => \App\Models\Tag::where('slug', $tag_slug)->first()->name],
             ]
         ]);
-    })->name('tag-posts')->middleware('terms', 'auth', 'verified');
+    })->name('tag-posts');
 
     Route::get('/{slug}', function ($slug) {
         return view('components.layout', [
             'view' => 'post',
             'properties' => ['slug' => $slug]
         ]);
-    })->name('post')->middleware('terms', 'auth', 'verified');
+    })->name('post');

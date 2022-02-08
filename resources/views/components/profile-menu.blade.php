@@ -23,7 +23,7 @@
         @endif
     </a>
 {{--TODO: add notifications here--}}
-    @if(Auth()->user()->IsAdmin())
+    @if(optional(Auth()->user())->IsAdmin())
         <a href="{{route('admin-tools')}}" class="text-gray-500 dark:text-gray-300 group flex items-center p-2">
             <i class="fal fa-user-crown text-center" style="width: 28px !important;"></i>
             <span class="ml-3 font-medium tracking-wider inline-block align-middle hover:underline">

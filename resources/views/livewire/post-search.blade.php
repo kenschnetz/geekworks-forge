@@ -10,7 +10,7 @@
         <x-dynamic-input :limit="50" :key="'search_term'" :placeholder="'What are you looking for?'" class="mt-3 dark:text-gray-300 flex items-center">
             {{ $search_term }}
             <x-slot name="post">
-                <i class="ml-auto pl-3 fas fa-share-square text-gray-200 hover:text-purple-700 cursor-pointer" wire:click="AddSearchTerm()" style="font-size: 1.5em !important;"></i>
+                <i class="ml-auto pl-3 fas fa-share-square text-gray-400 dark:text-gray-200 hover:text-purple-700 cursor-pointer" wire:click="AddSearchTerm()" style="font-size: 1.5em !important;"></i>
             </x-slot>
         </x-dynamic-input>
         @if(count($search_terms) > 0)

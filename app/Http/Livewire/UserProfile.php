@@ -31,7 +31,7 @@
             if (empty($this->profile_user)) {
                 abort(404);
             }
-            $this->my_profile = auth()->user()->id === $this->profile_user->id;
+            $this->my_profile = auth()->check() && auth()->user()->id === $this->profile_user->id;
             $this->skill_level = SkillLevelModel::where('points_required', '<=', $this->profile_user->Character->skill_points)->first();
             $this->stats = UserUtilities::GetStats($this->profile_user);
             // TODO: implement a post scoring system where every upvote, view and comment contributes to a post_score column on the posts table to make this faster
@@ -42,8 +42,8 @@
             }
             $this->recent_posts = $recent_posts->latest()->with('ActivePostDetails')->take(5)->get()->toArray();
             $this->recent_comments = $this->profile_user->Comments()->latest()->with('Post', 'Post.ActivePostDetails')->take(5)->get()->toArray();
-            $this->following = auth()->user()->Follows()->where('followed_user_id', $this->profile_user->id)->exists();
-            $this->can_edit = $this->profile_user->id === auth()->user()->id;
+            $this->following = auth()->check() && auth()->user()->Follows()->where('followed_user_id', $this->profile_user->id)->exists();
+            $this->can_edit = auth()->check() && $this->profile_user->id === auth()->user()->id;
             $profile_photo = $this->profile_user->Character->ProfilePhoto;
             if (!empty($profile_photo)) {
                 $selected_profile_photo = [

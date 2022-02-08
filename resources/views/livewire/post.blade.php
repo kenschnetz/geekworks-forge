@@ -72,6 +72,8 @@
     <div class="lg:hidden mt-3 px-4 sm:p-0">
         @livewire('comments', ['post' => $post])
     </div>
-    @livewire('canonize-modal', ['post' => $post, 'post_details' => $post->ActivePostDetails, 'selected_items' => $canons, 'removed_items' => []])
-    @livewire('collect-modal', ['post' => $post, 'post_details' => $post->ActivePostDetails, 'selected_items' => $collections, 'removed_items' => []])
+    @if(auth()->check())
+        @livewire('canonize-modal', ['post' => $post, 'post_details' => $post->ActivePostDetails, 'selected_items' => $canons, 'removed_items' => []])
+        @livewire('collect-modal', ['post' => $post, 'post_details' => $post->ActivePostDetails, 'selected_items' => $collections, 'removed_items' => []])
+    @endif
 </div>
