@@ -1,4 +1,4 @@
-<article x-data="{ post_menu_open: false }">
+<article>
     <div class="relative">
         <i @class(['absolute top-0 right-0 fas text-gray-300 text-center', 'fa-exclamation-square' => $post->post_type_id === 1, 'fa-question-square' => $post->post_type_id === 2, 'fa-rss-square' => $post->post_type_id === 3]) style="font-size: 1.4em !important; width: 32px !important;"></i>
         <div class="flex space-x-3">

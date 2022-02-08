@@ -62,7 +62,8 @@
                     return $query->where('title', 'like', '%' . $this->search_term . '%')
                         ->orWhere('description', 'like', '%' . $this->search_term . '%')
                         ->orWhere('content', 'like', '%' . $this->search_term . '%');
-                })->with('ActivePostDetails', 'User')
+                })
+                ->with('ActivePostDetails', 'User')
                 ->withCount('Upvotes', 'Comments', 'Views')
                 ->paginate($this->pagination_count);
         }

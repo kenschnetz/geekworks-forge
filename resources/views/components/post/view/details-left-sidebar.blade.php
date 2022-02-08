@@ -13,7 +13,7 @@
         <div class="mt-3 px-4">
             @if($post->user_id === auth()->user()->id)
                 <a href="{{ match($post->post_type_id) { 1 => route('idea', ['post_id' => $post->id]), 2 => route('question', ['post_id' => $post->id]), 3 => route('article', ['post_id' => $post->id]) } }}" class="text-gray-900 dark:text-gray-300 group flex items-center" role="menuitem" tabindex="-1" id="options-menu-0-item-0">
-                    <i class="mr-3 fas fa-edit text-purple-700" style="width: 28px"></i>
+                    <i class="mr-3 fas fa-edit text-purple-700 dark:text-purple-500" style="width: 28px"></i>
                     <span class="hover:underline">Edit</span>
                 </a>
             @endif

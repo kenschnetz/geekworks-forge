@@ -3,8 +3,11 @@
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Model;
+    use Laravel\Scout\Searchable;
 
     class PostDetail extends Model {
+        use Searchable;
+
         protected $guarded = ['id'];
         protected $attributes = [
             'post_id' => null,
@@ -39,5 +42,12 @@
 
         public function Collaborations() {
             return $this->hasMany(PostCollaboration::class);
+        }
+
+        /**
+         * Get the index name for the model.
+         */
+        public function SearchableAs() {
+            return 'post_index';
         }
     }
