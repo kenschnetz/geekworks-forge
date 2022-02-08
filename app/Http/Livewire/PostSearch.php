@@ -13,7 +13,7 @@
         public array $search_terms = [];
 
         public function AddSearchTerm() {
-            if (!empty($this->search_term) && strlen($this->search_term) <= 30) {
+            if (!empty($this->search_term) && strlen($this->search_term) <= 50) {
                 if (!in_array($this->search_term, $this->search_terms)) {
                     array_push($this->search_terms, $this->search_term);
                 }
