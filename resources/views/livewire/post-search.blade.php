@@ -1,6 +1,13 @@
-<div class="max-w-2xl mx-auto px-4">
+<div class="max-w-2xl mx-auto lg:px-4">
     <div class="mt-3 p-4">
-        <x-dynamic-input :limit="30" :key="'search_term'" :placeholder="'What are you looking for?'" class="dark:text-gray-300 flex items-center">
+        <h2 class="text-center font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider inline-block align-middle">
+            Find something epic
+        </h2>
+        <hr class="mt-3" />
+        <div class="mt-3 text-gray-500 italic">
+            Enter a single term for a specific search or multiple terms for a broader search.
+        </div>
+        <x-dynamic-input :limit="30" :key="'search_term'" :placeholder="'What are you looking for?'" class="mt-3 dark:text-gray-300 flex items-center">
             {{ $search_term }}
             <x-slot name="post">
                 <i class="ml-auto pl-3 fas fa-share-square text-gray-200 hover:text-purple-700 cursor-pointer" wire:click="AddSearchTerm()" style="font-size: 1.5em !important;"></i>
@@ -19,7 +26,6 @@
                 @endforeach
             </div>
         @endif
-        <hr class="mt-3" />
         @if($posts->count() > 0)
             <ul role="list" class="mt-3 space-y-4">
                 @foreach($posts as $post)
