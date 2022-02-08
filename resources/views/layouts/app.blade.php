@@ -14,9 +14,10 @@
         <link rel="stylesheet" href="https://unpkg.com/trix@1.3.1/dist/trix.css">
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        @include('components.analytics')
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-zinc-900" style="background-image: url('/storage/img/forge-bg.png'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover; background-position: center center;">
+        <div class="min-h-screen bg-zinc-700 dark:bg-zinc-900" style="background-image: url('/storage/img/forge-bg.png'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover; background-position: center center;">
             <main>
                 {{ $slot }}
             </main>
