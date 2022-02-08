@@ -7,7 +7,7 @@
         <div class="mt-3">
             @livewire($view, $properties)
         </div>
-        <div class="fixed bottom-0 left-0 w-full p-4 text-center lg:text-right" x-data="{ scrollBackTop: false }" x-cloak>
+        <div class="w-24 mx-auto lg:ml-auto lg:mr-0 fixed inset-x-0 bottom-0 lg:right-0 p-4" x-data="{ scrollBackTop: false }" x-cloak>
             <button
                 x-show="scrollBackTop"
                 x-on:scroll.window="scrollBackTop = (window.pageYOffset > window.outerHeight * 0.5) ? true : false"
