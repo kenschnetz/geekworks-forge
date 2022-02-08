@@ -21,6 +21,10 @@
             }
         }
 
+        public function ClearSearchTerms() {
+            $this->reset('search_terms');
+        }
+
         public function RemoveSearchTerm($index) {
             unset($this->search_terms[$index]);
         }

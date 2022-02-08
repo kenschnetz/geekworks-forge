@@ -9,6 +9,9 @@
         @if(count($search_terms) > 0)
             <hr class="mt-3" />
             <div class="mt-3">
+                <span wire:key="clear_all" class="relative inline-flex items-center rounded-full mt-1 px-3 py-0.5 text-sm bg-orange-500 text-white border border-orange-500 hover:shadow dark:bg-zinc-700 cursor-pointer" wire:click="ClearSearchTerms()">
+                    Clear all
+                </span>
                 @foreach($search_terms as $index => $search_term)
                     <span wire:key="term_{{ $index }}" class="relative inline-flex items-center rounded-full mt-1 px-3 py-0.5 text-sm bg-orange-500 text-white border border-orange-500 hover:shadow dark:bg-zinc-700 cursor-pointer" wire:click="RemoveSearchTerm({{ $index }})">
                         <i class="fas fa-times-circle mr-3"></i> {{ $search_term }}
