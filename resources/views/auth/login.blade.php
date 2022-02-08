@@ -6,6 +6,13 @@
             </a>
         </x-slot>
 
+        <div class="text-center">
+            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                {{ __('New here? Create account!') }}
+            </a>
+        </div>
+        <hr class="my-3" />
+
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -40,14 +47,14 @@
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center mt-4">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
 
-                <x-button class="ml-3">
+                <x-button class="ml-auto">
                     {{ __('Log in') }}
                 </x-button>
             </div>
