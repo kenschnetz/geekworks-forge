@@ -25,24 +25,24 @@
                             <span class="hover:underline">Remove upvote</span>
                         @else
                             <i class="mr-3 fas fa-thumbs-up text-purple-700 dark:text-purple-500" style="width: 28px"></i>
-                            <span class="hover:underline">Upvote</span>
+                            <span class="hover:underline" x-data x-tooltip="Love this post? Let the author know with an upvote!">Upvote</span>
                         @endif
                     </div>
                 @endif
                 @if($post->user_id === auth()->user()->id || !$post->locked_canon)
                     <span class="text-gray-900 dark:text-gray-300 group flex items-center mt-3 cursor-pointer" x-data="{}" x-on:click="window.livewire.emitTo('canonize-modal', 'Show')">
                         <i class="mr-3 fas fa-vector-square text-purple-700 dark:text-purple-500" style="width: 28px"></i>
-                        <span class="hover:underline">Canonize</span>
+                        <span class="hover:underline" x-data x-tooltip="Add this post to one of your Canons, or a public Canon">Canonize</span>
                     </span>
                 @endif
                 <span class="text-gray-900 dark:text-gray-300 group flex items-center mt-3 cursor-pointer" x-data="{}" x-on:click="window.livewire.emitTo('collect-modal', 'Show')">
                     <i class="mr-3 fas fa-th-large text-purple-700 dark:text-purple-500" style="width: 28px"></i>
-                    <span class="hover:underline">Collect</span>
+                    <span class="hover:underline" x-data x-tooltip="Add this post to one of your Collections">Collect</span>
                 </span>
                 @if($post->Type->name === 'Idea' && !$has_open_collaboration && $post->user_id !== auth()->user()->id && $post->ActivePostDetails->requesting_collaborations)
                     <a href="{{ route('collaborate', ['post_id' => $post->id]) }}" class="text-gray-900 dark:text-gray-300 group flex items-center mt-3" role="menuitem" tabindex="-1" id="options-menu-0-item-0">
                         <i class="mr-3 fas fa-file-edit text-purple-700 dark:text-purple-500" style="width: 28px"></i>
-                        <span class="hover:underline">Collaborate</span>
+                        <span class="hover:underline" x-data x-tooltip="Collaborate with the author on this post by recommending changes">Collaborate</span>
                     </a>
                 @endif
             </div>
@@ -54,7 +54,7 @@
                 <div class="mt-3 px-4">
                     <a href="{{ route('flag-content', ['flaggable_id' => $post->id, 'flaggable_type' => 'Post']) }}" class="cursor-pointer text-gray-900 dark:text-gray-300 group flex items-center" role="menuitem" tabindex="-1" id="options-menu-0-item-0">
                         <i class="mr-3 fas fa-flag text-red-600 dark:text-red-500" style="width: 28px"></i>
-                        <span class="hover:underline">Flag for Admin review</span>
+                        <span class="hover:underline" x-data x-tooltip="Submit this post for admin review">Flag for Admin review</span>
                     </a>
                 </div>
             @endif
