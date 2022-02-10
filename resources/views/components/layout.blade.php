@@ -7,6 +7,27 @@
         <div class="mt-3">
             @livewire($view, $properties)
         </div>
+        <script>
+            document.addEventListener('alpine:init', () => {
+                // Magic: $tooltip
+                Alpine.magic('tooltip', el => message => {
+                    let instance = tippy(el, { content: message, trigger: 'manual' })
+
+                    instance.show()
+
+                    setTimeout(() => {
+                        instance.hide()
+
+                        setTimeout(() => instance.destroy(), 150)
+                    }, 2000)
+                })
+
+                // Directive: x-tooltip
+                Alpine.directive('tooltip', (el, { expression }) => {
+                    tippy(el, { content: expression })
+                })
+            })
+        </script>
         <div class="w-24 mx-auto lg:ml-auto lg:mr-0 fixed inset-x-0 bottom-0 lg:right-0 p-4" x-data="{ scrollBackTop: false }" x-cloak>
             <button
                 x-show="scrollBackTop"

@@ -24,5 +24,7 @@
         </div>
         @livewireScripts
         <script src="https://unpkg.com/trix@1.3.1/dist/trix.js"></script>
+        <script src="https://unpkg.com/@popperjs/core@2"></script>
+        <script src="https://unpkg.com/tippy.js@6"></script>
     </body>
 </html>
