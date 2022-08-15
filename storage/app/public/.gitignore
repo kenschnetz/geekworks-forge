@@ -1,2 +1,2 @@
-/post-images
-/livewire-tmp
+*
+!.gitignore
